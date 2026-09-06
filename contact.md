@@ -10,7 +10,7 @@ description: 基礎演習Ⅱ 担当教員（河合勝彦）の連絡先とオフ
 <dt>電子メール</dt><dd><a href="mailto:{{ c.email }}">{{ c.email }}</a></dd>
 <dt>研究室Web</dt><dd><a href="{{ c.lab_url }}">{{ c.lab_url }}</a></dd>
 <dt>オフィスアワー</dt><dd>{{ c.office_hours }}。{{ c.office_hours_note }}。</dd>
-<dt>授業</dt><dd>{{ c.day_period }}、{{ c.room }}教室（{{ c.campus }}）</dd>
+<dt>授業</dt><dd>{{ c.day_period }}（{{ c.time }}）、{{ c.room }}教室（{{ c.campus }}）</dd>
 </dl>
 
 ## 電子メールを送るとき

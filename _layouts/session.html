@@ -24,7 +24,7 @@ layout: default
     <aside class="session-side" aria-label="この回の情報">
       <dl class="facts">
         <dt>日程</dt><dd>{% include session-date.html number=page.number %}</dd>
-        <dt>時限</dt><dd>{{ row.period | default: course.day_period }}</dd>
+        <dt>時限</dt><dd>{% if row.period %}{{ row.period }}{% else %}{{ course.day_period }}<br>{{ course.time }}{% endif %}</dd>
         <dt>教室</dt><dd>{{ row.room | default: course.room }}</dd>
       </dl>
       <h2>資料</h2>

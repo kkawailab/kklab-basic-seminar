@@ -7,8 +7,8 @@ description: 基礎演習Ⅱ（2026年度後期）の全15回の授業計画。�
 {% assign sessions = site.sessions | sort: "number" %}
 <header class="page-head">
   <h1>授業計画</h1>
-  <p class="lead">{{ course.day_period }}、{{ course.room }}教室。前半の5回で生成AIを使ったアカデミック・ライティングの高度化を学び、第6回からは企業と連携する店舗設計提案プロジェクトに取り組みます。</p>
-  <p class="sched-note">日程が未記載の回は、決まり次第ここに掲載します。企業の都合で水曜3限以外に集まる可能性があります。</p>
+  <p class="lead">{{ course.day_period }}（{{ course.time }}）、{{ course.room }}教室。前半の5回で生成AIを使ったアカデミック・ライティングの高度化を学び、第6回からは企業と連携する店舗設計提案プロジェクトに取り組みます。</p>
+  <p class="sched-note">第14・15回のキャリア講習は12月16日・23日に行い、第12・13回は年明けに実施します。企業の都合で水曜3限以外に集まる可能性があります。</p>
 </header>
 
 {% for ph in site.data.phases %}{% assign group = sessions | where: "phase", ph.id %}

@@ -11,7 +11,7 @@ description: 基礎演習Ⅱ（2026年度後期）のシラバス。授業の目
 <dt>科目名</dt><dd>{{ c.name }}（サブコード {{ c.subcode }}）</dd>
 <dt>担当教員</dt><dd>{{ c.instructor }}</dd>
 <dt>開講</dt><dd>{{ c.year }}年度 {{ c.term }}（{{ c.period }}）</dd>
-<dt>曜日・時限</dt><dd>{{ c.day_period }}</dd>
+<dt>曜日・時限</dt><dd>{{ c.day_period }}（{{ c.time }}）</dd>
 <dt>講義室</dt><dd>{{ c.room }}</dd>
 <dt>キャンパス</dt><dd>{{ c.campus }}</dd>
 <dt>科目種別</dt><dd>{{ c.type }}</dd>

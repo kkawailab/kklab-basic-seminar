@@ -8,7 +8,7 @@ body_class: home
 {% assign first_phase = site.data.phases | where: "id", first.phase | first %}
 {% assign first_row = site.data.schedule | where: "number", first.number | first %}
 <section class="hero">
-  <p class="hero__meta"><span>{{ course.university }} {{ course.faculty }}</span><span>{{ course.year }}年度{{ course.term }}</span><span>{{ course.day_period }}</span><span>{{ course.room }}教室</span><span>担当　{{ course.instructor }}</span></p>
+  <p class="hero__meta"><span>{{ course.university }} {{ course.faculty }}</span><span>{{ course.year }}年度{{ course.term }}</span><span>{{ course.day_period }}　{{ course.time }}</span><span>{{ course.room }}教室</span><span>担当　{{ course.instructor }}</span></p>
   <h1>AIに書かせない。<br>AIと考える。</h1>
   <p class="hero__lead">生成AIを「思考のパートナー」として使いこなし、自分の問いを立てるところから、企業と取り組む店舗設計の提案まで。1年次までに身につけたアカデミック・スキルを、AIとの対話で一段深める演習です。</p>
   <p class="hero__actions"><a class="button" href="{{ '/schedule/' | relative_url }}">授業計画を見る</a><a href="{{ '/ai-guide/' | relative_url }}">この授業でのAIの使い方</a></p>

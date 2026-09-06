@@ -1,11 +1,14 @@
 {%- comment -%}
 指定した回（include.number）の日程を「10月7日（水）」の形式で出力する。
+年度と異なる年（年明け）は「2027年1月6日（水）」のように年を付ける。
 未定の場合は include.fallback（既定: 日程未定）を出力する。
 {%- endcomment -%}
 {%- assign sd_row = site.data.schedule | where: "number", include.number | first -%}
 {%- if sd_row and sd_row.date -%}
 {%- assign sd_w = sd_row.date | date: "%u" | plus: 0 | minus: 1 -%}
 {%- assign sd_wd = "月,火,水,木,金,土,日" | split: "," -%}
+{%- assign sd_y = sd_row.date | date: "%Y" | plus: 0 -%}
+{%- if sd_y != site.data.course.year %}{{ sd_y }}年{% endif -%}
 {{ sd_row.date | date: "%-m月%-d日" }}（{{ sd_wd[sd_w] }}）
 {%- else -%}
 {{ include.fallback | default: "日程未定" }}

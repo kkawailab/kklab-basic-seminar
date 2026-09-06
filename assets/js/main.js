@@ -1,5 +1,7 @@
 /* 日程データをもとに「次回」「終了した回」の表示を切り替える。
-   日程は _data/schedule.yml に書く。日程が空の回は「これから」の扱いになる。 */
+   日程は _data/schedule.yml に書く。
+   次回 = 今日以降で最も早い日付の回（日付が空の回は、日付のある回がすべて終わった後の候補）。
+   確認用に ?today=2026-12-17 のように日付を指定すると、その日として表示できる。 */
 (function () {
   'use strict';
 
@@ -9,19 +11,25 @@
     if (p.length !== 3) { return null; }
     return new Date(+p[0], +p[1] - 1, +p[2]);
   }
+
+  var jsonEl = document.getElementById('sessions-json');
+  var courseYear = jsonEl ? +jsonEl.getAttribute('data-year') : NaN;
+
   function formatDate(s) {
     var d = parseDate(s);
     if (!d) { return ''; }
     var wd = ['日', '月', '火', '水', '木', '金', '土'];
-    return (d.getMonth() + 1) + '月' + d.getDate() + '日（' + wd[d.getDay()] + '）';
+    var y = (courseYear && d.getFullYear() !== courseYear) ? d.getFullYear() + '年' : '';
+    return y + (d.getMonth() + 1) + '月' + d.getDate() + '日（' + wd[d.getDay()] + '）';
   }
 
   var today = new Date();
+  var override = /[?&]today=(\d{4}-\d{2}-\d{2})/.exec(window.location.search);
+  if (override) { today = parseDate(override[1]); }
   today.setHours(0, 0, 0, 0);
 
   // 全回のデータ。トップページでは JSON から、その他のページでは data-session 要素から集める
   var sessions = [];
-  var jsonEl = document.getElementById('sessions-json');
   if (jsonEl) {
     try { sessions = JSON.parse(jsonEl.textContent); } catch (e) { sessions = []; }
   }
@@ -33,14 +41,23 @@
   }
   sessions.sort(function (a, b) { return a.number - b.number; });
 
-  // 日付が今日より前なら「終了」。それ以外で最初に来る回が「次回」
+  // 今日以降の回を日付順に並べ、最初のものを「次回」にする
+  var upcoming = sessions.filter(function (s) {
+    var d = parseDate(s.date);
+    return d && d >= today;
+  }).sort(function (a, b) { return parseDate(a.date) - parseDate(b.date); });
+  var next = upcoming[0] || null;
+  if (!next) {
+    var undated = sessions.filter(function (s) { return !parseDate(s.date); });
+    next = undated[0] || null;
+  }
+
   var status = {};
-  var next = null;
   sessions.forEach(function (s) {
     var d = parseDate(s.date);
-    if (d && d < today) { status[s.number] = 'past'; return; }
-    if (!next) { next = s; status[s.number] = 'next'; return; }
-    status[s.number] = 'future';
+    if (d && d < today) { status[s.number] = 'past'; }
+    else if (next && s.number === next.number) { status[s.number] = 'next'; }
+    else { status[s.number] = 'future'; }
   });
 
   cells.forEach(function (el) {
