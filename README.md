@@ -3,7 +3,7 @@
 名古屋市立大学 経済学部「基礎演習Ⅱ」（2026年度後期・担当 河合勝彦）の授業サイトです。
 Jekyll で作られており、GitHub Pages がリポジトリの内容から自動でサイトを生成します。
 
-公開URL: https://kkawailab.github.io/kklab-basic-seminar/
+公開URL: https://kklab.mobi/kklab-basic-seminar/
 
 ## よくある更新
 
@@ -82,7 +82,7 @@ materials/            配布資料の置き場
 
 1. リポジトリの Settings → Pages を開く
 2. Source を「Deploy from a branch」、Branch を `main` / `/ (root)` にして保存
-3. 数分後に https://kkawailab.github.io/kklab-basic-seminar/ で公開される
+3. 数分後に https://kklab.mobi/kklab-basic-seminar/ で公開される
 
 以後は `main` に push するたびに自動で更新されます。
 
