@@ -1,0 +1,15 @@
+{% assign course = site.data.course %}
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div>
+      <p class="site-footer__title">{{ site.title }}　{{ course.year }}年度{{ course.term }}</p>
+      <p>{{ course.university }} {{ course.faculty }}　担当　{{ course.instructor }}</p>
+      <p><a href="mailto:{{ course.email }}">{{ course.email }}</a></p>
+    </div>
+    <div>
+      <p><a href="{{ course.lab_url }}">{{ course.lab_name }}のWebサイト</a></p>
+      <p><a href="{{ course.syllabus_url }}">大学の公式シラバス</a></p>
+      <p><a href="{{ course.github_url }}">このサイトのソース（GitHub）</a></p>
+    </div>
+  </div>
+</footer>

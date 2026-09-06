@@ -1,0 +1,19 @@
+{% assign course = site.data.course %}
+{% capture page_title %}{% if page.number %}第{{ page.number }}回 {% endif %}{{ page.title }}{% endcapture %}
+{% if page.title %}{% assign full_title = page_title | append: " | " | append: site.title %}{% else %}{% assign full_title = site.title | append: " " | append: course.year | append: "年度" | append: course.term | append: " | " | append: course.university | append: " " | append: course.faculty %}{% endif %}
+{% assign desc = page.description | default: page.summary | default: site.description %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ full_title }}</title>
+<meta name="description" content="{{ desc | strip_html | strip_newlines }}">
+<meta property="og:title" content="{{ full_title }}">
+<meta property="og:description" content="{{ desc | strip_html | strip_newlines }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232747C9'/%3E%3Ctext x='32' y='46' font-size='36' font-family='serif' font-weight='700' text-anchor='middle' fill='white'%3E%E5%9F%BA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">

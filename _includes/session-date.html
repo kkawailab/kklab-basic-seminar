@@ -1,0 +1,12 @@
+{%- comment -%}
+指定した回（include.number）の日程を「10月7日（水）」の形式で出力する。
+未定の場合は include.fallback（既定: 日程未定）を出力する。
+{%- endcomment -%}
+{%- assign sd_row = site.data.schedule | where: "number", include.number | first -%}
+{%- if sd_row and sd_row.date -%}
+{%- assign sd_w = sd_row.date | date: "%u" | plus: 0 | minus: 1 -%}
+{%- assign sd_wd = "月,火,水,木,金,土,日" | split: "," -%}
+{{ sd_row.date | date: "%-m月%-d日" }}（{{ sd_wd[sd_w] }}）
+{%- else -%}
+{{ include.fallback | default: "日程未定" }}
+{%- endif -%}

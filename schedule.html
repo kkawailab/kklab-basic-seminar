@@ -1,0 +1,37 @@
+---
+layout: default
+title: 授業計画
+description: 基礎演習Ⅱ（2026年度後期）の全15回の授業計画。各回のテーマ、AI活用の型、日程。
+---
+{% assign course = site.data.course %}
+{% assign sessions = site.sessions | sort: "number" %}
+<header class="page-head">
+  <h1>授業計画</h1>
+  <p class="lead">{{ course.day_period }}、{{ course.room }}教室。前半の5回で生成AIを使ったアカデミック・ライティングの高度化を学び、第6回からは企業と連携する店舗設計提案プロジェクトに取り組みます。</p>
+  <p class="sched-note">日程が未記載の回は、決まり次第ここに掲載します。企業の都合で水曜3限以外に集まる可能性があります。</p>
+</header>
+
+{% for ph in site.data.phases %}{% assign group = sessions | where: "phase", ph.id %}
+<section class="phase-section phase-{{ ph.id }}" aria-labelledby="phase-{{ ph.id }}">
+  <h2 id="phase-{{ ph.id }}" class="phase-title">{{ ph.name }}<span>{{ ph.range }}</span></h2>
+  <p class="phase-lead">{{ ph.lead }}</p>
+  <ol class="sched">
+  {% for s in group %}{% assign row = site.data.schedule | where: "number", s.number | first %}
+    <li data-session="{{ s.number }}" data-date="{{ row.date | date: '%Y-%m-%d' }}">
+      <span class="sched__num">{{ s.number }}</span>
+      <span class="sched__date">{% include session-date.html number=s.number %}{% if row.period or row.room %}<br>{% if row.period == row.room %}{{ row.period }}{% else %}{{ row.period | default: course.day_period }}　{{ row.room | default: course.room }}{% endif %}{% endif %}</span>
+      <div class="sched__main">
+        <a class="sched__title" href="{{ s.url | relative_url }}">{{ s.title }}</a>{% if s.tag %}<span class="tag">{{ s.tag }}</span>{% endif %}
+        <p class="sched__summary">{{ s.summary }}</p>
+        {% if s.note %}<p class="note">{{ s.note }}</p>{% endif %}
+      </div>
+    </li>
+  {% endfor %}
+  </ol>
+</section>
+{% endfor %}
+
+<section class="prose">
+  <h2>授業時間外の学修</h2>
+  <p>演習時間以外にもグループや個人での作業を行う場合があります。企業の都合で、水曜3限以外にも集まってもらう可能性があります。</p>
+</section>

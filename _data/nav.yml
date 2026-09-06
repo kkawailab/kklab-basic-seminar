@@ -1,0 +1,11 @@
+# ヘッダーのナビゲーション
+- title: 授業計画
+  url: /schedule/
+- title: シラバス
+  url: /syllabus/
+- title: AI利用ガイド
+  url: /ai-guide/
+- title: 成績評価
+  url: /grading/
+- title: 連絡先
+  url: /contact/

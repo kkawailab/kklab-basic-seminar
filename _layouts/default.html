@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+{% include head.html %}
+</head>
+<body class="{{ page.body_class | default: 'page' }}">
+<a class="skip" href="#main">本文へ移動</a>
+{% include header.html %}
+<main id="main" class="wrap">
+{{ content }}
+</main>
+{% include footer.html %}
+<script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+</body>
+</html>

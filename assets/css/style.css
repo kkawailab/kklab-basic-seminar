@@ -1,0 +1,347 @@
+/* ==========================================================================
+   基礎演習Ⅱ 授業サイト スタイルシート
+   色と書体は :root のトークンでまとめて管理しています。
+   ========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  /* 紙と墨 */
+  --paper: #F6F7F4;
+  --paper-2: #ECEEE8;
+  --ink: #1D2330;
+  --ink-2: #4A5261;
+  --ink-3: #757D8A;
+  --rule: #D3D7CF;
+
+  /* フェーズ色  1=探究の基礎（コバルト） 2=実践プロジェクト（アンバー） 3=キャリア講習（スレート） */
+  --p1: #2747C9;  --p1-text: #1F3BA8;  --p1-tint: #DCE2F9;  --p1-on: #FFFFFF;
+  --p2: #D68A17;  --p2-text: #8A570E;  --p2-tint: #F6E4C3;  --p2-on: #1D2330;
+  --p3: #6E7684;  --p3-text: #4A5261;  --p3-tint: #E0E3E4;  --p3-on: #FFFFFF;
+
+  --link: var(--p1-text);
+  --focus: #E0A322;
+
+  --font-body: "Zen Kaku Gothic New", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+  --font-display: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+
+  --measure: 40em;
+  --wrap: 1080px;
+  --gutter: clamp(16px, 4vw, 40px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #14171C;
+    --paper-2: #1D2128;
+    --ink: #E8EAE4;
+    --ink-2: #B4B9C2;
+    --ink-3: #8A9099;
+    --rule: #333944;
+    --p1: #3B5BD9;  --p1-text: #9DB0F7;  --p1-tint: #1F2A52;  --p1-on: #FFFFFF;
+    --p2: #D68A17;  --p2-text: #F0B65A;  --p2-tint: #3D2C0F;  --p2-on: #1D2330;
+    --p3: #7C8593;  --p3-text: #B9C0CA;  --p3-tint: #262B34;  --p3-on: #0F1218;
+    --focus: #F2C14E;
+  }
+}
+
+/* 要素に phase-1 / phase-2 / phase-3 を付けると、その中でフェーズ色が使える */
+.phase-1 { --p: var(--p1); --pt: var(--p1-text); --ptint: var(--p1-tint); --pon: var(--p1-on); }
+.phase-2 { --p: var(--p2); --pt: var(--p2-text); --ptint: var(--p2-tint); --pon: var(--p2-on); }
+.phase-3 { --p: var(--p3); --pt: var(--p3-text); --ptint: var(--p3-tint); --pon: var(--p3-on); }
+
+/* --------------------------------------------------------------------------
+   基本
+   -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 106.25%; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--link); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .22em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+img { max-width: 100%; height: auto; }
+[hidden] { display: none !important; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .02em;
+  font-feature-settings: "palt";
+  margin: 0;
+}
+h1 { font-size: clamp(1.8rem, 1.35rem + 1.8vw, 2.5rem); line-height: 1.3; }
+h2 { font-size: clamp(1.3rem, 1.1rem + .8vw, 1.6rem); }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; margin: 0; }
+
+.wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+main { padding-block: 2.5rem 4rem; }
+
+.skip { position: absolute; left: -999px; top: .5rem; z-index: 10; background: var(--ink); color: var(--paper); padding: .5rem 1rem; }
+.skip:focus { left: var(--gutter); }
+
+.muted { color: var(--ink-3); }
+.note { color: var(--ink-2); font-size: .92rem; margin: .5rem 0 0; }
+.note::before { content: "※ "; }
+.lead { font-size: 1.05rem; color: var(--ink-2); max-width: var(--measure); margin: .75rem 0 0; }
+
+/* 見出しの上に墨の罫。章の始まりを示す */
+.section-title,
+.prose h2 {
+  border-top: 2px solid var(--ink);
+  padding-top: .6rem;
+  margin: 3rem 0 1.25rem;
+}
+.section-title:first-child,
+.prose > h2:first-child { margin-top: 0; }
+
+/* フェーズ色のラベル */
+.phase-mark {
+  display: inline-block;
+  font-size: .8rem;
+  font-weight: 700;
+  line-height: 1.6;
+  padding: .05rem .55rem;
+  border-radius: 2px;
+  background: var(--ptint, var(--paper-2));
+  color: var(--pt, var(--ink-2));
+  vertical-align: middle;
+}
+/* シラバスの表記に合わせて【 】で囲む AI活用の型 */
+.tag { display: inline-block; margin: 0; font-weight: 700; color: var(--pt, var(--ink-2)); }
+.tag::before { content: "【"; }
+.tag::after { content: "】"; }
+
+/* --------------------------------------------------------------------------
+   ヘッダー・フッター
+   -------------------------------------------------------------------------- */
+.site-header { border-bottom: 1px solid var(--rule); }
+.site-header__inner {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+  gap: .4rem 1.5rem; padding-block: 1.1rem 1rem;
+}
+.brand { color: var(--ink); text-decoration: none; display: inline-flex; align-items: baseline; gap: .7rem; }
+.brand__name { font-family: var(--font-display); font-weight: 900; font-size: 1.4rem; letter-spacing: .05em; font-feature-settings: "palt"; }
+.brand__term { font-size: .85rem; color: var(--ink-2); }
+.nav { display: flex; flex-wrap: wrap; gap: 0 1.3rem; }
+.nav a {
+  color: var(--ink); text-decoration: none; font-weight: 500; font-size: .95rem;
+  padding: .3rem 0; border-bottom: 2px solid transparent;
+}
+.nav a:hover { border-bottom-color: var(--rule); }
+.nav a[aria-current="page"] { border-bottom-color: var(--ink); }
+
+.site-footer { border-top: 1px solid var(--rule); padding-block: 2rem 3rem; font-size: .9rem; color: var(--ink-2); }
+.site-footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem; }
+.site-footer p { margin: 0 0 .25rem; }
+.site-footer__title { font-family: var(--font-display); font-weight: 700; color: var(--ink); }
+
+/* --------------------------------------------------------------------------
+   トップページ
+   -------------------------------------------------------------------------- */
+.hero { padding: 1.5rem 0 3.5rem; }
+.hero__meta { display: flex; flex-wrap: wrap; gap: .2rem 1.4rem; margin: 0 0 1.75rem; color: var(--ink-2); font-size: .95rem; }
+.hero__meta span { white-space: nowrap; }
+.hero h1 {
+  font-size: clamp(2.3rem, 1.3rem + 5vw, 4.6rem);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: .01em;
+}
+.hero__lead { font-size: clamp(1rem, .95rem + .35vw, 1.2rem); color: var(--ink-2); max-width: 32em; margin: 1.5rem 0 0; }
+.hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; margin: 2rem 0 0; }
+.button {
+  display: inline-block; background: var(--ink); color: var(--paper);
+  text-decoration: none; font-weight: 700; padding: .7rem 1.5rem; border-radius: 3px;
+}
+.button:hover { background: var(--p1); color: #fff; text-decoration: none; }
+
+.home-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 2rem 4rem; margin-top: 1rem; }
+@media (max-width: 800px) { .home-grid { grid-template-columns: 1fr; } }
+
+/* 次回の授業 */
+.next { border-left: 4px solid var(--p, var(--ink)); padding: .25rem 0 .25rem 1.25rem; }
+.next p { margin: 0; }
+.next__meta { display: flex; align-items: center; gap: .75rem; color: var(--ink-2); }
+.next__num { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--ink); }
+.next__title { font-family: var(--font-display); font-size: clamp(1.4rem, 1.2rem + 1vw, 1.9rem); font-weight: 700; line-height: 1.4; margin: .2rem 0 .3rem !important; }
+.next__title a { color: var(--ink); text-decoration: none; }
+.next__title a:hover { text-decoration: underline; }
+.next__summary { margin-top: .5rem !important; color: var(--ink-2); }
+.next__date { margin-top: .75rem !important; font-weight: 500; }
+
+/* お知らせ */
+.news { list-style: none; margin: 0; padding: 0; }
+.news li { display: grid; grid-template-columns: 6.5em 1fr; gap: .75rem; padding: .7rem 0; border-bottom: 1px solid var(--rule); }
+.news time { color: var(--ink-3); font-size: .9rem; padding-top: .1rem; }
+
+/* この授業について・履修にあたって */
+.about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 4rem; }
+@media (max-width: 800px) { .about__grid { grid-template-columns: 1fr; } }
+.about__grid h3 { margin-bottom: .75rem; }
+.req-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 0 0 1.5rem; }
+@media (max-width: 800px) { .req-list { grid-template-columns: 1fr; gap: 1.25rem; } }
+.req-list dt { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; margin-bottom: .4rem; }
+.req-list dd { margin: 0; color: var(--ink-2); font-size: .95rem; }
+
+/* --------------------------------------------------------------------------
+   15回の流れ（トラック）
+   -------------------------------------------------------------------------- */
+.track { display: grid; grid-template-columns: repeat(15, minmax(0, 1fr)); gap: 0 14px; }
+.track__phase { grid-column: span var(--span); }
+.track__label {
+  display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; flex-wrap: wrap;
+  margin: 0 0 .7rem; padding-top: .5rem;
+  border-top: 3px solid var(--p);
+  font-weight: 700; font-size: .95rem; color: var(--pt);
+}
+.track__range { font-weight: 400; font-size: .85rem; color: var(--ink-3); }
+.track__cells { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--span), minmax(0, 1fr)); gap: 6px; }
+.track__cell {
+  display: block; height: 100%; min-height: 6.5rem;
+  padding: .5rem .45rem .6rem; border-radius: 4px;
+  background: var(--ptint); color: var(--pt);
+  text-decoration: none; position: relative;
+  transition: background-color .15s, color .15s;
+}
+.track__cell:hover { background: var(--p); color: var(--pon); text-decoration: none; }
+.track__num { display: block; font-family: var(--font-display); font-weight: 700; font-size: 1.55rem; line-height: 1; }
+.track__title { display: block; font-size: .72rem; line-height: 1.4; margin-top: .45rem; }
+.track__cell.is-past { opacity: .45; }
+.track__cell.is-next { background: var(--p); color: var(--pon); }
+.track__cell.is-next::before {
+  content: "次回"; display: block; width: max-content; margin-bottom: .35rem;
+  font-size: .65rem; font-weight: 700; line-height: 1.5;
+  padding: 0 .3rem; border: 1px solid currentColor; border-radius: 2px;
+}
+@media (max-width: 960px) {
+  .track { grid-template-columns: 1fr; gap: 1.25rem 0; }
+  .track__phase { grid-column: auto; }
+  .track__cells { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .track__cell { min-height: 5.5rem; }
+}
+@media (max-width: 480px) {
+  .track__cell { min-height: auto; padding: .45rem .4rem; }
+  .track__title { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   授業計画ページ
+   -------------------------------------------------------------------------- */
+.page-head { margin-bottom: 2rem; }
+.sched-note { color: var(--ink-2); font-size: .95rem; margin: 1.5rem 0 0; }
+.phase-section { margin-top: 3rem; }
+.phase-title { border-top: 3px solid var(--p); padding-top: .6rem; margin: 0 0 .5rem; color: var(--pt); }
+.phase-title span { font-family: var(--font-body); font-weight: 400; font-size: .95rem; color: var(--ink-3); margin-left: 1rem; }
+.phase-lead { color: var(--ink-2); max-width: var(--measure); margin: 0 0 1.5rem; font-size: .95rem; }
+.sched { list-style: none; margin: 0; padding: 0; }
+.sched li {
+  display: grid; grid-template-columns: 3rem 8em minmax(0, 1fr); gap: .5rem 1.25rem;
+  padding: 1.1rem 0; border-top: 1px solid var(--rule);
+}
+.sched li:last-child { border-bottom: 1px solid var(--rule); }
+.sched__num { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; line-height: 1.2; color: var(--pt); }
+.sched__date { font-size: .95rem; color: var(--ink-2); padding-top: .2rem; }
+.sched__title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--ink); text-decoration: none; margin-right: .75rem; }
+.sched__title:hover { text-decoration: underline; }
+.sched__summary { margin: .3rem 0 0; color: var(--ink-2); font-size: .95rem; }
+.sched li.is-past { opacity: .55; }
+.sched li.is-next { background: var(--ptint); margin-inline: -1rem; padding-inline: 1rem; border-radius: 4px; border-color: transparent; }
+.sched li.is-next + li { border-top-color: transparent; }
+.sched li.is-next .sched__date::after { content: "次回"; margin-left: .5rem; font-size: .75rem; font-weight: 700; color: var(--pt); }
+@media (max-width: 640px) {
+  .sched li { grid-template-columns: 2.5rem minmax(0, 1fr); }
+  .sched__date { grid-column: 2; order: -1; padding-top: .35rem; }
+  .sched__num { grid-row: span 2; }
+}
+
+/* --------------------------------------------------------------------------
+   各回のページ
+   -------------------------------------------------------------------------- */
+.session-head { padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); margin-bottom: 2rem; }
+.session-head__meta { display: flex; align-items: center; gap: .75rem; margin: 0 0 .4rem; }
+.session-head__num { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; }
+.session-head .tag { margin-top: .6rem; }
+.session-head__lead { max-width: var(--measure); margin: .8rem 0 0; font-size: 1.05rem; }
+.session-body { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 2rem 3.5rem; align-items: start; }
+@media (max-width: 860px) { .session-body { grid-template-columns: 1fr; } }
+.session-side { position: sticky; top: 1.5rem; background: var(--paper-2); border-top: 3px solid var(--p); padding: 1.1rem 1.3rem 1.25rem; border-radius: 0 0 4px 4px; font-size: .95rem; }
+.session-side h2 { font-size: 1rem; margin: 1.4rem 0 .4rem; }
+.session-side p { margin: 0; }
+.session-side__link { margin-top: 1.25rem !important; }
+.facts { display: grid; grid-template-columns: 3em 1fr; gap: .2rem .75rem; margin: 0; }
+.facts dt { color: var(--ink-3); }
+.facts dd { margin: 0; }
+.materials { list-style: none; margin: 0; padding: 0; }
+.materials li { padding: .35rem 0; border-bottom: 1px solid var(--rule); }
+.pager { display: flex; justify-content: space-between; gap: 1rem; margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
+.pager a { text-decoration: none; color: var(--ink); font-weight: 700; font-family: var(--font-display); }
+.pager a:hover { text-decoration: underline; }
+.pager a span { display: block; font-family: var(--font-body); font-size: .8rem; font-weight: 400; color: var(--ink-3); }
+.pager__next { margin-left: auto; text-align: right; }
+
+/* --------------------------------------------------------------------------
+   本文（Markdown から生成される部分）
+   -------------------------------------------------------------------------- */
+.prose { max-width: var(--measure); }
+.prose > :first-child { margin-top: 0; }
+.prose p, .prose ul, .prose ol, .prose dl, .prose blockquote, .prose pre { margin: 0 0 1.25em; }
+.prose h3 { margin: 2.2em 0 .7em; }
+.prose h4 { margin: 1.6em 0 .5em; }
+.prose ul, .prose ol { padding-left: 1.5em; }
+.prose li { margin-bottom: .35em; }
+.prose li > ul, .prose li > ol { margin: .3em 0 0; }
+.prose blockquote { margin-left: 0; padding-left: 1em; border-left: 3px solid var(--rule); color: var(--ink-2); }
+.prose pre { background: var(--paper-2); padding: 1rem 1.2rem; border-radius: 4px; overflow-x: auto; white-space: pre-wrap; font-family: var(--font-body); font-size: .95rem; line-height: 1.75; }
+.prose code { font-family: var(--font-body); background: var(--paper-2); padding: .05em .35em; border-radius: 2px; font-size: .95em; }
+.prose pre code { background: none; padding: 0; }
+.prose hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5em 0; }
+.prose strong { font-weight: 700; }
+
+/* 表（成績評価など）。横幅が足りないときは表だけ横スクロール */
+.table-scroll { overflow-x: auto; margin: 0 0 1.5em; }
+.prose table { width: 100%; border-collapse: collapse; font-size: .95rem; line-height: 1.7; }
+.prose th, .prose td { text-align: left; vertical-align: top; padding: .7em .8em; border-bottom: 1px solid var(--rule); }
+.prose th { font-weight: 700; border-bottom: 2px solid var(--ink); white-space: nowrap; }
+.prose td:first-child { white-space: nowrap; }
+
+/* 科目情報などの定義リスト */
+.prose dl.info { display: grid; grid-template-columns: 8em 1fr; gap: .3em 1.2em; }
+.prose dl.info dt { color: var(--ink-3); }
+.prose dl.info dd { margin: 0; }
+@media (max-width: 480px) { .prose dl.info { grid-template-columns: 1fr; gap: 0; } .prose dl.info dd { margin-bottom: .6em; } }
+
+/* プロンプト例。学生がそのまま貼って使える形で示す */
+figure.prompt { margin: 1.5em 0; border: 1px solid var(--rule); border-left: 4px solid var(--p, var(--ink)); background: var(--paper-2); padding: .8rem 1.2rem 1rem; border-radius: 0 4px 4px 0; }
+figure.prompt figcaption { font-size: .8rem; font-weight: 700; color: var(--pt, var(--ink-2)); margin-bottom: .35rem; }
+figure.prompt pre { margin: 0; padding: 0; background: none; border-radius: 0; }
+
+/* チェックリスト・注意 */
+.prose .callout { border: 1px solid var(--rule); padding: 1rem 1.25rem; border-radius: 4px; margin: 0 0 1.5em; }
+.prose .callout > :last-child { margin-bottom: 0; }
+.prose .callout h4 { margin-top: 0; }
+
+/* テンプレート（AI活用記録など） */
+.prose .template { background: var(--paper-2); padding: 1rem 1.25rem; border-radius: 4px; margin: 0 0 1.5em; }
+.prose .template > :last-child { margin-bottom: 0; }
+
+/* --------------------------------------------------------------------------
+   その他
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+@media print {
+  .site-header, .site-footer, .skip, .pager, .session-side__link { display: none; }
+  body { background: #fff; color: #000; }
+  a { color: inherit; }
+}

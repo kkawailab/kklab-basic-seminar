@@ -1,0 +1,14 @@
+{%- comment -%} 15回の流れ。フェーズごとに区切り、各回へのリンクを並べる。 {%- endcomment -%}
+{% assign track_sessions = site.sessions | sort: "number" %}
+<div class="track">
+{% for ph in site.data.phases %}{% assign group = track_sessions | where: "phase", ph.id %}
+  <div class="track__phase phase-{{ ph.id }}" style="--span: {{ group.size }}">
+    <p class="track__label">{{ ph.name }}<span class="track__range">{{ ph.range }}</span></p>
+    <ul class="track__cells">
+    {% for s in group %}{% assign row = site.data.schedule | where: "number", s.number | first %}
+      <li><a class="track__cell" href="{{ s.url | relative_url }}" data-session="{{ s.number }}" data-date="{{ row.date | date: '%Y-%m-%d' }}"><span class="track__num">{{ s.number }}</span><span class="track__title">{{ s.title }}</span></a></li>
+    {% endfor %}
+    </ul>
+  </div>
+{% endfor %}
+</div>

@@ -1,0 +1,74 @@
+---
+layout: default
+body_class: home
+---
+{% assign course = site.data.course %}
+{% assign sessions = site.sessions | sort: "number" %}
+{% assign first = sessions | first %}
+{% assign first_phase = site.data.phases | where: "id", first.phase | first %}
+{% assign first_row = site.data.schedule | where: "number", first.number | first %}
+<section class="hero">
+  <p class="hero__meta"><span>{{ course.university }} {{ course.faculty }}</span><span>{{ course.year }}年度{{ course.term }}</span><span>{{ course.day_period }}</span><span>{{ course.room }}教室</span><span>担当　{{ course.instructor }}</span></p>
+  <h1>AIに書かせない。<br>AIと考える。</h1>
+  <p class="hero__lead">生成AIを「思考のパートナー」として使いこなし、自分の問いを立てるところから、企業と取り組む店舗設計の提案まで。1年次までに身につけたアカデミック・スキルを、AIとの対話で一段深める演習です。</p>
+  <p class="hero__actions"><a class="button" href="{{ '/schedule/' | relative_url }}">授業計画を見る</a><a href="{{ '/ai-guide/' | relative_url }}">この授業でのAIの使い方</a></p>
+</section>
+
+<section aria-labelledby="flow-h">
+  <h2 id="flow-h" class="section-title">15回の流れ</h2>
+  {% include track.html %}
+</section>
+
+<div class="home-grid">
+  <section aria-labelledby="next-h">
+    <h2 id="next-h" class="section-title">次回の授業</h2>
+    <div id="next-session" class="next phase-{{ first.phase }}">
+      <p class="next__meta"><span class="next__num" data-field="num">第{{ first.number }}回</span><span class="phase-mark" data-field="phase">{{ first_phase.name }}</span></p>
+      <p class="next__title"><a data-field="title" href="{{ first.url | relative_url }}">{{ first.title }}</a></p>
+      <p class="tag" data-field="tag"{% unless first.tag %} hidden{% endunless %}>{{ first.tag }}</p>
+      <p class="next__summary" data-field="summary">{{ first.summary }}</p>
+      <p class="next__date"><span data-field="date">{% include session-date.html number=first.number %}</span>　<span data-field="place">{% if first_row.period == first_row.room and first_row.period %}{{ first_row.period }}{% else %}{{ first_row.period | default: course.day_period }}　{% if first_row.room %}{{ first_row.room }}{% else %}{{ course.room }}教室{% endif %}{% endif %}</span></p>
+    </div>
+  </section>
+  <section aria-labelledby="news-h">
+    <h2 id="news-h" class="section-title">お知らせ</h2>
+    {% if site.data.announcements and site.data.announcements.size > 0 %}
+    <ul class="news">
+      {% for a in site.data.announcements %}<li><time datetime="{{ a.date | date: '%Y-%m-%d' }}">{{ a.date | date: '%Y.%m.%d' }}</time><span>{% if a.url %}<a href="{% if a.url contains '://' %}{{ a.url }}{% else %}{{ a.url | relative_url }}{% endif %}">{{ a.text }}</a>{% else %}{{ a.text }}{% endif %}</span></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="muted">現在お知らせはありません。</p>
+    {% endif %}
+  </section>
+</div>
+
+<section aria-labelledby="about-h">
+  <h2 id="about-h" class="section-title">この授業について</h2>
+  <div class="about__grid">
+    <div class="prose">
+      <p>1年次までに習得したアカデミック・スキルを基盤に、生成AI（{{ course.ai_tool }}）を「思考のパートナー」として使いこなしながら、学術的な探究と実社会の課題解決（カーディーラーの店舗設計関連。変更の可能性あり）に取り組む力を養います。</p>
+      <p>単にAIに代筆させるのではなく、AIとの対話を通じて「問い」を深め、論理的な構成を組み立て、出力を批判的に吟味するプロセスを重視します。専門教育と将来のキャリアで不可欠となる、テクノロジーと人間の知性を融合させた知的生産術の習得が目標です。</p>
+    </div>
+    <div class="prose">
+      <h3>この授業で身につけること</h3>
+      <ul>
+        <li>生成AIとの高度な対話（プロンプト・エンジニアリング）を通じて、学術的に妥当なリサーチ・クエスチョンを自ら設定できる</li>
+        <li>AIを活用して効率的に文献・資料を収集・要約し、その正確性を一次資料に基づいて検証できる</li>
+        <li>産学連携による店舗設計課題に対し、AIの支援を得ながら論理的かつ創造的なコンセプトを立案し、視覚的・言語的に具体化できる</li>
+        <li>生成AIの倫理的・技術的な限界（著作権、ハルシネーション等）を理解し、適切な活用方法と引用方法を実践できる</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="req-h">
+  <h2 id="req-h" class="section-title">履修にあたって</h2>
+  <dl class="req-list">
+    <div><dt>ノートPCを毎回持参</dt><dd>個人所有のパソコンの持参が必須です。準備が難しい場合は履修できません。</dd></div>
+    <div><dt>AIは大学のCopilotを使う</dt><dd>生成AIは{{ course.ai_tool }}を利用します。使い方とルールは<a href="{{ '/ai-guide/' | relative_url }}">AI利用ガイド</a>にまとめています。</dd></div>
+    <div><dt>全回出席とグループ活動</dt><dd>毎回の出席が前提です。グループ活動が中心となるため、他者と協力する姿勢が求められます。企業の都合で水曜3限以外に集まる可能性があります。</dd></div>
+  </dl>
+  <p><a href="{{ '/syllabus/' | relative_url }}">シラバスの全文を読む</a>　<a href="{{ '/grading/' | relative_url }}">成績評価の方法を見る</a></p>
+</section>
+{% include sessions-json.html %}

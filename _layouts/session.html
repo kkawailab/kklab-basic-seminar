@@ -1,0 +1,46 @@
+---
+layout: default
+---
+{% assign course = site.data.course %}
+{% assign all_sessions = site.sessions | sort: "number" %}
+{% assign ph = site.data.phases | where: "id", page.phase | first %}
+{% assign row = site.data.schedule | where: "number", page.number | first %}
+{% assign prev_n = page.number | minus: 1 %}
+{% assign next_n = page.number | plus: 1 %}
+{% assign prev = all_sessions | where: "number", prev_n | first %}
+{% assign next = all_sessions | where: "number", next_n | first %}
+<article class="session phase-{{ page.phase }}">
+  <header class="session-head">
+    <p class="session-head__meta"><span class="session-head__num">第{{ page.number }}回</span><span class="phase-mark">{{ ph.name }}</span></p>
+    <h1>{{ page.title }}</h1>
+    {% if page.tag %}<p class="tag">{{ page.tag }}</p>{% endif %}
+    <p class="session-head__lead">{{ page.summary }}</p>
+    {% if page.note %}<p class="note">{{ page.note }}</p>{% endif %}
+  </header>
+  <div class="session-body">
+    <div class="prose">
+{{ content }}
+    </div>
+    <aside class="session-side" aria-label="この回の情報">
+      <dl class="facts">
+        <dt>日程</dt><dd>{% include session-date.html number=page.number %}</dd>
+        <dt>時限</dt><dd>{{ row.period | default: course.day_period }}</dd>
+        <dt>教室</dt><dd>{{ row.room | default: course.room }}</dd>
+      </dl>
+      <h2>資料</h2>
+      {% if page.materials and page.materials.size > 0 %}
+      <ul class="materials">
+        {% for m in page.materials %}<li><a href="{% if m.url contains '://' %}{{ m.url }}{% else %}{{ m.url | relative_url }}{% endif %}">{{ m.title }}</a>{% if m.note %} <span class="muted">{{ m.note }}</span>{% endif %}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="muted">資料は授業までに掲載します。</p>
+      {% endif %}
+      <p class="session-side__link"><a href="{{ '/ai-guide/' | relative_url }}">AI利用ガイドを見る</a></p>
+    </aside>
+  </div>
+  <nav class="pager" aria-label="前後の回">
+    {% if prev %}<a class="pager__prev" href="{{ prev.url | relative_url }}"><span>前の回</span>第{{ prev.number }}回　{{ prev.title }}</a>{% endif %}
+    {% if next %}<a class="pager__next" href="{{ next.url | relative_url }}"><span>次の回</span>第{{ next.number }}回　{{ next.title }}</a>{% endif %}
+  </nav>
+</article>

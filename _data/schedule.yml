@@ -1,0 +1,42 @@
+# ------------------------------------------------------------
+# 各回の日程
+#   date : YYYY-MM-DD 形式。未定の回は空欄のままにする。
+#   period : 時限が通常（水曜3限）と異なる回だけ記入する。
+#   room   : 教室が通常（2-204）と異なる回だけ記入する。
+# 日程を入れると、トップページの「次回の授業」と「15回の流れ」、
+# 授業計画ページの「次回」「終了」の表示が自動で切り替わります。
+# ------------------------------------------------------------
+- number: 1
+  date:
+- number: 2
+  date:
+- number: 3
+  date:
+- number: 4
+  date:
+- number: 5
+  date:
+- number: 6
+  date:
+- number: 7
+  date:
+- number: 8
+  date:
+- number: 9
+  date:
+- number: 10
+  date:
+- number: 11
+  date:
+- number: 12
+  date:
+- number: 13
+  date:
+- number: 14
+  date: 2026-12-16
+  period: 追って案内
+  room: 追って案内
+- number: 15
+  date: 2026-12-23
+  period: 追って案内
+  room: 追って案内

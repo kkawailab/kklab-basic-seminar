@@ -1,0 +1,24 @@
+# 科目の基本情報。サイト全体（ヘッダー、フッター、トップ、各回ページ）で参照します。
+name: 基礎演習Ⅱ
+year: 2026
+term: 後期
+period: 後前 〜 後後
+university: 名古屋市立大学
+faculty: 経済学部
+campus: 滝子キャンパス
+instructor: 河合 勝彦
+day_period: 水曜3限
+room: 2-204
+type: 演習
+category: 学部基幹科目
+credit_type: 必修
+credits: 2
+subcode: "06"
+ai_tool: 大学が提供する Copilot
+email: kkawai@econ.nagoya-cu.ac.jp
+lab_name: 河合研究室
+lab_url: http://www.kklab.info/
+office_hours: 木曜日 12:00〜13:00
+office_hours_note: 事前に連絡があれば調整可
+syllabus_url: https://lcu.nagoya-cu.ac.jp/lcu-web/SC_06001B00_22/referenceDirect?subjectID=009300218816&formatCD=1
+github_url: https://github.com/kkawailab/kklab-basic-seminar
