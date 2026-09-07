@@ -38,8 +38,6 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
-  - "*.pdf"
-  - シラバス詳細.pdf
   - vendor
   - node_modules
   - .jekyll-cache
