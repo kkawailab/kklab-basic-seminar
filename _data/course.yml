@@ -16,6 +16,8 @@ credit_type: 必修
 credits: 2
 subcode: "06"
 ai_tool: 大学が提供する Copilot
+# 出席確認で表示される出席カードの提出先
+attendance_submit_to: Teams の Class Notebook
 email: kkawai@econ.nagoya-cu.ac.jp
 lab_name: 河合研究室
 lab_url: http://www.kklab.info/

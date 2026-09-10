@@ -52,6 +52,25 @@ materials:
 </figure>
 ```
 
+### 出席確認クイズの問題を直す
+
+`_attendance/` の各ファイルが1回分です（`01.md` が第1回）。`questions:` に5問を書きます。`answer` は正解の選択肢の番号（0 が最初の選択肢）で、選択肢の表示順はページを開くたびに入れ替わります。不正解のときは `explain` の解説が表示されます。
+
+```yaml
+- q: 問題文
+  choices:
+  - 選択肢1
+  - 選択肢2
+  - 選択肢3
+  - 選択肢4
+  answer: 0
+  explain: 解説
+```
+
+学生には https://kklab.mobi/kklab-basic-seminar/attendance/ から各回のクイズに回答してもらいます。全問正解すると、サーバー時刻と確認コードの付いた出席カードが表示されるので、そのスクリーンショットを提出させます（提出先は `_data/course.yml` の `attendance_submit_to`）。
+
+確認コードは、学籍番号・氏名・提出時間から計算されます。教員用の照合ページ https://kklab.mobi/kklab-basic-seminar/verify/ にスクリーンショットの内容を転記すると、改ざんの有無を判定できます。`assets/js/code.js` の計算方法や鍵を変えると、それまでに提出されたコードは照合できなくなります。
+
 ### 科目情報・連絡先を変える
 
 `_data/course.yml` を編集します。教室、曜日・時限、メールアドレス、オフィスアワーなどはここから全ページに反映されます。
@@ -66,6 +85,9 @@ _data/announcements.yml  お知らせ
 _data/phases.yml      3つのフェーズの名前と説明
 _data/nav.yml         ヘッダーのメニュー
 _sessions/            各回のページ（01〜15）
+_attendance/          出席確認クイズの問題（01〜15）
+attendance/index.html 出席確認の一覧
+verify.html           出席カードの照合（教員用）
 index.html            トップページ
 schedule.html         授業計画
 syllabus.md           シラバス
@@ -75,6 +97,8 @@ contact.md            連絡先
 _layouts/ _includes/  ページの骨組み
 assets/css/style.css  デザイン
 assets/js/main.js     「次回」の自動判定
+assets/js/attendance.js  クイズの採点と出席カードの表示
+assets/js/code.js     確認コードの計算（クイズと照合ページで共用）
 materials/            配布資料の置き場
 ```
 

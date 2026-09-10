@@ -21,6 +21,10 @@ collections:
   sessions:
     output: true
     permalink: /sessions/:name/
+  # 出席確認クイズは _attendance/ に置く（/attendance/01/ のように公開される）
+  attendance:
+    output: true
+    permalink: /attendance/:name/
 
 defaults:
   - scope:
@@ -32,6 +36,12 @@ defaults:
       type: sessions
     values:
       layout: session
+  - scope:
+      path: ""
+      type: attendance
+    values:
+      layout: attendance
+      noindex: true
 
 # サイトに含めないファイル
 exclude:

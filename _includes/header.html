@@ -6,7 +6,7 @@
       <span class="brand__term">{{ course.year }}年度{{ course.term }}</span>
     </a>
     <nav class="nav" aria-label="サイト内">
-      {% for item in site.data.nav %}{% assign active = false %}{% if page.url == item.url %}{% assign active = true %}{% endif %}{% if item.url == '/schedule/' and page.collection == 'sessions' %}{% assign active = true %}{% endif %}<a href="{{ item.url | relative_url }}"{% if active %} aria-current="page"{% endif %}>{{ item.title }}</a>
+      {% for item in site.data.nav %}{% assign active = false %}{% if page.url == item.url %}{% assign active = true %}{% endif %}{% if item.url == '/schedule/' and page.collection == 'sessions' %}{% assign active = true %}{% endif %}{% if item.url == '/attendance/' and page.collection == 'attendance' %}{% assign active = true %}{% endif %}<a href="{{ item.url | relative_url }}"{% if active %} aria-current="page"{% endif %}>{{ item.title }}</a>
       {% endfor %}
     </nav>
   </div>

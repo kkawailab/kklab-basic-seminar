@@ -1,0 +1,88 @@
+---
+layout: default
+---
+{%- comment -%}
+出席確認クイズのページ。問題は _attendance/NN.md の front matter（questions:）に書く。
+各回のタイトル・フェーズは _sessions/ の同じ number の回から、日程は _data/schedule.yml から取る。
+{%- endcomment -%}
+{% assign course = site.data.course %}
+{% assign s = site.sessions | where: "number", page.number | first %}
+{% assign ph = site.data.phases | where: "id", s.phase | first %}
+{% assign row = site.data.schedule | where: "number", page.number | first %}
+{% assign all_att = site.attendance | sort: "number" %}
+{% assign prev_n = page.number | minus: 1 %}
+{% assign next_n = page.number | plus: 1 %}
+{% assign prev = all_att | where: "number", prev_n | first %}
+{% assign next = all_att | where: "number", next_n | first %}
+{% assign nn = page.number | prepend: "00" | slice: -2, 2 %}
+{% assign page_id = "attendance" | append: nn %}
+{% capture answers %}{ {% for q in page.questions %}{% assign letters = "a,b,c,d,e,f" | split: "," %}"q{{ forloop.index }}":"{{ letters[q.answer] }}"{% unless forloop.last %},{% endunless %}{% endfor %} }{% endcapture %}
+<script>
+  // 確認コードの計算（crypto.subtle）は https でのみ動作するため、http で開かれたら https に切り替える
+  if (location.protocol === "http:" && location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+    location.replace(location.href.replace(/^http:/, "https:"));
+  }
+</script>
+<article class="session attendance-page phase-{{ s.phase }}">
+  <header class="session-head">
+    <p class="session-head__meta"><a class="session-head__back" href="{{ '/attendance/' | relative_url }}">出席確認</a><span class="session-head__num">第{{ page.number }}回</span><span class="phase-mark">{{ ph.name }}</span></p>
+    <h1>{{ s.title }}<span class="attendance-page__sub">AIクイズ</span></h1>
+    <p class="session-head__lead">{{ page.theme }}についての5問です。全問正解で、確認コード付きの出席カードが表示されます。</p>
+    <p class="session-head__date">{% include session-date.html number=page.number %}　{% if row.period %}{{ row.period }}{% else %}{{ course.day_period }}{% endif %}</p>
+  </header>
+
+  <div id="form-page">
+    <section class="quiz" aria-labelledby="quiz-title" data-page-id="{{ page_id }}" data-answers='{{ answers | strip }}'>
+      <h2 id="quiz-title">第{{ page.number }}回 AIクイズ</h2>
+      <p class="quiz-lead">学籍番号と氏名を入力し、5問すべてに回答して「提出する」を押してください。不正解があった場合は、その問題の解説を読んでから、もう一度回答できます。</p>
+
+      <div class="error" id="error-box" role="alert" hidden></div>
+
+      <fieldset class="quiz-student">
+        <legend class="sr-only">受講者</legend>
+        <label class="field" for="student-id">学籍番号</label>
+        <input type="text" id="student-id" autocomplete="off" inputmode="numeric" placeholder="例: 25123456">
+
+        <label class="field" for="student-name">氏名（フルネーム）</label>
+        <input type="text" id="student-name" autocomplete="off" placeholder="例: 山田 花子">
+      </fieldset>
+
+      <fieldset class="quiz-questions">
+        <legend class="sr-only">問題</legend>
+        {% for q in page.questions %}{% assign qn = forloop.index %}
+        <div class="question" id="q{{ qn }}">
+          <p><span class="qno">Q{{ qn }}.</span>{{ q.q }}</p>
+          {% for c in q.choices %}{% assign letters = "a,b,c,d,e,f" | split: "," %}
+          <label class="choice"><input type="radio" name="q{{ qn }}" value="{{ letters[forloop.index0] }}"><span>{{ c }}</span></label>
+          {% endfor %}
+          <div class="explain"><strong>解説</strong>{{ q.explain }}</div>
+        </div>
+        {% endfor %}
+      </fieldset>
+
+      <button type="button" class="button quiz-submit" id="submit-btn">提出する</button>
+    </section>
+  </div>
+
+  <div class="result-card" id="result" hidden>
+    <p class="result-card__label">Attendance confirmed</p>
+    <h2>全問正解です。出席を確認しました</h2>
+    <table class="result-table">
+      <tr><th>科目</th><td>{{ site.title }}　{{ course.year }}年度{{ course.term }}</td></tr>
+      <tr><th>授業回</th><td>第{{ page.number }}回　{{ s.title }}<br><small>{% include session-date.html number=page.number %}　{% if row.period %}{{ row.period }}{% else %}{{ course.day_period }}{% endif %}</small></td></tr>
+      <tr><th>学籍番号</th><td id="result-id"></td></tr>
+      <tr><th>氏名</th><td id="result-name"></td></tr>
+      <tr><th>提出時間</th><td id="result-time"></td></tr>
+      <tr><th>確認コード</th><td class="code" id="result-code"></td></tr>
+    </table>
+    <p class="result-card__note">提出時間はサーバー時刻に基づきます。</p>
+    <p class="result-card__notice">この画面のスクリーンショットを撮り、{{ course.attendance_submit_to }}に提出してください。</p>
+  </div>
+
+  <nav class="pager" aria-label="前後の回">
+    {% if prev %}<a class="pager__prev" href="{{ prev.url | relative_url }}"><span>前の回</span>第{{ prev.number }}回のクイズ</a>{% endif %}
+    {% if next %}<a class="pager__next" href="{{ next.url | relative_url }}"><span>次の回</span>第{{ next.number }}回のクイズ</a>{% endif %}
+  </nav>
+</article>
+<script src="{{ '/assets/js/code.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/attendance.js' | relative_url }}"></script>

@@ -1,0 +1,47 @@
+---
+layout: default
+title: 出席確認
+description: 基礎演習Ⅱ（2026年度後期）の出席確認ページ。各回のAIクイズ（5問）に全問正解すると、確認コード付きの出席カードが表示されます。
+---
+{% assign course = site.data.course %}
+{% assign sessions = site.sessions | sort: "number" %}
+{% assign quizzes = site.attendance | sort: "number" %}
+<header class="page-head">
+  <h1>出席確認</h1>
+  <p class="lead">各回のAIクイズ（5問）です。授業で指示された回のクイズに回答し、全問正解すると表示される確認コード付きの出席カードのスクリーンショットを、{{ course.attendance_submit_to }}に提出してください。不正解があった場合は、解説を読んでもう一度回答できます。</p>
+</header>
+
+<dl class="att-how" aria-label="出席確認の流れ">
+  <div><dt>形式</dt><dd>AIの基礎知識を問うクイズ 5問<br><small>全問正解で出席カードを表示</small></dd></div>
+  <div><dt>提出</dt><dd>出席カードのスクリーンショット<br><small>{{ course.attendance_submit_to }}へ</small></dd></div>
+  <div><dt>提出時間</dt><dd>サーバー時刻で記録<br><small>確認コードで照合します</small></dd></div>
+  <div><dt>再回答</dt><dd>不正解でもやり直し可<br><small>解説を読んでから再回答</small></dd></div>
+</dl>
+
+{% for ph in site.data.phases %}{% assign group = sessions | where: "phase", ph.id %}
+<section class="phase-section phase-{{ ph.id }}" aria-labelledby="att-phase-{{ ph.id }}">
+  <h2 id="att-phase-{{ ph.id }}" class="phase-title">{{ ph.name }}<span>{{ ph.range }}</span></h2>
+  <ol class="sched att-list">
+  {% for s in group %}{% assign row = site.data.schedule | where: "number", s.number | first %}{% assign qz = quizzes | where: "number", s.number | first %}
+    <li data-session="{{ s.number }}" data-date="{{ row.date | date: '%Y-%m-%d' }}">
+      <span class="sched__num">{{ s.number }}</span>
+      <span class="sched__date">{% include session-date.html number=s.number %}</span>
+      <div class="sched__main">
+        {% if qz %}<a class="sched__title" href="{{ qz.url | relative_url }}">{{ s.title }}</a>
+        <p class="sched__summary">AIクイズ：{{ qz.theme }}</p>{% else %}<span class="sched__title">{{ s.title }}</span>
+        <p class="sched__summary muted">この回のクイズは準備中です。</p>{% endif %}
+      </div>
+    </li>
+  {% endfor %}
+  </ol>
+</section>
+{% endfor %}
+
+<section class="prose">
+  <h2>注意</h2>
+  <ul>
+    <li>クイズは授業中に、教員の指示があってから回答してください。授業時間外の提出は出席として扱いません。</li>
+    <li>出席カードの提出時間は、端末の時計ではなくサーバー時刻で記録されます。確認コードは学籍番号・氏名・提出時間から計算され、教員が照合します。</li>
+    <li>学籍番号と氏名は、次回の入力の手間を減らすためにお使いの端末内にだけ記憶されます。共用のパソコンでは、回答後にブラウザの閲覧データを消去してください。</li>
+  </ul>
+</section>

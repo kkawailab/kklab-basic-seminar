@@ -21,6 +21,8 @@
 
   --link: var(--p1-text);
   --focus: #E0A322;
+  --bad: #B3261E;  --bad-tint: #F9DEDA;
+  --ok: #2E7D32;   --ok-tint: #DCEFDD;
 
   --font-body: "Zen Kaku Gothic New", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
   --font-display: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
@@ -42,6 +44,8 @@
     --p2: #D68A17;  --p2-text: #F0B65A;  --p2-tint: #3D2C0F;  --p2-on: #1D2330;
     --p3: #7C8593;  --p3-text: #B9C0CA;  --p3-tint: #262B34;  --p3-on: #0F1218;
     --focus: #F2C14E;
+    --bad: #F28B82;  --bad-tint: #3A1F1C;
+    --ok: #81C995;   --ok-tint: #1B3320;
   }
 }
 
@@ -335,13 +339,86 @@ figure.prompt pre { margin: 0; padding: 0; background: none; border-radius: 0; }
 .prose .template > :last-child { margin-bottom: 0; }
 
 /* --------------------------------------------------------------------------
+   出席確認（クイズ・出席カード・照合）
+   -------------------------------------------------------------------------- */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* 一覧ページ */
+.att-how { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem 2rem; margin: 0 0 2.5rem; padding: 1.25rem 1.5rem; background: var(--paper-2); border-radius: 4px; }
+.att-how div { min-width: 0; }
+.att-how dt { font-size: .8rem; font-weight: 700; color: var(--ink-3); margin-bottom: .2rem; }
+.att-how dd { margin: 0; font-weight: 500; line-height: 1.6; }
+.att-how small { display: block; font-weight: 400; color: var(--ink-2); font-size: .85rem; margin-top: .2rem; }
+@media (max-width: 800px) { .att-how { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .att-how { grid-template-columns: 1fr; gap: 1rem; } }
+.att-list .sched__title:not(a) { color: var(--ink-3); }
+.att-list a.sched__title::after { content: " →"; font-family: var(--font-body); font-weight: 400; color: var(--ink-3); }
+
+/* クイズページの見出し */
+.session-head__back { font-size: .9rem; color: var(--ink-2); text-decoration: none; }
+.session-head__back::before { content: "← "; }
+.session-head__back:hover { text-decoration: underline; }
+.attendance-page__sub { display: inline-block; margin-left: .6em; font-family: var(--font-body); font-weight: 500; font-size: .55em; color: var(--ink-2); vertical-align: .25em; }
+.session-head__date { margin: .6rem 0 0; color: var(--ink-2); font-weight: 500; }
+
+/* クイズ本体 */
+.quiz { max-width: 46em; }
+.quiz h2 { border-top: 2px solid var(--ink); padding-top: .6rem; margin: 0 0 .75rem; }
+.quiz-lead { color: var(--ink-2); font-size: .95rem; margin: 0 0 1.5rem; max-width: var(--measure); }
+.quiz fieldset { min-width: 0; margin: 0 0 1.5rem; padding: 0; border: 0; }
+.quiz .field { display: block; font-weight: 700; font-size: .9rem; margin: 0 0 .3rem; }
+.quiz input[type="text"], .quiz select {
+  display: block; width: 100%; max-width: 24em; margin: 0 0 1rem;
+  font: inherit; font-size: 1rem; color: var(--ink); background: var(--paper);
+  padding: .55rem .8rem; border: 1px solid var(--rule); border-radius: 3px;
+}
+.quiz input[type="text"]:focus-visible, .quiz select:focus-visible { border-color: var(--ink); outline-offset: 0; }
+.question { margin: 0 0 1.25rem; padding: 1rem 1.25rem 1.1rem; background: var(--paper-2); border: 1px solid transparent; border-radius: 4px; }
+.question > p { margin: 0 0 .5rem; font-weight: 700; line-height: 1.75; }
+.question .qno { margin-right: .4em; font-family: var(--font-display); color: var(--pt, var(--ink-2)); }
+.question .choice { display: flex; align-items: flex-start; gap: .6rem; padding: .3rem 0; cursor: pointer; font-size: .97rem; line-height: 1.7; }
+.question input[type="radio"] { flex: none; width: 1.1em; height: 1.1em; margin: .35em 0 0; accent-color: var(--p, var(--ink)); }
+.question.wrong { border-color: var(--bad); background: var(--bad-tint); }
+.question .explain { display: none; margin-top: .75rem; padding: .7rem 1rem; font-size: .92rem; line-height: 1.8; background: var(--paper); border-left: 3px solid var(--bad); border-radius: 0 3px 3px 0; }
+.question.wrong .explain { display: block; }
+.question .explain strong { margin-right: .5em; }
+.error { margin: 0 0 1.25rem; padding: .7rem 1rem; color: var(--bad); background: var(--bad-tint); border-left: 3px solid var(--bad); font-weight: 700; font-size: .95rem; border-radius: 0 3px 3px 0; }
+button.button { font: inherit; font-weight: 700; border: 0; cursor: pointer; }
+button.button:disabled { background: var(--ink-3); cursor: not-allowed; }
+.quiz-submit { min-width: 12em; }
+
+/* 出席カード */
+.result-card { max-width: 46em; padding: 1.5rem 1.75rem 1.75rem; border: 1px solid var(--rule); border-top: 4px solid var(--p, var(--ink)); border-radius: 0 0 4px 4px; background: var(--paper-2); }
+.result-card__label { margin: 0 0 .3rem; font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--pt, var(--ink-2)); }
+.result-card h2 { margin: 0 0 1.25rem; }
+.result-table { border-collapse: collapse; width: 100%; font-size: .97rem; margin: 0 0 .75rem; }
+.result-table th, .result-table td { text-align: left; vertical-align: top; padding: .55rem .75rem .55rem 0; border-bottom: 1px solid var(--rule); }
+.result-table td small { display: block; color: var(--ink-2); font-size: .85rem; }
+.result-table th { width: 6.5em; font-weight: 700; color: var(--ink-3); font-size: .85rem; white-space: nowrap; }
+.result-table .code { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 1.5rem; font-weight: 700; letter-spacing: .08em; color: var(--ink); }
+.result-card__note { margin: 0 0 1rem; font-size: .85rem; color: var(--ink-3); }
+.result-card__notice { margin: 0; padding: .8rem 1rem; font-weight: 700; background: var(--paper); border: 1px solid var(--rule); border-radius: 3px; }
+@media (max-width: 480px) {
+  .result-card { padding: 1.25rem 1rem 1.25rem; }
+  .result-table th, .result-table td { display: block; padding: .2rem 0; border-bottom: 0; }
+  .result-table tr { display: block; padding: .5rem 0; border-bottom: 1px solid var(--rule); }
+  .result-table th { width: auto; }
+}
+
+/* 照合ページ */
+.verdict { margin-top: 1.25rem; padding: .8rem 1rem; font-weight: 700; border-radius: 3px; border: 1px solid; }
+.verdict.ok { color: var(--ok); background: var(--ok-tint); border-color: var(--ok); }
+.verdict.ng { color: var(--bad); background: var(--bad-tint); border-color: var(--bad); }
+.verify-links { margin-top: 2.5rem; }
+
+/* --------------------------------------------------------------------------
    その他
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 @media print {
-  .site-header, .site-footer, .skip, .pager, .session-side__link { display: none; }
+  .site-header, .site-footer, .skip, .pager, .session-side__link, .session-head__back { display: none; }
   body { background: #fff; color: #000; }
   a { color: inherit; }
 }

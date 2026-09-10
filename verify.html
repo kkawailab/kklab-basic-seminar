@@ -1,0 +1,77 @@
+---
+layout: default
+title: 出席カードの照合
+description: 出席カードのスクリーンショットに表示された内容から確認コードを再計算し、一致するかを判定する教員用ページ。
+noindex: true
+---
+{% assign quizzes = site.attendance | sort: "number" %}
+{% assign sessions = site.sessions | sort: "number" %}
+<script>
+  if (location.protocol === "http:" && location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+    location.replace(location.href.replace(/^http:/, "https:"));
+  }
+</script>
+<header class="page-head">
+  <h1>出席カードの照合</h1>
+  <p class="lead">教員用のページです。出席カードのスクリーンショットに表示されている内容をそのまま転記して「照合する」を押すと、確認コードを再計算して一致・不一致を判定します。不一致の場合は、内容が書き換えられている可能性があります。</p>
+</header>
+
+<section class="quiz verify" aria-labelledby="verify-title">
+  <h2 id="verify-title">確認コードの照合</h2>
+  <p class="quiz-lead">授業回を選び、学籍番号・氏名・提出時間・確認コードをスクリーンショットのとおりに入力してください。</p>
+
+  <label class="field" for="v-page">授業回</label>
+  <select id="v-page">
+    {% for qz in quizzes %}{% assign s = sessions | where: "number", qz.number | first %}{% assign nn = qz.number | prepend: "00" | slice: -2, 2 %}
+    <option value="attendance{{ nn }}">第{{ qz.number }}回　{{ s.title }}（{% include session-date.html number=qz.number %}）</option>
+    {% endfor %}
+  </select>
+
+  <label class="field" for="v-id">学籍番号</label>
+  <input type="text" id="v-id" autocomplete="off">
+
+  <label class="field" for="v-name">氏名</label>
+  <input type="text" id="v-name" autocomplete="off">
+
+  <label class="field" for="v-time">提出時間（表示どおり）</label>
+  <input type="text" id="v-time" autocomplete="off" placeholder="2026年9月30日 13:25:12">
+
+  <label class="field" for="v-code">確認コード</label>
+  <input type="text" id="v-code" autocomplete="off" placeholder="XXXX-XXXX">
+
+  <button type="button" class="button quiz-submit" id="verify-btn">照合する</button>
+
+  <div class="verdict" id="verdict" role="status" aria-live="polite" hidden></div>
+</section>
+
+<p class="verify-links"><a href="{{ '/attendance/' | relative_url }}">出席確認の一覧へ</a></p>
+
+<script src="{{ '/assets/js/code.js' | relative_url }}"></script>
+<script>
+  (function () {
+    async function verify() {
+      var pageId = document.getElementById("v-page").value;
+      var id = document.getElementById("v-id").value;
+      var name = document.getElementById("v-name").value;
+      var timeText = document.getElementById("v-time").value;
+      var code = document.getElementById("v-code").value.trim().toUpperCase();
+      var box = document.getElementById("verdict");
+      if (!id.trim() || !name.trim() || !timeText.trim() || !code) {
+        box.className = "verdict ng";
+        box.textContent = "すべての欄を入力してください。";
+        box.hidden = false;
+        return;
+      }
+      var expected = await computeCode(pageId, id, name, timeText);
+      if (expected === code) {
+        box.className = "verdict ok";
+        box.textContent = "✓ 一致（改ざんは検出されませんでした）";
+      } else {
+        box.className = "verdict ng";
+        box.textContent = "✗ 不一致（内容が書き換えられている可能性があります）";
+      }
+      box.hidden = false;
+    }
+    document.getElementById("verify-btn").addEventListener("click", verify);
+  })();
+</script>
