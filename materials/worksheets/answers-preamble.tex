@@ -43,9 +43,12 @@
   \end{tcolorbox}}
 
 % 1行の記入欄（中身入り）　\afillin{見出し}{記入例}
+%   記入例が長いときは見出しの右で折り返し、最終行の下に罫線を引く。
 \newcommand\afillin[2]{%
-  \par\noindent{\sffamily\small #1}\enspace\rlap{\ans{\small #2}}%
-  {\color{rulegray}\leaders\hrule\hfill}\par\vspace{2.5mm}}
+  \par\noindent\sbox0{\sffamily\small #1\enspace}%
+  \hangindent\wd0 \hangafter1 \usebox0\ans{\small #2}\par
+  \nointerlineskip\vspace{0.6mm}\noindent\hspace*{\wd0}%
+  {\color{rulegray}\rule{\dimexpr\linewidth-\wd0\relax}{0.4pt}}\par\vspace{2.5mm}}
 
 % チェック済みの項目
 \newcommand\achk{\makebox[1em][l]{\rlap{□}\hspace{0.12em}\raisebox{0.15ex}{\textcolor{ans}{$\checkmark$}}}}

@@ -3,7 +3,9 @@
 #   make all-in-one 全回版だけ
 #   make single     各回版だけ（make -j で並行ビルドできる）
 #   make 03         第3回だけ（pdf/worksheet-03.pdf）
-#   make answers    記入例・模範解答版（教員用、answers.pdf）
+#   make answers    記入例・模範解答版（教員用）の一冊（answers.pdf）
+#   make answers-single  記入例・模範解答版の各回（pdf/answers-NN.pdf）
+#   make answers-03 第3回の記入例・模範解答だけ（pdf/answers-03.pdf）
 #   make word       Word 版（word/worksheets.docx と word/worksheet-NN.docx）を作る
 #   make clean      中間ファイルを消す
 
@@ -11,12 +13,13 @@ LUALATEX := lualatex -interaction=nonstopmode -halt-on-error -file-line-error
 BUILD    := build
 NUMS     := 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15
 SINGLES  := $(NUMS:%=pdf/worksheet-%.pdf)
+ANSWERS  := $(NUMS:%=pdf/answers-%.pdf)
 DOCXS    := word/worksheets.docx $(NUMS:%=word/worksheet-%.docx)
 COMMON   := preamble.tex
 
-.PHONY: all all-in-one single word answers clean $(NUMS)
+.PHONY: all all-in-one single word answers answers-single clean $(NUMS) $(NUMS:%=answers-%)
 
-all: all-in-one single word answers
+all: all-in-one single word answers answers-single
 
 all-in-one: worksheets.pdf
 
@@ -41,6 +44,14 @@ answers.pdf: answers.tex answers-cover.tex answers-preamble.tex $(COMMON) $(NUMS
 	$(LUALATEX) -output-directory=$(BUILD) answers.tex >/dev/null
 	$(LUALATEX) -output-directory=$(BUILD) answers.tex >/dev/null
 	cp $(BUILD)/answers.pdf $@
+
+answers-single: $(ANSWERS)
+
+$(NUMS:%=answers-%): answers-%: pdf/answers-%.pdf
+
+pdf/answers-%.pdf: answers/%.tex answers-session.tex answers-preamble.tex $(COMMON) | $(BUILD) pdf
+	$(LUALATEX) -output-directory=$(BUILD) -jobname=answers-$* '\def\sessionno{$*}\input{answers-session}' >/dev/null
+	cp $(BUILD)/answers-$*.pdf $@
 
 # Word 版は sessions/NN.tex を tex2docx.py で変換する（内容は PDF 版と同じ）
 word: $(DOCXS)

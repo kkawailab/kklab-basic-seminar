@@ -1,0 +1,16 @@
+% ============================================================
+% 基礎演習Ⅱ 各回ワークシート　記入例・模範解答（教員用）の1回分の版
+%   \sessionno に2桁の回番号を与えて answers/NN.tex だけを組む。
+%   例：lualatex -jobname=answers-03 '\def\sessionno{03}\input{answers-session}'
+%   通常は make answers-03 または make answers-single で書き出す（Makefile を参照）。
+% ============================================================
+\input{preamble}
+\input{answers-preamble}
+
+\ifdefined\sessionno\else
+  \errmessage{\noexpand\sessionno が未定義です。例：lualatex '\noexpand\def\noexpand\sessionno{03}\noexpand\input{answers-session}'}
+\fi
+
+\begin{document}
+\input{answers/\sessionno}
+\end{document}
