@@ -1,0 +1,49 @@
+% 第9回　動線とUXのデザイン
+\session{9}{2}{11月25日（水）}{動線とUXのデザイン}{AIとシミュレーション}{yes}
+
+\goals{
+  \item 来店から退店までの顧客体験を、行動、感情、接点に分けて記述できる
+  \item AIをペルソナとして動かし、店内行動を予測させる方法を実践できる
+  \item 予測から問題点を抽出し、レイアウトの改善案として具体化できる
+  \item AIの予測は仮説であり、実際の観察や企業の知見で確かめる必要があることを理解する
+}
+
+\work[80mm]{ワーク1}{カスタマージャーニーマップ}
+\fillin{ペルソナ／来店目的}
+\begin{wstabh}{colspec={Q[l,wd=11mm,m] X[c,m] X[c,m] X[c,m] X[c,m] X[c,m] X[c,m] X[c,m]},
+    row{2-Z}={ht=19mm},column{1}={font=\sffamily\footnotesize\bfseries}}
+  & 来店前 & 入店 & 展示を見る & 商談 & 待ち時間 & 退店 & 退店後 \\
+  行動 & & & & & & & \\
+  感情\newline\scriptsize ＋／− & & & & & & & \\
+  接点\newline\scriptsize 人・物・情報 & & & & & & & \\
+\end{wstabh}
+
+\work[60mm]{ワーク2}{AIにペルソナとして店内を歩かせる}
+\begin{promptbox}[ペルソナとして店内を歩く]
+あなたは次のペルソナです。以下のレイアウトの店舗に、（来店目的）のために来店しました。入店から退店までの行動と、その時々の気持ちを時系列で書いてください。迷う、待たされる、話しかけられて困る、逆に放置されるなど、不満や迷いが生じる場面を必ず含め、その原因も書いてください。ペルソナ：（要約）　レイアウト：（ゾーンの配置と動線を文章で）
+\end{promptbox}
+\begin{wstabh}{colspec={X[2,l,m] X[3,l,m] X[3,l,m] Q[c,wd=13mm,m]},row{2-Z}={ht=12mm}}
+  場面 & 何が起きたか（つまずき） & 原因 & 優先度\newline 高中低 \\
+  & & & \\ & & & \\ & & & \\ & & & \\ & & & \\
+\end{wstabh}
+
+\work[70mm]{ワーク3}{つまずきを解消する改善案}
+\begin{promptbox}[改善案を比較する]
+次の「つまずき」を解消するレイアウトの改善案を3つ出し、それぞれの利点、欠点、必要なコストの大小、他のペルソナへの影響を表で比較してください。つまずき：（場面と原因）
+\end{promptbox}
+\begin{wstabh}{colspec={X[2,l,m] X[3,l,m] X[3,l,m] X[2,l,m]},row{2-Z}={ht=15mm}}
+  つまずき & レイアウトの改善 & 運用の改善 & 他ペルソナへの影響・コスト \\
+  & & & \\ & & & \\ & & & \\
+\end{wstabh}
+
+\work[70mm]{比較}{改善前と改善後のレイアウト}
+\noindent
+\begin{minipage}[t]{0.49\linewidth}\gridbox[改善前]{65mm}\end{minipage}\hfill
+\begin{minipage}[t]{0.49\linewidth}\gridbox[改善後]{65mm}\end{minipage}\par
+
+\begin{nexttime}
+  \item 改善後のレイアウト案と、改善の根拠（どのつまずきをどう解消したか）をまとめる
+  \item 企業担当者に確認したい点のリスト（現状の来店客の動き、スタッフの運用など）を作る
+\end{nexttime}
+\answerbox[企業担当者に確認したい点]{30mm}
+\aimemo

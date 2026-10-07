@@ -1,0 +1,164 @@
+% 共通のプリアンブル（worksheets.tex と session.tex から読み込む）
+\documentclass[paper=a4paper,fontsize=10pt,line_length=48zw,number_of_lines=44,baselineskip=1.6zw]{jlreq}
+
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{tabularray}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+
+% ------------------------------------------------------------
+% 色（サイトの assets/css/style.css に合わせる）
+% ------------------------------------------------------------
+\definecolor{ink}{HTML}{1D2330}
+\definecolor{inktwo}{HTML}{4A5261}
+\definecolor{inkthree}{HTML}{757D8A}
+\definecolor{rulegray}{HTML}{B9BEB4}
+\definecolor{papertwo}{HTML}{ECEEE8}
+\definecolor{pone}{HTML}{2747C9}  \definecolor{ponetint}{HTML}{DCE2F9}
+\definecolor{ptwo}{HTML}{D68A17}  \definecolor{ptwotint}{HTML}{F6E4C3}
+\definecolor{pthree}{HTML}{6E7684}\definecolor{pthreetint}{HTML}{E0E3E4}
+\definecolor{bad}{HTML}{B3261E}   \definecolor{badtint}{HTML}{F9DEDA}
+\colorlet{phase}{pone}
+\colorlet{phasetint}{ponetint}
+
+% ------------------------------------------------------------
+% ページスタイル
+% ------------------------------------------------------------
+\newcommand*\sessionmark{}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\sffamily\scriptsize\color{inkthree}基礎演習Ⅱ　2026年度後期　ワークシート}
+\fancyfoot[R]{\sffamily\scriptsize\color{inkthree}\sessionmark\quad\thepage}
+\fancypagestyle{cover}{\fancyhf{}}
+
+\setlength{\parindent}{0pt}
+\setlist{nosep,leftmargin=1.5em}
+
+% ------------------------------------------------------------
+% 各回の見出し
+%   \session{回}{フェーズ 1|2|3}{日付}{題目}{タグ}{グループ欄 yes|no}
+% ------------------------------------------------------------
+\newcommand\session[6]{%
+  \clearpage
+  \ifcase#2\or
+    \colorlet{phase}{pone}\colorlet{phasetint}{ponetint}\def\phasename{探究の基礎}\or
+    \colorlet{phase}{ptwo}\colorlet{phasetint}{ptwotint}\def\phasename{実践プロジェクト}\or
+    \colorlet{phase}{pthree}\colorlet{phasetint}{pthreetint}\def\phasename{キャリア講習}\fi
+  \renewcommand*\sessionmark{第#1回　#4}%
+  \phantomsection\addcontentsline{toc}{section}{\texorpdfstring{第#1回　#4\hfill{\small #3}}{第#1回　#4}}%
+  \begin{tcolorbox}[enhanced,colback=phase,colframe=phase,arc=2mm,boxrule=0pt,
+      left=4mm,right=4mm,top=2.5mm,bottom=2.5mm,fontupper=\color{white}\sffamily]
+    {\small 第#1回　#3　\textbar　\phasename\if\relax\detokenize{#5}\relax\else　\textbar　#5\fi}\par
+    \vspace{0.6mm}{\LARGE\bfseries #4}
+  \end{tcolorbox}
+  \vspace{-1mm}
+  {\sffamily\small\color{inktwo}
+  学籍番号\makebox[30mm]{\hrulefill}\quad 氏名\makebox[42mm]{\hrulefill}%
+  \ifx\relax#6\relax\else\quad グループ\makebox[28mm]{\hrulefill}\fi}\par
+  \vspace{2mm}%
+}
+
+% ねらい
+\newcommand\goals[1]{%
+  \begin{tcolorbox}[enhanced,colback=phasetint,colframe=phasetint,arc=1.5mm,boxrule=0pt,
+      left=3mm,right=3mm,top=1.5mm,bottom=1.5mm,fontupper=\small]
+    {\sffamily\bfseries\color{phase}この回のねらい}\par
+    \begin{itemize}[label=\textcolor{phase}{・},leftmargin=1.2em]#1\end{itemize}
+  \end{tcolorbox}}
+
+% ワークの見出し　\work[必要な高さ]{ラベル}{題}
+\newcommand\work[3][36mm]{%
+  \par\needspace{#1}\vspace{2.5mm}%
+  {\sffamily\bfseries\color{phase}■ #2}\enspace{\sffamily\bfseries #3}\par\vspace{1mm}}
+
+% 指示文
+\newcommand\instr[1]{{\small\color{inktwo}#1}\par\vspace{1mm}}
+
+% 記入欄　\answerbox[欄内の小見出し]{高さ}
+\newcommand\answerbox[2][]{%
+  \begin{tcolorbox}[enhanced,colback=white,colframe=rulegray,boxrule=0.5pt,arc=1.2mm,
+      height=#2,left=2mm,right=2mm,top=1.2mm,bottom=1mm,
+      fontupper=\sffamily\scriptsize\color{inkthree},before skip=1mm,after skip=1.5mm]#1\end{tcolorbox}}
+
+% 横並びの記入欄　\twoboxes{見出し1}{見出し2}{高さ}
+\newcommand\twoboxes[3]{%
+  \par\noindent
+  \begin{minipage}[t]{0.49\linewidth}\answerbox[#1]{#3}\end{minipage}\hfill
+  \begin{minipage}[t]{0.49\linewidth}\answerbox[#2]{#3}\end{minipage}\par}
+
+% 方眼の記入欄（スケッチ用）
+\newcommand\gridbox[2][]{%
+  \begin{tcolorbox}[enhanced,colback=white,colframe=rulegray,boxrule=0.5pt,arc=1.2mm,
+      height=#2,left=2mm,top=1.2mm,fontupper=\sffamily\scriptsize\color{inkthree},
+      underlay={\begin{tcbclipinterior}\draw[step=5mm,black!12,very thin]
+        (interior.south west) grid (interior.north east);\end{tcbclipinterior}}]#1\end{tcolorbox}}
+
+% 罫線　\writelines{行数}
+\newcommand\writelines[1]{%
+  \par\foreach\n in {1,...,#1}{\nointerlineskip\noindent
+    {\color{rulegray}\vbox to 7.5mm{\vfil\hrule width\linewidth}}\par}\vspace{1.5mm}}
+
+% 1行の記入欄　\fillin{見出し}
+\newcommand\fillin[1]{%
+  \par\noindent{\sffamily\small #1}\enspace{\color{rulegray}\leaders\hrule\hfill}\par\vspace{2.5mm}}
+
+% プロンプト例
+\newtcolorbox{promptbox}[1][]{enhanced,colback=papertwo,colframe=papertwo,boxrule=0pt,
+  arc=1mm,leftrule=1.2mm,colbacktitle=papertwo,
+  borderline west={1.2mm}{0pt}{phase},left=3mm,right=2mm,top=1mm,bottom=1mm,
+  fontupper=\sffamily\footnotesize\color{inktwo},before skip=1mm,after skip=2mm,
+  title={\sffamily\scriptsize\bfseries\color{phase}プロンプト例　#1},attach title to upper,
+  before upper={\par\vspace{0.5mm}}}
+
+% 注意
+\newtcolorbox{caution}[1]{enhanced,colback=badtint,colframe=badtint,boxrule=0pt,arc=1mm,
+  left=3mm,right=3mm,top=1mm,bottom=1mm,fontupper=\footnotesize,
+  before upper={{\sffamily\bfseries\color{bad}#1}\par}}
+
+% チェック項目
+\newenvironment{checks}{\begin{itemize}[label={□},leftmargin=1.5em,itemsep=0.8mm]\small}{\end{itemize}}
+
+% 次回までに
+\newenvironment{nexttime}{%
+  \par\needspace{24mm}\vspace{2.5mm}%
+  \begin{tcolorbox}[enhanced,colback=white,colframe=phase,boxrule=0.6pt,arc=1.5mm,
+      left=3mm,right=3mm,top=1.5mm,bottom=1.5mm,fontupper=\small]
+    {\sffamily\bfseries\color{phase}次回までに}\par\vspace{0.5mm}
+    \begin{itemize}[label={□},leftmargin=1.5em,itemsep=0.6mm]}%
+  {\end{itemize}\end{tcolorbox}}
+
+% AI活用記録（その回の分）
+\newcommand\aimemo{%
+  \par\needspace{50mm}\vspace{2.5mm}%
+  {\sffamily\bfseries\color{phase}■ AI活用記録（この回の分）}\par\vspace{1mm}
+  \begin{wstab}{colspec={Q[l,wd=30mm,m] X[l,m]},row{1-Z}={ht=9mm}}
+    使用した場面 & \\
+    主なプロンプト & \\
+    出力をどう扱ったか\newline{\scriptsize 採用・修正・不採用と理由} & \\
+    検証したこと\newline{\scriptsize 何で確かめたか} & \\
+  \end{wstab}\par}
+
+% 表の共通スタイル
+\NewTblrEnviron{wstab}
+\SetTblrInner[wstab]{hlines={0.4pt,rulegray},vlines={0.4pt,rulegray},
+  cells={font=\small},rowsep=2pt,colsep=4pt}
+\NewTblrEnviron{wstabh}
+\SetTblrInner[wstabh]{hlines={0.4pt,rulegray},vlines={0.4pt,rulegray},
+  cells={font=\small},rowsep=2pt,colsep=4pt,
+  row{1}={bg=phasetint,font=\sffamily\footnotesize\bfseries,ht=0pt}}
+
+% ペルソナカード（第6回）
+\newcommand\personacard[1]{%
+\begin{wstab}{colspec={Q[l,wd=26mm,m] X[l,m]},rows={ht=7.5mm}}
+  \SetCell[c=2]{bg=phasetint,font=\sffamily\footnotesize\bfseries}ペルソナ#1　名前： & \\
+  年齢・職業 & \\ 家族構成 & \\ 居住地の特徴 & \\ 来店の目的 & \\ 重視する点 & \\
+  不安や面倒 & \\ 休日の過ごし方 & \\
+  \SetRow{ht=14mm}本人の言葉\newline\scriptsize 店舗に求めること & \\
+\end{wstab}}
+
+% 見出しセル（左列を色付きにする用）
+\newcommand\hc[1]{\SetCell{bg=phasetint,font=\sffamily\footnotesize\bfseries}#1}
