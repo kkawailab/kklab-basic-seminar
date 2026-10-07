@@ -39,6 +39,12 @@
 \setlist{nosep,leftmargin=1.5em}
 
 % ------------------------------------------------------------
+% 氏名欄（記入例・模範解答版では answers-preamble.tex で中身を入れる）
+\newcommand*\wsid{}
+\newcommand*\wsname{}
+\newcommand*\wsgroup{}
+\newcommand\fieldline[2]{\makebox[#1][l]{\rlap{\hspace{1mm}#2}\hrulefill}}
+
 % 各回の見出し
 %   \session{回}{フェーズ 1|2|3}{日付}{題目}{タグ}{グループ欄 yes|no}
 % ------------------------------------------------------------
@@ -57,8 +63,8 @@
   \end{tcolorbox}
   \vspace{-1mm}
   {\sffamily\small\color{inktwo}
-  学籍番号\makebox[30mm]{\hrulefill}\quad 氏名\makebox[42mm]{\hrulefill}%
-  \ifx\relax#6\relax\else\quad グループ\makebox[28mm]{\hrulefill}\fi}\par
+  学籍番号\fieldline{30mm}{\wsid}\quad 氏名\fieldline{42mm}{\wsname}%
+  \ifx\relax#6\relax\else\quad グループ\fieldline{28mm}{\wsgroup}\fi}\par
   \vspace{2mm}%
 }
 
@@ -111,8 +117,8 @@
   arc=1mm,leftrule=1.2mm,colbacktitle=papertwo,
   borderline west={1.2mm}{0pt}{phase},left=3mm,right=2mm,top=1mm,bottom=1mm,
   fontupper=\sffamily\footnotesize\color{inktwo},before skip=1mm,after skip=2mm,
-  title={\sffamily\scriptsize\bfseries\color{phase}プロンプト例　#1},attach title to upper,
-  before upper={\par\vspace{0.5mm}}}
+  title={\sffamily\scriptsize\bfseries\color{phase}プロンプト例　#1},
+  attach title to upper={\par\vspace{0.5mm}}}
 
 % 注意
 \newtcolorbox{caution}[1]{enhanced,colback=badtint,colframe=badtint,boxrule=0pt,arc=1mm,
