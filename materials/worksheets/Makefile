@@ -7,6 +7,7 @@
 #   make answers-single  記入例・模範解答版の各回（pdf/answers-NN.pdf）
 #   make answers-03 第3回の記入例・模範解答だけ（pdf/answers-03.pdf）
 #   make word       Word 版（word/worksheets.docx と word/worksheet-NN.docx）を作る
+#   make forms      Microsoft Forms 版（forms/forms-NN.md と forms/forms-NN.docx）を作る
 #   make clean      中間ファイルを消す
 
 LUALATEX := lualatex -interaction=nonstopmode -halt-on-error -file-line-error
@@ -15,11 +16,12 @@ NUMS     := 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15
 SINGLES  := $(NUMS:%=pdf/worksheet-%.pdf)
 ANSWERS  := $(NUMS:%=pdf/answers-%.pdf)
 DOCXS    := word/worksheets.docx $(NUMS:%=word/worksheet-%.docx)
+FORMS    := $(NUMS:%=forms/forms-%.md)
 COMMON   := preamble.tex
 
-.PHONY: all all-in-one single word answers answers-single clean $(NUMS) $(NUMS:%=answers-%)
+.PHONY: all all-in-one single word forms answers answers-single clean $(NUMS) $(NUMS:%=answers-%)
 
-all: all-in-one single word answers answers-single
+all: all-in-one single word forms answers answers-single
 
 all-in-one: worksheets.pdf
 
@@ -61,6 +63,13 @@ word/worksheets.docx: tex2docx.py cover.tex $(NUMS:%=sessions/%.tex) | word
 
 word/worksheet-%.docx: sessions/%.tex tex2docx.py | word
 	python3 tex2docx.py -o $@ $*
+
+# Microsoft Forms 版は sessions/NN.tex を tex2forms.py で設計書（.md）と
+# クイック インポート用の Word（.docx）にする。作り方は forms/README.md
+forms: $(FORMS)
+
+forms/forms-%.md: sessions/%.tex tex2forms.py tex2docx.py
+	python3 tex2forms.py $*
 
 $(BUILD) pdf word:
 	mkdir -p $@
