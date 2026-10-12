@@ -8,6 +8,7 @@
 #   make answers-03 第3回の記入例・模範解答だけ（pdf/answers-03.pdf）
 #   make word       Word 版（word/worksheets.docx と word/worksheet-NN.docx）を作る
 #   make forms      Microsoft Forms 版（forms/forms-NN.md と forms/forms-NN.docx）を作る
+#   make markdown   Markdown 版（markdown/worksheet-NN.md、受講生が記入する用）を作る
 #   make clean      中間ファイルを消す
 
 LUALATEX := lualatex -interaction=nonstopmode -halt-on-error -file-line-error
@@ -17,11 +18,12 @@ SINGLES  := $(NUMS:%=pdf/worksheet-%.pdf)
 ANSWERS  := $(NUMS:%=pdf/answers-%.pdf)
 DOCXS    := word/worksheets.docx $(NUMS:%=word/worksheet-%.docx)
 FORMS    := $(NUMS:%=forms/forms-%.md)
+MDS      := $(NUMS:%=markdown/worksheet-%.md)
 COMMON   := preamble.tex
 
-.PHONY: all all-in-one single word forms answers answers-single clean $(NUMS) $(NUMS:%=answers-%)
+.PHONY: all all-in-one single word forms markdown answers answers-single clean $(NUMS) $(NUMS:%=answers-%)
 
-all: all-in-one single word forms answers answers-single
+all: all-in-one single word forms markdown answers answers-single
 
 all-in-one: worksheets.pdf
 
@@ -70,6 +72,12 @@ forms: $(FORMS)
 
 forms/forms-%.md: sessions/%.tex tex2forms.py tex2docx.py
 	python3 tex2forms.py $*
+
+# Markdown 版（受講生が記入する用）は sessions/NN.tex を tex2md.py で変換する
+markdown: $(MDS)
+
+markdown/worksheet-%.md: sessions/%.tex tex2md.py tex2forms.py tex2docx.py
+	python3 tex2md.py $*
 
 $(BUILD) pdf word:
 	mkdir -p $@
