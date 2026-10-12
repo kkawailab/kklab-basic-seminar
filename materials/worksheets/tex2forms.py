@@ -120,6 +120,11 @@ def split_label(raw):
     return head, sub
 
 
+def join_sentences(parts):
+    """文を「。」でつなぐ（末尾の「。」の重複を避ける）"""
+    return "。".join(x.rstrip("。") for x in parts if x)
+
+
 def with_sub(head, sub):
     return "%s（%s）" % (head, sub) if sub else head
 
@@ -158,7 +163,7 @@ class Builder:
             if not self.cur.questions:
                 self.cur.desc.extend(self.pending)
             else:
-                q.hint = "。".join(x for x in [*self.pending, q.hint] if x)
+                q.hint = join_sentences([*self.pending, q.hint])
             self.pending = []
         self.cur.questions.append(q)
 
@@ -236,7 +241,7 @@ class Builder:
                     col_hint = names[0]
                 elif names:
                     col_hint = "次の順に書く：" + "／".join(names)
-            hint = "。".join(x for x in ["、".join(subs), col_hint] if x)
+            hint = join_sentences(["、".join(subs), col_hint])
             self.add(Question(title, "long", hint))
         flush()
 
@@ -344,7 +349,7 @@ def convert(num):
     if b.pending:                      # 末尾に残った説明文は最後の質問に添える
         q = b.cur.questions[-1] if b.cur.questions else None
         if q:
-            q.hint = "。".join(x for x in [*b.pending, q.hint] if x)
+            q.hint = join_sentences([*b.pending, q.hint])
     form = b.form
     form.sections = [s for s in form.sections if s.questions or s.desc]
     return form
