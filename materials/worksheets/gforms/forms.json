@@ -1,0 +1,2668 @@
+[
+ {
+  "num": "01",
+  "title": "第1回　ガイダンス",
+  "description": "基礎演習Ⅱ　2026年度後期　第1回　9月30日（水）｜探究の基礎\nこの回のねらい\n・授業の二部構成と評価の仕組みを説明できる\n・この授業でのAI利用のルールを説明できる\n・ハルシネーションがなぜ起きるかを理解し、出力を確かめる方法を挙げられる",
+  "sections": [
+   {
+    "title": "",
+    "desc": "",
+    "items": [
+     {
+      "title": "学籍番号",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "氏名",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     }
+    ]
+   },
+   {
+    "title": "確認　授業の全体像と評価",
+    "desc": "",
+    "items": [
+     {
+      "title": "前半（第1〜5回）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "後半（第6〜13回）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "成績評価の内訳",
+      "kind": "long",
+      "help": "提出物 ＿＿%　／　発表 ＿＿%",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "主な提出物",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "確認　この授業でのAI利用のルール（自分の言葉で3つ）",
+    "desc": "",
+    "items": [
+     {
+      "title": "この授業でのAI利用のルール（自分の言葉で3つ）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "準備　Copilot の動作確認",
+    "desc": "",
+    "items": [
+     {
+      "title": "Copilot の動作確認",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "大学のアカウントで Copilot にサインインできた",
+       "簡単な質問をして、回答が返ってくることを確かめた"
+      ],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ミニワーク　AIに嘘をつかせる",
+    "desc": "プロンプト例「ハルシネーションを体験する」：名古屋市立大学経済学部の歴史について、参考文献を3つ挙げて300字で説明してください。\n(1) AIが挙げた参考文献が実在するか、図書館の蔵書検索や CiNii Research で確かめる。",
+    "items": [
+     {
+      "title": "AIが挙げた文献（著者・題名・年）／実在 ○×／確かめた場所・わかったこと",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "尋ねたこと／AIの答え（要点）／正誤 ○△×／どこが違ったか",
+      "kind": "long",
+      "help": "(2) 自分が詳しく知っている話題（出身地、部活、趣味など）について聞き、内容の正誤を判定する。1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "まとめ　気づいたこと・「出力を使う前のチェック」",
+    "desc": "共有で出た意見も含め、AIの出力を使う前に確かめるべきことを自分の言葉で整理する。",
+    "items": [
+     {
+      "title": "気づいたこと・「出力を使う前のチェック」",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "次回までに",
+    "desc": "",
+    "items": [
+     {
+      "title": "次回までに取り組むこと（できたものにチェック）",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "関心のあるテーマを3つ書き出す（第2回のブレストで使う）。「なぜ気になるのか」を一言添える。"
+      ],
+      "required": false
+     },
+     {
+      "title": "関心のあるテーマ／なぜ気になるのか",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": "02",
+  "title": "第2回　問いの立て方",
+  "description": "基礎演習Ⅱ　2026年度後期　第2回　10月7日（水）｜探究の基礎｜AIとブレスト\nこの回のねらい\n・テーマとリサーチ・クエスチョンの違いを説明できる\n・良い問いの条件（調べて答えられる／範囲が適切／答える意義がある）を挙げられる\n・AIとのブレストで視点を広げつつ、最後は自分で選ぶ",
+  "sections": [
+   {
+    "title": "",
+    "desc": "",
+    "items": [
+     {
+      "title": "学籍番号",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "氏名",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     }
+    ]
+   },
+   {
+    "title": "講義メモ　テーマと問いの違い",
+    "desc": "例：テーマ　地方の自動車販売\n例：問い　なぜ若い世代の来店は減っているのか",
+    "items": [
+     {
+      "title": "自分のテーマ",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "問いにすると",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "良い問いの3条件",
+      "kind": "long",
+      "help": "①　②　③",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク1　AIで視点を広げる",
+    "desc": "プロンプト例「視点を広げる」：私は経済学部の2年生です。「（あなたのテーマ）」に関心があります。このテーマについて、経済学、経営学、社会学、心理学、都市計画、テクノロジーの6つの視点から、それぞれ2つずつ研究の問いを提案してください。各問いは「なぜ〜なのか」「〜は〜にどのように影響するのか」の形で、1行ずつ箇条書きにしてください。\nAIの候補のうち、気になったものを視点ごとに書き写す（言い換えてよい）。",
+    "items": [
+     {
+      "title": "経済学",
+      "kind": "long",
+      "help": "気になった問いの候補",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "経営学",
+      "kind": "long",
+      "help": "気になった問いの候補",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "社会学",
+      "kind": "long",
+      "help": "気になった問いの候補",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "心理学",
+      "kind": "long",
+      "help": "気になった問いの候補",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "都市計画",
+      "kind": "long",
+      "help": "気になった問いの候補",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "テクノロジー",
+      "kind": "long",
+      "help": "気になった問いの候補",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク2　3条件で採点し、上位3つに絞る",
+    "desc": "各条件を 3（十分）・2（やや）・1（不十分）で採点する。必要ならAIに評価と狭める案を求める。\nプロンプト例「問いを絞る」：次の問いについて、「大学2年生が半年で調べて答えられるか」「範囲は適切か」「答えることに意義があるか」の3点から評価し、必要なら狭める案を示してください。問い：（候補の問い）",
+    "items": [
+     {
+      "title": "問いの候補／調べて答えられる／範囲が適切／答える意義／合計／順位",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ペアワーク　問いを説明し合う",
+    "desc": "",
+    "items": [
+     {
+      "title": "相手からの質問（「それはどうやって調べるの」など）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "自分の答え・気づいたこと",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "決定　仮のリサーチ・クエスチョン",
+    "desc": "",
+    "items": [
+     {
+      "title": "仮のリサーチ・クエスチョン",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "次回までに",
+    "desc": "",
+    "items": [
+     {
+      "title": "次回までに取り組むこと（できたものにチェック）",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "仮のリサーチ・クエスチョンを1〜2文で書き、選んだ理由を200字程度でまとめる",
+       "使ったプロンプトと、AIの案のうち採用しなかったものとその理由をメモする（下のAI活用記録）"
+      ],
+      "required": false
+     },
+     {
+      "title": "選んだ理由（200字程度）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "AI活用記録（この回の分）",
+    "desc": "",
+    "items": [
+     {
+      "title": "使用した場面",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "主なプロンプト",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "出力をどう扱ったか",
+      "kind": "long",
+      "help": "採用・修正・不採用と理由",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "検証したこと",
+      "kind": "long",
+      "help": "何で確かめたか",
+      "choices": [],
+      "required": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": "03",
+  "title": "第3回　先行研究の探索",
+  "description": "基礎演習Ⅱ　2026年度後期　第3回　10月14日（水）｜探究の基礎｜AI検索の活用\nこの回のねらい\n・AIを使って関連分野と検索キーワード（日本語と英語）を広げられる\n・学術データベースで文献を探し、実在と内容を確認できる\n・文献リストに必要な情報（著者、発行年、題名、掲載誌または出版社、巻号と頁、DOIまたはURL）を揃えられる",
+  "sections": [
+   {
+    "title": "",
+    "desc": "",
+    "items": [
+     {
+      "title": "学籍番号",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "氏名",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "自分のリサーチ・クエスチョン",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク1　探す場所の見当をつける",
+    "desc": "プロンプト例「探す場所の見当をつける」：次のリサーチ・クエスチョンに関連する学術分野と、文献検索に使うキーワードを日本語と英語でそれぞれ10個ずつ挙げてください。文献名や著者名は挙げないでください。問い：（あなたの問い）",
+    "items": [
+     {
+      "title": "関連する学術分野",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "日本語キーワード／英語キーワード",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク2　データベースで検索する",
+    "desc": "CiNii Research、Google Scholar、J-STAGE、図書館の蔵書検索などを使う。検索の記録を残す。",
+    "items": [
+     {
+      "title": "データベース／検索語／件数／関係の深そうな文献",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク3　AIが挙げた文献の実在を確かめる",
+    "desc": "AIに「文献を挙げて」と頼み、挙がったものをデータベースで確認する。",
+    "items": [
+     {
+      "title": "AIが挙げた文献／実在（○×）／内容一致／確認先・違っていた点",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "集計",
+      "kind": "short",
+      "help": "挙がった文献 ＿＿ 件のうち、実在しない ＿＿ 件、内容が違う ＿＿ 件",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "まとめ　文献リスト（実在を確認した5件）",
+    "desc": "",
+    "items": [
+     {
+      "title": "著者／年／題名／掲載誌・出版社、巻号・頁／DOI・URL",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "次回までに",
+    "desc": "",
+    "items": [
+     {
+      "title": "次回までに取り組むこと（できたものにチェック）",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "実在を確認した文献5件のリストを完成させる。うち1件は本文を入手し、第4回に持ってくる",
+       "AIが挙げた文献のうち、実在しなかった・内容が違ったものの数と例をメモしておく（上のワーク3）"
+      ],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "AI活用記録（この回の分）",
+    "desc": "",
+    "items": [
+     {
+      "title": "使用した場面",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "主なプロンプト",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "出力をどう扱ったか",
+      "kind": "long",
+      "help": "採用・修正・不採用と理由",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "検証したこと",
+      "kind": "long",
+      "help": "何で確かめたか",
+      "choices": [],
+      "required": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": "04",
+  "title": "第4回　文献講読と批判的思考",
+  "description": "基礎演習Ⅱ　2026年度後期　第4回　10月21日（水）｜探究の基礎｜AI要約と対話\nこの回のねらい\n・論文の構造（問い、方法、結果、考察、限界）を押さえて読める\n・AI要約の使いどころと限界を説明できる。要約は原文の代わりにならない\n・主張と根拠の対応、データの範囲、別の解釈の可能性を確かめる批判的な読み方ができる\n入力するときの注意：論文の全文を入力する場合は、大学のAI利用規程と、その資料の利用条件を確認する。要旨や必要な部分だけを使えば十分なことが多い。",
+  "sections": [
+   {
+    "title": "",
+    "desc": "",
+    "items": [
+     {
+      "title": "学籍番号",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "氏名",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "読む文献（著者・年・題名）",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク1　AI要約と原文を照らし合わせる",
+    "desc": "プロンプト例「構造をつかむ」：次の論文について、「問い」「方法」「主な結果」「著者が認めている限界」をそれぞれ2文以内でまとめてください。書かれていない項目は「記載なし」としてください。（論文の要旨や該当部分を貼る）",
+    "items": [
+     {
+      "title": "問い",
+      "kind": "long",
+      "help": "次の順に書く：AIの要約（要点）／原文で確認した内容（頁）／要約の誤り・抜け",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "方法",
+      "kind": "long",
+      "help": "次の順に書く：AIの要約（要点）／原文で確認した内容（頁）／要約の誤り・抜け",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "主な結果",
+      "kind": "long",
+      "help": "次の順に書く：AIの要約（要点）／原文で確認した内容（頁）／要約の誤り・抜け",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "限界",
+      "kind": "long",
+      "help": "次の順に書く：AIの要約（要点）／原文で確認した内容（頁）／要約の誤り・抜け",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク2　最も強い反論に、原文の根拠で答える",
+    "desc": "プロンプト例「反論を引き出す」：この論文の主張「（主張）」に対して、最も強い反論を3つ挙げてください。それぞれについて、どのようなデータがあれば検証できるかも示してください。",
+    "items": [
+     {
+      "title": "AIが挙げた反論／答えられる（○△×）／原文の根拠（頁）・答えられない理由",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク3　未解決の要素",
+    "desc": "",
+    "items": [
+     {
+      "title": "論文が答えていないこと",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "自分の問いとの隙間",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "共有　グループで出た意見・他の人の読み方から学んだこと",
+    "desc": "",
+    "items": [
+     {
+      "title": "グループで出た意見・他の人の読み方から学んだこと",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "次回までに",
+    "desc": "",
+    "items": [
+     {
+      "title": "次回までに取り組むこと（できたものにチェック）",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "読んだ文献について「主張」「根拠」「限界」を各100字程度でまとめる",
+       "AIとの議論で見えた未解決の要素を1つ書き、自分の問いとどうつながるかを考える"
+      ],
+      "required": false
+     },
+     {
+      "title": "主張（100字程度）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "根拠（100字程度）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "限界（100字程度）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "未解決の要素と、自分の問いとのつながり",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "AI活用記録（この回の分）",
+    "desc": "",
+    "items": [
+     {
+      "title": "使用した場面",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "主なプロンプト",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "出力をどう扱ったか",
+      "kind": "long",
+      "help": "採用・修正・不採用と理由",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "検証したこと",
+      "kind": "long",
+      "help": "何で確かめたか",
+      "choices": [],
+      "required": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": "05",
+  "title": "第5回　リサーチ・クエスチョンの確定",
+  "description": "基礎演習Ⅱ　2026年度後期　第5回　10月28日（水）｜探究の基礎｜AIによる批判的検証\nこの回のねらい\n・AIを「厳しい査読者」として使い、問いの弱点を洗い出せる\n・反論に答える形で、問いの背景と意義を論理的に説明できる\n・前半の成果を、AI活用記録を添えたレポートにまとめられる",
+  "sections": [
+   {
+    "title": "",
+    "desc": "",
+    "items": [
+     {
+      "title": "学籍番号",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "氏名",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     }
+    ]
+   },
+   {
+    "title": "準備　AIに提示する材料",
+    "desc": "",
+    "items": [
+     {
+      "title": "仮の問い",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "背景（200字程度）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "主な先行研究（3件）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク1・2　査読者の指摘に、補強か修正で答える",
+    "desc": "プロンプト例「査読者として批判させる」：あなたは厳しい査読者です。次のリサーチ・クエスチョンについて、1. 半年で調べて答えられるか　2. 先行研究に対する新しさがあるか　3. 範囲は適切か　4. 用語は明確か　の観点から問題点を指摘し、それぞれ改善案を示してください。問い：（あなたの問い）　背景：（200字程度）　主な先行研究：（3件）\nプロンプト例「反論に答える練習」：私の問いに対して「（AIが挙げた反論）」という批判があります。この批判に答える論点を3つ挙げ、それぞれどんな根拠が必要かを示してください。根拠が見つかっていない論点は、そのように明示してください。",
+    "items": [
+     {
+      "title": "答えられるか",
+      "kind": "long",
+      "help": "次の順に書く：AIの指摘（要点）／補強／修正／自分の対応と、その根拠",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "新しさ",
+      "kind": "long",
+      "help": "次の順に書く：AIの指摘（要点）／補強／修正／自分の対応と、その根拠",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "範囲",
+      "kind": "long",
+      "help": "次の順に書く：AIの指摘（要点）／補強／修正／自分の対応と、その根拠",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "用語の明確さ",
+      "kind": "long",
+      "help": "次の順に書く：AIの指摘（要点）／補強／修正／自分の対応と、その根拠",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "修正の記録　問いはどう変わったか",
+    "desc": "",
+    "items": [
+     {
+      "title": "修正前の問い",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "修正後の問い（確定）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク3　確定した問いを1枚にまとめる（発表用）",
+    "desc": "",
+    "items": [
+     {
+      "title": "問い",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "背景と意義",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "先行研究でわかっていること",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "調べ方の見通し",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "発表　1人3分。受けた質問と答え",
+    "desc": "",
+    "items": [
+     {
+      "title": "受けた質問",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "答え・今後の課題",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "提出物（前半）　リサーチ・クエスチョン確定レポートの要件チェック",
+    "desc": "",
+    "items": [
+     {
+      "title": "リサーチ・クエスチョン確定レポートの要件チェック",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "確定したリサーチ・クエスチョンと、選んだ理由",
+       "背景と意義",
+       "先行研究の整理（実在を確認した文献リスト付き）",
+       "調べ方の見通し",
+       "AI活用記録（AI利用ガイドの形式）",
+       "本文の冒頭または末尾に、AI利用を明記する一文"
+      ],
+      "required": false
+     },
+     {
+      "title": "書式・締切（授業内で案内）",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "AI活用記録（この回の分）",
+    "desc": "",
+    "items": [
+     {
+      "title": "使用した場面",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "主なプロンプト",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "出力をどう扱ったか",
+      "kind": "long",
+      "help": "採用・修正・不採用と理由",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "検証したこと",
+      "kind": "long",
+      "help": "何で確かめたか",
+      "choices": [],
+      "required": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": "06",
+  "title": "第6回　産学連携キックオフ",
+  "description": "基礎演習Ⅱ　2026年度後期　第6回　11月4日（水）｜実践プロジェクト｜AIとペルソナ設定\nこの回のねらい\n・企業の課題を、背景、制約、期待されている成果に分けて整理できる\n・ペルソナとは何か、なぜ設計に必要かを説明できる\n・AIで複数のペルソナ案を作り、現実味と課題との関連で取捨選択できる\n・企業から提供された情報の取り扱いを理解する",
+  "sections": [
+   {
+    "title": "",
+    "desc": "",
+    "items": [
+     {
+      "title": "学籍番号",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "氏名",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "グループ",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "企業の情報の取り扱い",
+      "kind": "multi",
+      "help": "非公開の資料やデータは、AIに入力しない・SNSや外部に書かない・グループ外に共有しない。判断に迷う場合は担当教員に確認する。",
+      "choices": [
+       "確認した"
+      ],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "事前準備　課題提示で聞きたいこと（最低1つ）",
+    "desc": "",
+    "items": [
+     {
+      "title": "課題提示で聞きたいこと（最低1つ）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク1　課題を整理する",
+    "desc": "",
+    "items": [
+     {
+      "title": "背景",
+      "kind": "long",
+      "help": "なぜこの課題か",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "制約",
+      "kind": "long",
+      "help": "予算・敷地・ブランドなど",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "期待される成果",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "わからない点",
+      "kind": "long",
+      "help": "確認したいこと",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "グループ　メンバーと役割分担",
+    "desc": "",
+    "items": [
+     {
+      "title": "氏名／役割／連絡方法・メモ",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク2　AIでペルソナを作り、2〜3体に絞る",
+    "desc": "プロンプト例「ペルソナの案を出す」：自動車ディーラーの店舗設計を提案するために、来店客のペルソナを3種類作ってください。各ペルソナには、年齢、職業、家族構成、居住地の特徴、来店の目的、車選びで重視する点、来店時に感じる不安や面倒、休日の過ごし方を含めてください。互いに大きく異なる3人にしてください。\nプロンプト例「ペルソナの現実味を確かめる」：次のペルソナについて、現実の顧客として不自然な点、ステレオタイプになっている点を指摘してください。また、このペルソナが店舗に求めることを、本人の言葉で3つ書いてください。（ペルソナを貼る）",
+    "items": [
+     {
+      "title": "ペルソナ案（一言で）／不自然な点・ステレオタイプ・課題との関連／採用（○×）",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "確定　ペルソナカード",
+    "desc": "",
+    "items": [
+     {
+      "title": "ペルソナA",
+      "kind": "long",
+      "help": "名前／年齢・職業／家族構成／居住地の特徴／来店の目的／重視する点／不安や面倒／休日の過ごし方／本人の言葉（店舗に求めること） の順に、1行ずつ書く",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "ペルソナB",
+      "kind": "long",
+      "help": "名前／年齢・職業／家族構成／居住地の特徴／来店の目的／重視する点／不安や面倒／休日の過ごし方／本人の言葉（店舗に求めること） の順に、1行ずつ書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "次回までに",
+    "desc": "",
+    "items": [
+     {
+      "title": "次回までに取り組むこと（できたものにチェック）",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "グループでペルソナ2〜3体を確定し、1枚にまとめる",
+       "課題に関して調べておきたいこと（市場、地域、競合）を分担して集める",
+       "AI活用記録を、グループの作業でも続ける方法を決める"
+      ],
+      "required": false
+     },
+     {
+      "title": "市場",
+      "kind": "long",
+      "help": "次の順に書く：調べること／担当",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "地域",
+      "kind": "long",
+      "help": "次の順に書く：調べること／担当",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "競合",
+      "kind": "long",
+      "help": "次の順に書く：調べること／担当",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "AI活用記録（この回の分）",
+    "desc": "",
+    "items": [
+     {
+      "title": "使用した場面",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "主なプロンプト",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "出力をどう扱ったか",
+      "kind": "long",
+      "help": "採用・修正・不採用と理由",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "検証したこと",
+      "kind": "long",
+      "help": "何で確かめたか",
+      "choices": [],
+      "required": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": "07",
+  "title": "第7回　コンセプト立案",
+  "description": "基礎演習Ⅱ　2026年度後期　第7回　11月11日（水）｜実践プロジェクト｜AIと発想法\nこの回のねらい\n・発想法（異業種との掛け合わせ、前提の反転、極端化）をAIとの対話で回せる\n・量を出してから選ぶ、という発想の手順を実践できる\n・コンセプトを「誰に、何を、どのように」の形で言語化できる",
+  "sections": [
+   {
+    "title": "",
+    "desc": "",
+    "items": [
+     {
+      "title": "学籍番号",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "氏名",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "グループ",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "狙うペルソナ（要約）",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク1　AIで30案を出す",
+    "desc": "プロンプト例「異業種と掛け合わせる」：自動車ディーラーの店舗に、図書館、ホテルのラウンジ、カフェ、保育園、スポーツジム、公園の要素を掛け合わせた店舗コンセプトを、それぞれ2案ずつ出してください。各案は「誰に／何を／どのように」の形式で、1案3行以内にしてください。ペルソナ：（確定したペルソナの要約）\nプロンプト例「前提を反転する」：自動車ディーラーの店舗について「当たり前」とされていることを10個挙げ、それぞれを反転させた場合にどんな店舗になるかを1行ずつ示してください。\n極端化（「もし〜しかなかったら」「もし10倍だったら」）も自分たちで指示を考えて試す。",
+    "items": [
+     {
+      "title": "掛け合わせ",
+      "kind": "long",
+      "help": "次の順に書く：案の数／気になった案（一言で）",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "反転",
+      "kind": "long",
+      "help": "次の順に書く：案の数／気になった案（一言で）",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "極端化",
+      "kind": "long",
+      "help": "次の順に書く：案の数／気になった案（一言で）",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "極端化で使った自分たちの指示",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク2　5案に絞る（ペルソナの言葉で判定）",
+    "desc": "",
+    "items": [
+     {
+      "title": "案／ペルソナは「行きたい」と言うか（本人の言葉で）／判定（○△×）",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク3　コンセプト文を書く",
+    "desc": "",
+    "items": [
+     {
+      "title": "誰に",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "何を",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "どのように",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "コンセプト文",
+      "kind": "long",
+      "help": "一文で",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "予備案",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "発表　各グループ1分。他グループの案で印象に残ったもの",
+    "desc": "",
+    "items": [
+     {
+      "title": "各グループ1分。他グループの案で印象に残ったもの",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "次回までに",
+    "desc": "",
+    "items": [
+     {
+      "title": "次回までに取り組むこと（できたものにチェック）",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "コンセプトシート1枚（コンセプト文、狙うペルソナ、根拠、参考にした事例）",
+       "コンセプトを実現する空間に必要な要素を、思いつく限り書き出す"
+      ],
+      "required": false
+     },
+     {
+      "title": "根拠（企業の課題・ペルソナとの関係）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "参考にした事例（出典）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "空間に必要な要素（思いつく限り）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "AI活用記録（この回の分）",
+    "desc": "",
+    "items": [
+     {
+      "title": "使用した場面",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "主なプロンプト",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "出力をどう扱ったか",
+      "kind": "long",
+      "help": "採用・修正・不採用と理由",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "検証したこと",
+      "kind": "long",
+      "help": "何で確かめたか",
+      "choices": [],
+      "required": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": "08",
+  "title": "第8回　店舗設計・空間構成",
+  "description": "基礎演習Ⅱ　2026年度後期　第8回　11月18日（水）｜実践プロジェクト｜AIと空間記述\nこの回のねらい\n・空間をゾーンと要素（素材、光、音、サイン）に分けて記述できる\n・言葉による空間記述を、画像生成のプロンプトに変換できる\n・生成画像を見て、コンセプトとの一致点とずれを言語化できる\n・生成画像の扱い（イメージであること、著作権と商標への注意）を理解する",
+  "sections": [
+   {
+    "title": "",
+    "desc": "",
+    "items": [
+     {
+      "title": "学籍番号",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "氏名",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "グループ",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "コンセプト文",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク1　空間の要件と、ゾーンごとの記述",
+    "desc": "プロンプト例「空間を言葉にする」：次のコンセプトとペルソナをもとに、店舗の空間を記述してください。入口から順に、来店客が通るゾーンごとに、広さの印象、床と壁の素材、光の質、音、配置されている家具や展示物、スタッフとの距離感を具体的に書いてください。コンセプト：（コンセプト文）　ペルソナ：（要約）",
+    "items": [
+     {
+      "title": "受付",
+      "kind": "long",
+      "help": "次の順に書く：広さ・素材／光・音／家具・展示物／スタッフとの距離",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "展示",
+      "kind": "long",
+      "help": "次の順に書く：広さ・素材／光・音／家具・展示物／スタッフとの距離",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "商談",
+      "kind": "long",
+      "help": "次の順に書く：広さ・素材／光・音／家具・展示物／スタッフとの距離",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "待合",
+      "kind": "long",
+      "help": "次の順に書く：広さ・素材／光・音／家具・展示物／スタッフとの距離",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "整備",
+      "kind": "long",
+      "help": "次の順に書く：広さ・素材／光・音／家具・展示物／スタッフとの距離",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "その他：ゾーン／広さ・素材／光・音／家具・展示物／スタッフとの距離",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク2　画像生成のプロンプトに変換し、条件を変えて生成する",
+    "desc": "プロンプト例「画像生成のプロンプトに変換する」：上の空間記述のうち「（ゾーン名）」の部分を、画像生成AI向けのプロンプトに変換してください。視点（入口から見た、俯瞰など）、時間帯、素材、光、人の有無を含め、英語と日本語の両方で出してください。",
+    "items": [
+     {
+      "title": "ゾーン／変えた条件（視点・時間帯など）／表現したかったこと／うまくいかなかったこと",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク3　画像を並べて言葉にする",
+    "desc": "",
+    "items": [
+     {
+      "title": "コンセプトと一致している点",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "違和感・ずれ",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "空間記述の修正点",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "スケッチ　平面のゾーニング（手描き可。入口・動線・各ゾーンを書き込む）",
+    "desc": "",
+    "items": [
+     {
+      "title": "平面のゾーニング（手描き可。入口・動線・各ゾーンを書き込む）",
+      "kind": "file",
+      "help": "手描きのスケッチを撮影した画像をアップロードする\n（編集画面でこの質問を「ファイルのアップロード」に置き換えてください）",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "生成画像を使うときの注意",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "実在の店舗、ブランドのロゴ、既存の作品に似た画像は使わない",
+       "提案資料に載せる場合は「AIによる生成イメージ」と明記する",
+       "画像はあくまでイメージ。寸法や法規の裏づけは別に必要"
+      ],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "次回までに",
+    "desc": "",
+    "items": [
+     {
+      "title": "次回までに取り組むこと（できたものにチェック）",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "空間コンセプト図（ゾーニングを示した平面スケッチ。手描き可）を仕上げる",
+       "生成画像2〜3点と、それぞれで表現したかったこと・うまくいかなかったことのメモ（上のワーク2）"
+      ],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "AI活用記録（この回の分）",
+    "desc": "",
+    "items": [
+     {
+      "title": "使用した場面",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "主なプロンプト",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "出力をどう扱ったか",
+      "kind": "long",
+      "help": "採用・修正・不採用と理由",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "検証したこと",
+      "kind": "long",
+      "help": "何で確かめたか",
+      "choices": [],
+      "required": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": "09",
+  "title": "第9回　動線とUXのデザイン",
+  "description": "基礎演習Ⅱ　2026年度後期　第9回　11月25日（水）｜実践プロジェクト｜AIとシミュレーション\nこの回のねらい\n・来店から退店までの顧客体験を、行動、感情、接点に分けて記述できる\n・AIをペルソナとして動かし、店内行動を予測させる方法を実践できる\n・予測から問題点を抽出し、レイアウトの改善案として具体化できる\n・AIの予測は仮説であり、実際の観察や企業の知見で確かめる必要があることを理解する",
+  "sections": [
+   {
+    "title": "",
+    "desc": "",
+    "items": [
+     {
+      "title": "学籍番号",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "氏名",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "グループ",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク1　カスタマージャーニーマップ",
+    "desc": "",
+    "items": [
+     {
+      "title": "ペルソナ／来店目的",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "行動",
+      "kind": "long",
+      "help": "次の順に書く：来店前／入店／展示を見る／商談／待ち時間／退店／退店後",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "感情",
+      "kind": "long",
+      "help": "＋／−。次の順に書く：来店前／入店／展示を見る／商談／待ち時間／退店／退店後",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "接点",
+      "kind": "long",
+      "help": "人・物・情報。次の順に書く：来店前／入店／展示を見る／商談／待ち時間／退店／退店後",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク2　AIにペルソナとして店内を歩かせる",
+    "desc": "プロンプト例「ペルソナとして店内を歩く」：あなたは次のペルソナです。以下のレイアウトの店舗に、（来店目的）のために来店しました。入店から退店までの行動と、その時々の気持ちを時系列で書いてください。迷う、待たされる、話しかけられて困る、逆に放置されるなど、不満や迷いが生じる場面を必ず含め、その原因も書いてください。ペルソナ：（要約）　レイアウト：（ゾーンの配置と動線を文章で）",
+    "items": [
+     {
+      "title": "場面／何が起きたか（つまずき）／原因／優先度（高中低）",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク3　つまずきを解消する改善案",
+    "desc": "プロンプト例「改善案を比較する」：次の「つまずき」を解消するレイアウトの改善案を3つ出し、それぞれの利点、欠点、必要なコストの大小、他のペルソナへの影響を表で比較してください。つまずき：（場面と原因）",
+    "items": [
+     {
+      "title": "つまずき／レイアウトの改善／運用の改善／他ペルソナへの影響・コスト",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "比較　改善前と改善後のレイアウト",
+    "desc": "",
+    "items": [
+     {
+      "title": "改善前",
+      "kind": "file",
+      "help": "手描きのスケッチを撮影した画像をアップロードする\n（編集画面でこの質問を「ファイルのアップロード」に置き換えてください）",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "改善後",
+      "kind": "file",
+      "help": "手描きのスケッチを撮影した画像をアップロードする\n（編集画面でこの質問を「ファイルのアップロード」に置き換えてください）",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "次回までに",
+    "desc": "",
+    "items": [
+     {
+      "title": "次回までに取り組むこと（できたものにチェック）",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "改善後のレイアウト案と、改善の根拠（どのつまずきをどう解消したか）をまとめる",
+       "企業担当者に確認したい点のリスト（現状の来店客の動き、スタッフの運用など）を作る"
+      ],
+      "required": false
+     },
+     {
+      "title": "企業担当者に確認したい点",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "AI活用記録（この回の分）",
+    "desc": "",
+    "items": [
+     {
+      "title": "使用した場面",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "主なプロンプト",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "出力をどう扱ったか",
+      "kind": "long",
+      "help": "採用・修正・不採用と理由",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "検証したこと",
+      "kind": "long",
+      "help": "何で確かめたか",
+      "choices": [],
+      "required": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": "10",
+  "title": "第10回　提案のブラッシュアップ",
+  "description": "基礎演習Ⅱ　2026年度後期　第10回　12月2日（水）｜実践プロジェクト｜AIによる批判的検証\nこの回のねらい\n・企業が提案を見る観点（課題への適合、実現性、費用対効果、ブランド整合、運用負荷）を挙げられる\n・AIに批判者の役割を与え、提案の弱点を体系的に洗い出せる\n・根拠となるデータの必要性を見極め、AIの数値ではなく一次資料で補強できる",
+  "sections": [
+   {
+    "title": "",
+    "desc": "",
+    "items": [
+     {
+      "title": "学籍番号",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "氏名",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "グループ",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "準備　提案の要点を1枚にまとめる",
+    "desc": "",
+    "items": [
+     {
+      "title": "企業の課題",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "顧客（ペルソナ）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "コンセプト",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "空間",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "体験（動線）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "期待される効果",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "実現の道筋",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク1・2　企業側の視点で批判させ、対応を決める",
+    "desc": "プロンプト例「企業側の視点で批判させる」：あなたは自動車ディーラーを運営する会社の経営企画担当者です。次の店舗設計提案について、課題への適合、初期費用と運営費、実現の難しさ、ブランドイメージとの整合、スタッフの運用負荷、安全と法規の観点から、厳しく問題点を指摘してください。指摘は重要な順に並べてください。提案：（要約）\n分類：Ａ＝対応する／Ｂ＝根拠を示して反論する／Ｃ＝割り切る（理由を書く）",
+    "items": [
+     {
+      "title": "AIの指摘（重要な順）／観点／分類／具体的な対応・反論の根拠・割り切る理由",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "根拠　根拠が示されていない主張を見つける",
+    "desc": "プロンプト例「根拠の不足を見つける」：この提案の中で、根拠（データ、事例、調査）が示されていない主張を列挙し、それぞれについて、どんな一次資料で裏づけられそうかを提案してください。数値やデータそのものは生成しないでください。",
+    "items": [
+     {
+      "title": "根拠が不足している主張／裏づけに使う一次資料（見つけたら出典）／担当",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "中間発表　各グループ5分。受けた指摘と、他グループへのコメント",
+    "desc": "",
+    "items": [
+     {
+      "title": "自分たちが受けた質問・指摘／対応方針",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "他グループへのコメント（グループ名と内容）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "次回までに",
+    "desc": "",
+    "items": [
+     {
+      "title": "次回までに取り組むこと（できたものにチェック）",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "提案の改訂版を作る（指摘への対応を明記）",
+       "発表の構成案のたたき台を作る"
+      ],
+      "required": false
+     },
+     {
+      "title": "改訂のポイント（何をどう変えたか）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "AI活用記録（この回の分）",
+    "desc": "",
+    "items": [
+     {
+      "title": "使用した場面",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "主なプロンプト",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "出力をどう扱ったか",
+      "kind": "long",
+      "help": "採用・修正・不採用と理由",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "検証したこと",
+      "kind": "long",
+      "help": "何で確かめたか",
+      "choices": [],
+      "required": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": "11",
+  "title": "第11回　プレゼン資料作成",
+  "description": "基礎演習Ⅱ　2026年度後期　第11回　12月9日（水）｜実践プロジェクト｜AIと構成編集\nこの回のねらい\n・「課題、顧客、コンセプト、空間、体験、効果、実現の道筋」の流れで提案を組み立てられる\n・1枚1メッセージのスライドを作れる\n・AIが出したコピー案から選び、自分たちの言葉に直せる\n・AIの活用と自分たちの思考の反映を説明するスライドを用意できる",
+  "sections": [
+   {
+    "title": "",
+    "desc": "",
+    "items": [
+     {
+      "title": "学籍番号",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "氏名",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "グループ",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "発表時間　＿＿ 分　／　聞き手",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク1　構成案と、各スライドのメッセージ",
+    "desc": "プロンプト例「構成を組み立てる」：企業担当者向けに店舗設計を提案する（発表時間）分のプレゼンの構成を作ってください。聞き手は経営企画と店舗運営の担当者です。各スライドについて、「スライドの見出し（1行のメッセージ）」と「載せる内容」を示してください。提案の要約：（改訂版の要約）",
+    "items": [
+     {
+      "title": "課題",
+      "kind": "long",
+      "help": "次の順に書く：見出し（1行のメッセージ）／載せる内容・使う素材／担当",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "顧客",
+      "kind": "long",
+      "help": "次の順に書く：見出し（1行のメッセージ）／載せる内容・使う素材／担当",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "コンセプト",
+      "kind": "long",
+      "help": "次の順に書く：見出し（1行のメッセージ）／載せる内容・使う素材／担当",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "空間",
+      "kind": "long",
+      "help": "次の順に書く：見出し（1行のメッセージ）／載せる内容・使う素材／担当",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "体験",
+      "kind": "long",
+      "help": "次の順に書く：見出し（1行のメッセージ）／載せる内容・使う素材／担当",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "効果",
+      "kind": "long",
+      "help": "次の順に書く：見出し（1行のメッセージ）／載せる内容・使う素材／担当",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "実現の道筋",
+      "kind": "long",
+      "help": "次の順に書く：見出し（1行のメッセージ）／載せる内容・使う素材／担当",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "AI活用",
+      "kind": "long",
+      "help": "次の順に書く：見出し（1行のメッセージ）／載せる内容・使う素材／担当",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "その他：流れ／見出し（1行のメッセージ）／載せる内容・使う素材／担当",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "ワーク3　キャッチコピー（20案から3つ、そして1つ）",
+    "desc": "プロンプト例「コピーの案を出す」：次のコンセプトを表すキャッチコピーを20案出してください。10字以内のものと20字以内のものを半分ずつ。企業の担当者に向けた落ち着いた表現と、来店客に向けた親しみやすい表現の両方を含めてください。コンセプト：（コンセプト文）",
+    "items": [
+     {
+      "title": "残した3案／選んだ理由・気になる点",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "決定したコピー（自分たちの言葉に直した点も）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "AI活用スライド　「AIをどう活用し、自分たちの思考をどう反映させたか」の下書き",
+    "desc": "",
+    "items": [
+     {
+      "title": "AIを使った場面",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "採用したもの",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "捨てたものとその理由",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "自分たちが判断したこと",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "リハーサル　相互フィードバック",
+    "desc": "",
+    "items": [
+     {
+      "title": "良かった点／改善点／所要時間（分）",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "次回までに",
+    "desc": "",
+    "items": [
+     {
+      "title": "次回までに取り組むこと（できたものにチェック）",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "スライドを完成させる。「AIをどう活用し、自分たちの思考をどう反映させたか」のスライドを必ず含める",
+       "発表時間内に収まるよう、通しで練習する"
+      ],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "AI活用記録（この回の分）",
+    "desc": "",
+    "items": [
+     {
+      "title": "使用した場面",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "主なプロンプト",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "出力をどう扱ったか",
+      "kind": "long",
+      "help": "採用・修正・不採用と理由",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "検証したこと",
+      "kind": "long",
+      "help": "何で確かめたか",
+      "choices": [],
+      "required": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": "12",
+  "title": "第12回　最終プレゼン発表会",
+  "description": "基礎演習Ⅱ　2026年度後期　第12回　2027年1月13日（水）｜実践プロジェクト\nこの回のねらい\n・企業の担当者に向けて、店舗設計の提案をわかりやすく伝える\n・AIをどこでどう使い、何を採用し何を捨てたか、自分たちの思考がどこに反映されているかを報告する",
+  "sections": [
+   {
+    "title": "",
+    "desc": "",
+    "items": [
+     {
+      "title": "学籍番号",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "氏名",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "グループ",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "発表前のチェック　当日までに",
+    "desc": "",
+    "items": [
+     {
+      "title": "当日までに",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "スライドは指定の方法で提出し、当日使う機材で表示を確認した",
+       "発表時間内に収まる",
+       "参考にしたデータや事例の出典が示してある",
+       "生成画像には「AIによる生成イメージ」と明記してある",
+       "「AI活用と自分たちの思考」のスライドがある",
+       "質問されそうな点への答えを用意した"
+      ],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "準備　想定質問と答え",
+    "desc": "",
+    "items": [
+     {
+      "title": "想定される質問／答え（根拠）／答える人",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "確認　発表で見られること（自己評価 ○△×）",
+    "desc": "",
+    "items": [
+     {
+      "title": "企業の課題を正しく捉えているか",
+      "kind": "long",
+      "help": "次の順に書く：発表前／発表後",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "ペルソナとコンセプトに一貫性があるか",
+      "kind": "long",
+      "help": "次の順に書く：発表前／発表後",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "空間と動線の提案に根拠があるか",
+      "kind": "long",
+      "help": "次の順に書く：発表前／発表後",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "実現性と費用を考えているか",
+      "kind": "long",
+      "help": "次の順に書く：発表前／発表後",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "AIの活用が透明で、自分たちの判断を説明できるか",
+      "kind": "long",
+      "help": "次の順に書く：発表前／発表後",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "当日　他グループの発表メモ",
+    "desc": "",
+    "items": [
+     {
+      "title": "グループ／印象に残った点／質問・自分たちとの違い",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "講評　企業担当者からの講評・質疑で受けた指摘",
+    "desc": "",
+    "items": [
+     {
+      "title": "企業担当者からの講評・質疑で受けた指摘",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "振り返り　発表を終えて（うまくいったこと／次に活かすこと）",
+    "desc": "",
+    "items": [
+     {
+      "title": "うまくいったこと",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "次に活かすこと",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "提出物（後半）　店舗設計提案",
+    "desc": "",
+    "items": [
+     {
+      "title": "店舗設計提案",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "スライド（必要に応じて補足資料）",
+       "AI活用記録を添付した"
+      ],
+      "required": false
+     },
+     {
+      "title": "書式・締切（授業内で案内）",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": "13",
+  "title": "第13回　プロジェクトの総括",
+  "description": "基礎演習Ⅱ　2026年度後期　第13回　2027年1月20日（水）｜実践プロジェクト\nこの回のねらい\n・半年間の作業を、事実、うまくいったこと、うまくいかなかったこと、次に試すことに分けて振り返られる\n・AIが得意だったこと、頼れなかったこと、人間が判断したことを具体的に挙げられる\n・「AIとの協働における人間ならではの役割」を、自分の経験に基づいて説明できる",
+  "sections": [
+   {
+    "title": "",
+    "desc": "",
+    "items": [
+     {
+      "title": "学籍番号",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "氏名",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     }
+    ]
+   },
+   {
+    "title": "個人ワーク1　AI活用記録を読み返し、印象に残った場面を3つ選ぶ",
+    "desc": "",
+    "items": [
+     {
+      "title": "回／場面・AIに頼んだこと／AIの出力／自分はどう判断したか、なぜか",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "個人ワーク2　AIが担ったこと、自分が担ったこと",
+    "desc": "",
+    "items": [
+     {
+      "title": "問いを立てる",
+      "kind": "long",
+      "help": "次の順に書く：AIが担ったこと／自分（たち）が担ったこと",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "文献を探す・読む",
+      "kind": "long",
+      "help": "次の順に書く：AIが担ったこと／自分（たち）が担ったこと",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "問いを確定する",
+      "kind": "long",
+      "help": "次の順に書く：AIが担ったこと／自分（たち）が担ったこと",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "ペルソナ・コンセプト",
+      "kind": "long",
+      "help": "次の順に書く：AIが担ったこと／自分（たち）が担ったこと",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "空間・動線",
+      "kind": "long",
+      "help": "次の順に書く：AIが担ったこと／自分（たち）が担ったこと",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "提案の検証",
+      "kind": "long",
+      "help": "次の順に書く：AIが担ったこと／自分（たち）が担ったこと",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "プレゼン",
+      "kind": "long",
+      "help": "次の順に書く：AIが担ったこと／自分（たち）が担ったこと",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "振り返りの問い　自分の経験に基づいて答える",
+    "desc": "プロンプト例「自分の記録を分析させる」：次は、私がこの半年に生成AIを使った記録の要約です。AIが役に立った場面と、AIの出力を採用しなかった場面を分類し、そこから読み取れる「私が自分で判断していること」の傾向を指摘してください。AIとしての自己評価ではなく、私の判断の傾向に注目してください。記録：（要約）",
+    "items": [
+     {
+      "title": "AIの出力を採用しなかった場面はどこか。なぜそう判断したか",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "AIに聞かなくても自分で考えたほうが早かった、または良かったのはどんなときか",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "AIがいなければできなかったことは何か",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "企業の担当者や他のメンバーとのやりとりで、AIには代われなかったのはどんな役割か",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "次に同じようなプロジェクトをするなら、AIの使い方をどう変えるか",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "共有・討論　グループでの共通点と違い／AIとの付き合い方はどう変わったか",
+    "desc": "",
+    "items": [
+     {
+      "title": "共通点と違い",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "AIとの付き合い方の変化",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "定義　AIとの協働における「人間ならではの役割」とは",
+    "desc": "",
+    "items": [
+     {
+      "title": "自分の定義（一文で）",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     },
+     {
+      "title": "その根拠となる経験",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "提出物　振り返りレポートの要件チェック",
+    "desc": "",
+    "items": [
+     {
+      "title": "振り返りレポートの要件チェック",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "「人間ならではの役割」についての自分の定義",
+       "その根拠となる経験"
+      ],
+      "required": false
+     },
+     {
+      "title": "書式・締切（授業内で案内）",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": "14",
+  "title": "第14回　キャリア講習 1",
+  "description": "基礎演習Ⅱ　2026年度後期　第14回　12月16日（水）｜キャリア講習\n内容や持ち物などの詳細は、決まり次第サイトの各回ページとトップページのお知らせで案内します。",
+  "sections": [
+   {
+    "title": "",
+    "desc": "",
+    "items": [
+     {
+      "title": "学籍番号",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "氏名",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "講習のテーマ・講師",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "メモ　講習の内容",
+    "desc": "",
+    "items": [
+     {
+      "title": "講習の内容",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "整理　学んだこと3つ",
+    "desc": "",
+    "items": [
+     {
+      "title": "学んだこと／自分のキャリアに引きつけると",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "問い　講師に聞きたいこと・自分で調べたいこと",
+    "desc": "",
+    "items": [
+     {
+      "title": "講師に聞きたいこと・自分で調べたいこと",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "次回までに",
+    "desc": "",
+    "items": [
+     {
+      "title": "次回までに取り組むこと（できたものにチェック）",
+      "kind": "multi",
+      "help": "",
+      "choices": [
+       "第15回（12月23日）に向けて、配布資料があれば持参する"
+      ],
+      "required": false
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "num": "15",
+  "title": "第15回　キャリア講習 2",
+  "description": "基礎演習Ⅱ　2026年度後期　第15回　12月23日（水）｜キャリア講習\n第14回の内容を踏まえて参加します。配布資料があれば持参してください。",
+  "sections": [
+   {
+    "title": "",
+    "desc": "",
+    "items": [
+     {
+      "title": "学籍番号",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "氏名",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": true
+     },
+     {
+      "title": "講習のテーマ・講師",
+      "kind": "short",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "メモ　講習の内容",
+    "desc": "",
+    "items": [
+     {
+      "title": "講習の内容",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "整理　学んだこと3つ",
+    "desc": "",
+    "items": [
+     {
+      "title": "学んだこと／第14回とのつながり・自分のキャリアに引きつけると",
+      "kind": "long",
+      "help": "1件につき1行、この順に書く",
+      "choices": [],
+      "required": false
+     }
+    ]
+   },
+   {
+    "title": "行動　これから半年で取り組むこと",
+    "desc": "",
+    "items": [
+     {
+      "title": "これから半年で取り組むこと",
+      "kind": "long",
+      "help": "",
+      "choices": [],
+      "required": false
+     }
+    ]
+   }
+  ]
+ }
+]

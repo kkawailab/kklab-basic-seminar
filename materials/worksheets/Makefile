@@ -9,6 +9,7 @@
 #   make word       Word 版（word/worksheets.docx と word/worksheet-NN.docx）を作る
 #   make forms      Microsoft Forms 版（forms/forms-NN.md と forms/forms-NN.docx）を作る
 #   make markdown   Markdown 版（markdown/worksheet-NN.md、受講生が記入する用）を作る
+#   make gforms     Google フォーム版（gforms/build-forms.gs、Apps Script）を作る
 #   make clean      中間ファイルを消す
 
 LUALATEX := lualatex -interaction=nonstopmode -halt-on-error -file-line-error
@@ -19,11 +20,12 @@ ANSWERS  := $(NUMS:%=pdf/answers-%.pdf)
 DOCXS    := word/worksheets.docx $(NUMS:%=word/worksheet-%.docx)
 FORMS    := $(NUMS:%=forms/forms-%.md)
 MDS      := $(NUMS:%=markdown/worksheet-%.md)
+GFORMS   := gforms/build-forms.gs gforms/build-forms-github.gs gforms/forms.json
 COMMON   := preamble.tex
 
-.PHONY: all all-in-one single word forms markdown answers answers-single clean $(NUMS) $(NUMS:%=answers-%)
+.PHONY: all all-in-one single word forms markdown gforms answers answers-single clean $(NUMS) $(NUMS:%=answers-%)
 
-all: all-in-one single word forms markdown answers answers-single
+all: all-in-one single word forms markdown gforms answers answers-single
 
 all-in-one: worksheets.pdf
 
@@ -78,6 +80,12 @@ markdown: $(MDS)
 
 markdown/worksheet-%.md: sessions/%.tex tex2md.py tex2forms.py tex2docx.py
 	python3 tex2md.py $*
+
+# Google フォーム版は、全回分を1つの Apps Script にする（作り方は gforms/README.md）
+gforms: $(GFORMS)
+
+$(GFORMS) &: $(NUMS:%=sessions/%.tex) tex2gforms.py tex2forms.py tex2docx.py
+	python3 tex2gforms.py
 
 $(BUILD) pdf word:
 	mkdir -p $@
