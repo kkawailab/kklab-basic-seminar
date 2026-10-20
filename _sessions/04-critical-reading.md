@@ -4,7 +4,10 @@ title: 文献講読と批判的思考
 phase: 1
 tag: AI要約と対話
 summary: 難解な調査結果や論文をAIに要約させ、その主張の矛盾点や未解決要素をAIと議論する
-materials: []
+materials:
+  - title: 架空論文Ｘ「都市部の若年層における自動車購入前の情報探索と販売店訪問」（PDF）
+    url: /materials/papers/paper-x.pdf
+    note: 授業用の架空の論文。AI要約と原文の照合、反論への応答の練習に使う
 ---
 ## この回でやること
 
