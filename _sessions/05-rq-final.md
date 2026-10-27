@@ -4,7 +4,10 @@ title: リサーチ・クエスチョンの確定
 phase: 1
 tag: AIによる批判的検証
 summary: 自身の問いに対し、AIに反論を求め、論理を補強する
-materials: []
+materials:
+  - title: 第1回〜第5回 総まとめと、使ってみたいAIプロンプト集（PDF）
+    url: /materials/summary/summary-01-05.pdf
+    note: 前半5回の要点と、5回を貫く習慣のまとめ。巻末に解説付きのプロンプト集28個と、出席クイズで扱ったAIの用語集
 ---
 ## この回でやること
 
