@@ -8,6 +8,12 @@ materials:
   - title: 第1回〜第5回 総まとめと、使ってみたいAIプロンプト集（PDF）
     url: /materials/summary/summary-01-05.pdf
     note: 前半5回の要点と、5回を貫く習慣のまとめ。巻末に解説付きのプロンプト集28個と、出席クイズで扱ったAIの用語集
+  - title: 第1回〜第5回 総まとめ　音声付きスライド（PowerPoint、約14分）
+    url: /materials/summary/slides/summary-01-05-slides.pptx
+    note: 冊子の内容を19枚のスライドとナレーションで振り返る。スライドショーを開始すると音声が自動で流れ、次のスライドへ進む
+  - title: 第1回〜第5回 総まとめ　動画（MP4、通し約14分とスライドごとの19本）
+    url: /materials/summary/slides/video/
+    note: 音声付きスライドを動画にしたもの。PowerPoint がなくても再生できる
 ---
 ## この回でやること
 
