@@ -5,7 +5,13 @@ phase: 3
 tag:
 summary: 12月16日（水）に実施。スケジュールを空けておいてください
 note: この日は必ず予定を空けておくこと
-materials: []
+materials:
+  - title: ワークシートの解説　動画（MP4、約4分）
+    url: /materials/worksheets/slides/video/#s14
+    note: 講習のメモの取り方と、学んだことの整理のしかたを、書き方の例とともにスライドとナレーションで説明する
+  - title: ワークシートの解説　音声付きスライド（PowerPoint）
+    url: /materials/worksheets/slides/worksheet-14-slides.pptx
+    note: スライドショーを開始すると音声が自動で流れ、次のスライドへ進む
 ---
 ## この回について
 

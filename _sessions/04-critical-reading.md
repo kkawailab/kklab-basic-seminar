@@ -8,6 +8,12 @@ materials:
   - title: 架空論文Ｘ「都市部の若年層における自動車購入前の情報探索と販売店訪問」（PDF）
     url: /materials/papers/paper-x.pdf
     note: 授業用の架空の論文。AI要約と原文の照合、反論への応答の練習に使う
+  - title: ワークシートの解説　動画（MP4、約7分）
+    url: /materials/worksheets/slides/video/#s04
+    note: ワークシートの各欄の書き方を、記入例とともにスライドとナレーションで説明する
+  - title: ワークシートの解説　音声付きスライド（PowerPoint）
+    url: /materials/worksheets/slides/worksheet-04-slides.pptx
+    note: スライドショーを開始すると音声が自動で流れ、次のスライドへ進む
 ---
 ## この回でやること
 

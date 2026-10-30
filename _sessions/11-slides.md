@@ -4,7 +4,13 @@ title: プレゼン資料作成
 phase: 2
 tag: AIと構成編集
 summary: 説得力のあるスライド構成とキャッチコピーをAIと共に作成する
-materials: []
+materials:
+  - title: ワークシートの解説　動画（MP4、約7分）
+    url: /materials/worksheets/slides/video/#s11
+    note: ワークシートの各欄の書き方を、記入例とともにスライドとナレーションで説明する
+  - title: ワークシートの解説　音声付きスライド（PowerPoint）
+    url: /materials/worksheets/slides/worksheet-11-slides.pptx
+    note: スライドショーを開始すると音声が自動で流れ、次のスライドへ進む
 ---
 ## この回でやること
 

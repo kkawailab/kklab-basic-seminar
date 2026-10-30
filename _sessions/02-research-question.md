@@ -4,7 +4,13 @@ title: 問いの立て方
 phase: 1
 tag: AIとブレスト
 summary: 関心事をAIに投げ、多角的な視点からリサーチ・クエスチョンを具体化する
-materials: []
+materials:
+  - title: ワークシートの解説　動画（MP4、約6分）
+    url: /materials/worksheets/slides/video/#s02
+    note: ワークシートの各欄の書き方を、記入例とともにスライドとナレーションで説明する
+  - title: ワークシートの解説　音声付きスライド（PowerPoint）
+    url: /materials/worksheets/slides/worksheet-02-slides.pptx
+    note: スライドショーを開始すると音声が自動で流れ、次のスライドへ進む
 ---
 ## この回でやること
 

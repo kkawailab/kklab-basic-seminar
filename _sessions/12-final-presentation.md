@@ -4,7 +4,13 @@ title: 最終プレゼン発表会
 phase: 2
 tag:
 summary: 企業担当者への提案。AIをどう活用し、自身の思考をどう反映させたかも報告する
-materials: []
+materials:
+  - title: ワークシートの解説　動画（MP4、約5分）
+    url: /materials/worksheets/slides/video/#s12
+    note: ワークシートの各欄の書き方を、記入例とともにスライドとナレーションで説明する
+  - title: ワークシートの解説　音声付きスライド（PowerPoint）
+    url: /materials/worksheets/slides/worksheet-12-slides.pptx
+    note: スライドショーを開始すると音声が自動で流れ、次のスライドへ進む
 ---
 ## この回でやること
 

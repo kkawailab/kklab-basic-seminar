@@ -309,8 +309,13 @@ main { padding-block: 2.5rem 4rem; }
 .prose code { font-family: var(--font-body); background: var(--paper-2); padding: .05em .35em; border-radius: 2px; font-size: .95em; }
 .prose pre code { background: none; padding: 0; }
 
-/* 動画（総まとめの動画ページ） */
-.prose video { display: block; width: 100%; height: auto; background: #000; border-radius: 4px; margin: 0 0 .75rem; }
+/* 動画（総まとめ・ワークシート解説の動画ページ） */
+.prose video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; border-radius: 4px; margin: 0 0 .75rem; }
+.prose details.chapters { margin: 0 0 1.5em; }
+.prose details.chapters summary { cursor: pointer; color: var(--ink-2); }
+.prose details.chapters ol { list-style: none; padding-left: 0; margin: .5em 0 0; }
+.prose details.chapters li { margin-bottom: .2em; }
+.chapters__time { display: inline-block; min-width: 3.5em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 .prose hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5em 0; }
 .prose strong { font-weight: 700; }
 

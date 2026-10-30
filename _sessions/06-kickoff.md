@@ -5,7 +5,13 @@ phase: 2
 tag: AIとペルソナ設定
 summary: 企業担当者による課題提示。ターゲット顧客像をAIと作り込む
 note: 企業の都合により、内容や日程が変更になる可能性があります
-materials: []
+materials:
+  - title: ワークシートの解説　動画（MP4、約8分）
+    url: /materials/worksheets/slides/video/#s06
+    note: ワークシートの各欄の書き方を、記入例とともにスライドとナレーションで説明する
+  - title: ワークシートの解説　音声付きスライド（PowerPoint）
+    url: /materials/worksheets/slides/worksheet-06-slides.pptx
+    note: スライドショーを開始すると音声が自動で流れ、次のスライドへ進む
 ---
 ## この回でやること
 

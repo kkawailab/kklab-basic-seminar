@@ -4,7 +4,13 @@ title: 先行研究の探索
 phase: 1
 tag: AI検索の活用
 summary: 生成AIを用い、根拠のある先行研究をリストアップする
-materials: []
+materials:
+  - title: ワークシートの解説　動画（MP4、約6分）
+    url: /materials/worksheets/slides/video/#s03
+    note: ワークシートの各欄の書き方を、記入例とともにスライドとナレーションで説明する
+  - title: ワークシートの解説　音声付きスライド（PowerPoint）
+    url: /materials/worksheets/slides/worksheet-03-slides.pptx
+    note: スライドショーを開始すると音声が自動で流れ、次のスライドへ進む
 ---
 ## この回でやること
 

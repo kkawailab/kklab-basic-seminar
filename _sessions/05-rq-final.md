@@ -14,6 +14,12 @@ materials:
   - title: 第1回〜第5回 総まとめ　動画（MP4、通し約14分とスライドごとの19本）
     url: /materials/summary/slides/video/
     note: 音声付きスライドを動画にしたもの。PowerPoint がなくても再生できる
+  - title: ワークシートの解説　動画（MP4、約7分）
+    url: /materials/worksheets/slides/video/#s05
+    note: ワークシートの各欄の書き方を、記入例とともにスライドとナレーションで説明する
+  - title: ワークシートの解説　音声付きスライド（PowerPoint）
+    url: /materials/worksheets/slides/worksheet-05-slides.pptx
+    note: スライドショーを開始すると音声が自動で流れ、次のスライドへ進む
 ---
 ## この回でやること
 

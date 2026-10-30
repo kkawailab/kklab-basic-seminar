@@ -5,7 +5,13 @@ phase: 2
 tag: AIとシミュレーション
 summary: 顧客の店内行動をAIに予測させ、レイアウトの改善案を出す
 note: 難易度の関係で、内容が変更になる可能性があります
-materials: []
+materials:
+  - title: ワークシートの解説　動画（MP4、約7分）
+    url: /materials/worksheets/slides/video/#s09
+    note: ワークシートの各欄の書き方を、記入例とともにスライドとナレーションで説明する
+  - title: ワークシートの解説　音声付きスライド（PowerPoint）
+    url: /materials/worksheets/slides/worksheet-09-slides.pptx
+    note: スライドショーを開始すると音声が自動で流れ、次のスライドへ進む
 ---
 ## この回でやること
 

@@ -4,7 +4,13 @@ title: 提案のブラッシュアップ
 phase: 2
 tag: AIによる批判的検証
 summary: 企業のニーズに対し、提案の弱点をAIに指摘させ補強する
-materials: []
+materials:
+  - title: ワークシートの解説　動画（MP4、約7分）
+    url: /materials/worksheets/slides/video/#s10
+    note: ワークシートの各欄の書き方を、記入例とともにスライドとナレーションで説明する
+  - title: ワークシートの解説　音声付きスライド（PowerPoint）
+    url: /materials/worksheets/slides/worksheet-10-slides.pptx
+    note: スライドショーを開始すると音声が自動で流れ、次のスライドへ進む
 ---
 ## この回でやること
 
