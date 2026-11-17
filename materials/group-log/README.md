@@ -9,16 +9,37 @@
 
 ほかに、次回までの分担（やること・担当・期限）を毎回書きます。
 
+ほかのプロジェクトにも使える1ページの汎用・シンプル版（`group-log-simple.*`）もあります（下の「汎用・シンプル版」）。
+
 | ファイル | 内容 |
 |---|---|
 | `group-log.pdf` | 印刷・PDF書き込み用（A4、12ページ） |
 | `group-log.docx` | Word 版（Word に直接入力する用、12ページ）。内容は PDF 版と同じ |
 | `group-log.md` | Markdown 版（テキストエディタや Teams などで記入する用）。内容は PDF 版と同じ |
 | `group-log.tex` | PDF の原稿（LuaLaTeX） |
-| `build-docx.py` | Word 版を作るスクリプト（python-docx。部品は `../worksheets/tex2docx.py` と共通） |
+| `build-docx.py` | Word 版（両方）を作るスクリプト（python-docx。部品は `../worksheets/tex2docx.py` と共通） |
 | `Makefile` | ビルド |
 
-## ページ構成（PDF・Word 共通）
+## 汎用・シンプル版
+
+授業や日程に依存しない1ページの版です。ほかのグループプロジェクトでも、話し合いのたびに1枚ずつ個人で記入して使えます。名簿・一覧・最終振り返りのページはなく、毎回の記録だけを残します。
+
+| ファイル | 内容 |
+|---|---|
+| `group-log-simple.pdf` | 印刷・PDF書き込み用（A4、1ページ）。必要な枚数を印刷する |
+| `group-log-simple.docx` | Word 版（1ページ）。回ごとにファイルをコピーして使う |
+| `group-log-simple.md` | Markdown 版。回ごとにファイルをコピーして使う |
+| `group-log-simple.tex` | PDF の原稿（LuaLaTeX） |
+
+記入欄は次の5つです（産学連携用の毎回のページと同じ考え方で、項目を絞っています）。
+
+1. **出席**：自分の出欠、欠席・遅刻したメンバーとその人への共有、自分が出席以外のときに共有してもらった内容と追いつくためにしたこと
+2. **今日の成果**：目的・議題、決まったこと・できたこと、持ち越すこと
+3. **自分の役割**：今日の役割（チェック）、実際にやったこと、役割を果たせた度合い（1〜5）と理由
+4. **気づき**：うまくいったこと、改善したいこと、自分自身について気づいたこと
+5. **次回までにやること**：やること・担当・期限
+
+## 産学連携用のページ構成（PDF・Word 共通）
 
 | ページ | 内容 | 記入するとき |
 |---|---|---|
@@ -44,9 +65,10 @@ Word 版は python-docx で作ります（入っていなければ `uv run --wit
 
 ```sh
 cd materials/group-log
-make            # group-log.pdf と group-log.docx を作る
+make            # 産学連携用と汎用・シンプル版の PDF と Word をすべて作る
 make pdf        # PDF 版だけ
 make word       # Word 版だけ
+make simple     # 汎用・シンプル版（PDF と Word）だけ
 make clean      # build/ を消す
 ```
 

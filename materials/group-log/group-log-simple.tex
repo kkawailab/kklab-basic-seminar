@@ -1,0 +1,59 @@
+% ============================================================
+% グループ活動記録シート（汎用・シンプル版）
+%   授業や回の日程に依存しない1ページの記録シート。どのグループ
+%   プロジェクトでも、話し合いのたびに1枚ずつ個人で記入する。
+%   デザインは各回ワークシート（../worksheets/preamble.tex）と共通。
+%   ビルド：make simple（Makefile を参照）
+% ============================================================
+\input{../worksheets/preamble}
+
+\colorlet{phase}{pone}
+\colorlet{phasetint}{ponetint}
+\fancyfoot[L]{\sffamily\scriptsize\color{inkthree}グループ活動記録シート（汎用版）}
+\fancyfoot[R]{}
+
+\newcommand\logsec[2]{%
+  \par\vspace{1.6mm}%
+  {\sffamily\bfseries\color{phase}■ #1}\enspace{\sffamily\bfseries #2}\par\vspace{1mm}}
+\newcommand\opt[1]{□\,#1\quad}
+
+\begin{document}
+
+\begin{tcolorbox}[enhanced,colback=phase,colframe=phase,arc=2mm,boxrule=0pt,
+    left=4mm,right=4mm,top=2.5mm,bottom=2.5mm,fontupper=\color{white}\sffamily]
+  {\small 話し合いのたびに1枚、個人で記入する}\par
+  \vspace{0.6mm}{\LARGE\bfseries グループ活動記録シート}
+\end{tcolorbox}
+\vspace{-1mm}
+{\sffamily\small\color{inktwo}
+氏名\fieldline{42mm}{}\quad グループ\fieldline{30mm}{}\quad プロジェクト\fieldline{40mm}{}}\par
+\vspace{1.5mm}
+{\sffamily\small\color{inktwo}
+第\fieldline{10mm}{}回\quad 日付\fieldline{32mm}{}\quad 場所・方法\enspace □\,対面\enspace □\,オンライン\enspace □\,その他\fieldline{22mm}{}}\par
+
+\logsec{1}{出席}
+{\small 自分：\enspace\opt{出席}\opt{遅刻}\opt{早退}\opt{欠席}}\par\vspace{1.5mm}
+\fillin{欠席・遅刻したメンバーと、その人への共有（誰が・何で）}
+\fillin{自分が出席以外のとき：共有してもらった内容と、追いつくためにしたこと}
+
+\logsec{2}{今日の成果}
+\fillin{今日の目的・議題}
+\answerbox[決まったこと・できたこと（「話した」ではなく、何が決まり、何ができたか）]{26mm}
+\answerbox[まだ決まっていないこと・次回に持ち越すこと]{15mm}
+
+\logsec{3}{自分の役割}
+{\small 今日の役割：\enspace\opt{進行}\opt{記録}\opt{調査}\opt{アイデア出し}\opt{資料作成}\opt{発表}\opt{その他（\hspace{16mm}）}}\par\vspace{0.5mm}
+\answerbox[実際にやったこと・グループへの貢献（具体的に）]{18mm}
+\par\noindent{\sffamily\small 役割を果たせた度合い\enspace 1\enspace・\enspace 2\enspace・\enspace 3\enspace・\enspace 4\enspace・\enspace 5\quad 理由}\enspace{\color{rulegray}\leaders\hrule\hfill}\par\vspace{1.5mm}
+
+\logsec{4}{気づき}
+\twoboxes{グループの進め方でうまくいったこと}{次に改善したいこと}{18mm}
+\answerbox[自分自身について気づいたこと（得意・苦手、メンバーから学んだこと）]{15mm}
+
+\logsec{5}{次回までにやること}
+\begin{wstabh}{colspec={X[l,m] Q[l,wd=34mm,m] Q[l,wd=24mm,m] Q[c,wd=8mm,m]},row{2-Z}={ht=7mm}}
+  やること & 担当 & 期限 & 済 \\
+  & & & □ \\ & & & □ \\ & & & □ \\
+\end{wstabh}
+
+\end{document}

@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
-"""グループ活動記録シートの Word 版（group-log.docx）を作る。
+"""グループ活動記録シートの Word 版を作る。
 
-内容とページ構成は group-log.tex（PDF 版）と同じ。体裁の部品（色、表、記入欄、
+  group-log.docx         産学連携プロジェクト用（12ページ）。内容は group-log.tex と同じ
+  group-log-simple.docx  汎用・シンプル版（1ページ）。内容は group-log-simple.tex と同じ
+
+体裁の部品（色、表、記入欄、
 フッター）は各回ワークシートの Word 版と共通で、../worksheets/tex2docx.py の関数を使う。
-group-log.tex を直したときは、このファイルの対応する箇所も直すこと。
+group-log.tex / group-log-simple.tex を直したときは、このファイルの対応する箇所も直すこと。
 
-  python3 build-docx.py              group-log.docx を作る（python-docx が必要）
+  python3 build-docx.py              両方を作る（python-docx が必要）
+  python3 build-docx.py full         group-log.docx だけ
+  python3 build-docx.py simple       group-log-simple.docx だけ
   uv run --with python-docx python3 build-docx.py
 """
 import sys
@@ -20,8 +25,6 @@ from docx.enum.section import WD_SECTION  # noqa: E402
 from docx.oxml.ns import qn  # noqa: E402
 from docx.shared import Mm  # noqa: E402
 
-W.Ctx.phase, W.Ctx.tint = W.PHASES["2"][0], W.PHASES["2"][1]
-W.FOOTER_LEFT = "基礎演習Ⅱ　2026年度後期　グループ活動記録シート"
 TW = W.TEXT_W
 
 SESSIONS = [
@@ -180,7 +183,49 @@ def page_final(doc):
           r"① & \\ ② & \\ ③ & \\ ④ & \\ ⑤ & \\ ⑥ & \\", head=False)
 
 
-def main():
+def page_simple(doc):
+    """汎用・シンプル版（1ページ）。"""
+    new_page(doc, None, first=True)
+    t, cell = W.box(doc, TW, fill=W.Ctx.phase, border=(W.Ctx.phase, 4))
+    W.set_cell_margins(cell, 2.5, 2.5, 4, 4)
+    W.cell_paragraph(cell, [("話し合いのたびに1枚、個人で記入する", {})], {"gothic": True, "size": 9, "color": "FFFFFF"})
+    W.cell_paragraph(cell, [("グループ活動記録シート", {})], {"gothic": True, "bold": True, "size": 18, "color": "FFFFFF"})
+    W.name_line(doc, [("氏名", 60), ("グループ", 108), ("プロジェクト", 168)], before=4, after=3)
+    p = W.name_line(doc, [("第", 14)], after=4)  # 「回　日付」以降は下で足す
+    st = {"gothic": True, "size": 9, "color": W.INK2}
+    W.font_of(p.add_run("回　日付"), st)
+    p.paragraph_format.tab_stops.add_tab_stop(Mm(62), W.WD_TAB_ALIGNMENT.LEFT, W.WD_TAB_LEADER.LINES)
+    W.font_of(p.add_run("\t　場所・方法　□ 対面　□ オンライン　□ その他"), st)
+    p.paragraph_format.tab_stops.add_tab_stop(Mm(168), W.WD_TAB_ALIGNMENT.LEFT, W.WD_TAB_LEADER.LINES)
+    W.font_of(p.add_run("\t"), st)
+
+    sec(doc, "1", "出席", before=2)
+    line(doc, [("自分：　□ 出席　□ 遅刻　□ 早退　□ 欠席", {})])
+    W.render_fillin(doc, TW, "欠席・遅刻したメンバーと、その人への共有（誰が・何で）")
+    W.render_fillin(doc, TW, "自分が出席以外のとき：共有してもらった内容と、追いつくためにしたこと")
+
+    sec(doc, "2", "今日の成果")
+    W.render_fillin(doc, TW, "今日の目的・議題")
+    W.render_answerbox(doc, TW, "決まったこと・できたこと（「話した」ではなく、何が決まり、何ができたか）", 26)
+    W.render_answerbox(doc, TW, "まだ決まっていないこと・次回に持ち越すこと", 15)
+
+    sec(doc, "3", "自分の役割")
+    line(doc, [("今日の役割：　□ 進行　□ 記録　□ 調査　□ アイデア出し　□ 資料作成　□ 発表　□ その他（　　　　）", {})])
+    W.render_answerbox(doc, TW, "実際にやったこと・グループへの貢献（具体的に）", 18)
+    W.render_fillin(doc, TW, r"役割を果たせた度合い　1　・　2　・　3　・　4　・　5\quad 理由")
+
+    sec(doc, "4", "気づき")
+    W.render_twoboxes(doc, TW, "グループの進め方でうまくいったこと", "次に改善したいこと", "18mm")
+    W.render_answerbox(doc, TW, "自分自身について気づいたこと（得意・苦手、メンバーから学んだこと）", 15)
+
+    sec(doc, "5", "次回までにやること")
+    table(doc, r"colspec={X[l,m] Q[l,wd=34mm,m] Q[l,wd=24mm,m] Q[c,wd=8mm,m]},row{2-Z}={ht=7mm}",
+          r"やること & 担当 & 期限 & 済 \\ & & & □ \\ & & & □ \\ & & & □ \\")
+
+
+def build_full():
+    W.Ctx.phase, W.Ctx.tint = W.PHASES["2"][0], W.PHASES["2"][1]
+    W.FOOTER_LEFT = "基礎演習Ⅱ　2026年度後期　グループ活動記録シート"
     doc = Document()
     W.setup(doc)
     page_intro(doc)
@@ -190,18 +235,35 @@ def main():
     for _ in range(2):
         page_log(doc, SPARE_SUB, "予備（追加の話し合い用）")
     page_final(doc)
+    save(doc, "group-log.docx", "基礎演習Ⅱ 産学連携プロジェクト グループ活動記録シート")
 
+
+def build_simple():
+    W.Ctx.phase, W.Ctx.tint = W.PHASES["1"][0], W.PHASES["1"][1]
+    W.FOOTER_LEFT = "グループ活動記録シート（汎用版）"
+    doc = Document()
+    W.setup(doc)
+    page_simple(doc)
+    save(doc, "group-log-simple.docx", "グループ活動記録シート（汎用版）")
+
+
+def save(doc, name, title):
     W.normalize(doc.element)
     for s in doc.sections:
         W.normalize(s.footer._element)
     zoom = doc.settings.element.find(qn("w:zoom"))
     if zoom is not None:
         zoom.set(qn("w:percent"), "100")
-    doc.core_properties.title = "基礎演習Ⅱ 産学連携プロジェクト グループ活動記録シート"
+    doc.core_properties.title = title
     doc.core_properties.author = "河合 勝彦"
-    out = HERE / "group-log.docx"
-    doc.save(out)
-    print(out.name)
+    doc.save(HERE / name)
+    print(name)
+
+
+def main():
+    which = sys.argv[1:] or ["full", "simple"]
+    for w in which:
+        {"full": build_full, "simple": build_simple}[w]()
 
 
 if __name__ == "__main__":
