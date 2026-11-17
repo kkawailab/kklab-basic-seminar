@@ -17,6 +17,18 @@ Jekyll で作られており、GitHub Pages がリポジトリの内容から自
   url: /sessions/03-literature-search/   # 任意。外部サイトは https:// から
 ```
 
+PDF・Word など複数の版へのリンクを本文の下に並べるときは `links:` を使います（`url:` と併用もできます）。
+
+```yaml
+- date: 2026-11-17
+  text: グループ活動記録シートを掲載しました。
+  links:
+  - title: PDF
+    url: /materials/group-log/group-log.pdf
+  - title: Word
+    url: /materials/group-log/group-log.docx
+```
+
 ### 日程を入れる
 
 `_data/schedule.yml` の `date` に `YYYY-MM-DD` で書きます。日程を入れると、トップページの「次回の授業」と「15回の流れ」、授業計画ページの「次回」「終了した回」の表示が自動で切り替わります。時限や教室が通常と違う回は `period` / `room` を追加します。

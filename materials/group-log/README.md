@@ -12,11 +12,13 @@
 | ファイル | 内容 |
 |---|---|
 | `group-log.pdf` | 印刷・PDF書き込み用（A4、12ページ） |
+| `group-log.docx` | Word 版（Word に直接入力する用、12ページ）。内容は PDF 版と同じ |
 | `group-log.md` | Markdown 版（テキストエディタや Teams などで記入する用）。内容は PDF 版と同じ |
 | `group-log.tex` | PDF の原稿（LuaLaTeX） |
+| `build-docx.py` | Word 版を作るスクリプト（python-docx。部品は `../worksheets/tex2docx.py` と共通） |
 | `Makefile` | ビルド |
 
-## ページ構成（PDF）
+## ページ構成（PDF・Word 共通）
 
 | ページ | 内容 | 記入するとき |
 |---|---|---|
@@ -38,12 +40,16 @@
 
 LuaLaTeX（TeX Live の jlreq、tcolorbox、tabularray）で組みます。色や記入欄の部品は各回ワークシートと共通で、`../worksheets/preamble.tex` を読み込んでいます。
 
+Word 版は python-docx で作ります（入っていなければ `uv run --with python-docx` で一時的に使います）。
+
 ```sh
 cd materials/group-log
-make            # group-log.pdf を作る
+make            # group-log.pdf と group-log.docx を作る
+make pdf        # PDF 版だけ
+make word       # Word 版だけ
 make clean      # build/ を消す
 ```
 
 中間ファイルは `build/` に入ります（Git には含めません）。
 
-日程や題目を変えるときは、`group-log.tex` の `\logpage{回}{日付}{題目}` の行と、2ページの一覧の日付を直します。Markdown 版（`group-log.md`）は手で同じ箇所を直してください。各回のページは1ページに収まるよう記入欄の高さを詰めてあるので、欄を足したときは `make` 後にページ数（12）が変わっていないか確認してください。
+日程や題目を変えるときは、`group-log.tex` の `\logpage{回}{日付}{題目}` の行と、2ページの一覧の日付を直します。Word 版は `build-docx.py` の `SESSIONS` と一覧の日付を、Markdown 版（`group-log.md`）は手で同じ箇所を直してください。各回のページは1ページに収まるよう記入欄の高さを詰めてあるので、欄を足したときは `make` 後にページ数（12）が変わっていないか確認してください。

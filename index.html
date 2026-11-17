@@ -34,7 +34,7 @@ body_class: home
     <h2 id="news-h" class="section-title">お知らせ</h2>
     {% if site.data.announcements and site.data.announcements.size > 0 %}
     <ul class="news">
-      {% for a in site.data.announcements %}<li><time datetime="{{ a.date | date: '%Y-%m-%d' }}">{{ a.date | date: '%Y.%m.%d' }}</time><span>{% if a.url %}<a href="{% if a.url contains '://' %}{{ a.url }}{% else %}{{ a.url | relative_url }}{% endif %}">{{ a.text }}</a>{% else %}{{ a.text }}{% endif %}</span></li>
+      {% for a in site.data.announcements %}<li><time datetime="{{ a.date | date: '%Y-%m-%d' }}">{{ a.date | date: '%Y.%m.%d' }}</time><span>{% if a.url %}<a href="{% if a.url contains '://' %}{{ a.url }}{% else %}{{ a.url | relative_url }}{% endif %}">{{ a.text }}</a>{% else %}{{ a.text }}{% endif %}{% if a.links %}<span class="news__links">{% for l in a.links %}<a href="{% if l.url contains '://' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}">{{ l.title }}</a>{% unless forloop.last %}<span aria-hidden="true">｜</span>{% endunless %}{% endfor %}</span>{% endif %}</span></li>
       {% endfor %}
     </ul>
     {% else %}

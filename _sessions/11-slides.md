@@ -14,6 +14,9 @@ materials:
   - title: グループ活動記録シート（PDF、12ページ）
     url: /materials/group-log/group-log.pdf
     note: 第6〜12回のグループの話し合いごとに、出欠、成果、自分の役割、気づきを個人で記録する。第13回で全体を振り返る
+  - title: グループ活動記録シート（Word）
+    url: /materials/group-log/group-log.docx
+    note: PDF 版と同じ内容。Word に直接入力して提出する
   - title: グループ活動記録シート（Markdown、記入用）
     url: /materials/group-log/group-log.md
     note: PDF 版と同じ内容。テキストエディタや Teams などで記入して提出する

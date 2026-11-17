@@ -187,6 +187,8 @@ main { padding-block: 2.5rem 4rem; }
 .news { list-style: none; margin: 0; padding: 0; }
 .news li { display: grid; grid-template-columns: 6.5em 1fr; gap: .75rem; padding: .7rem 0; border-bottom: 1px solid var(--rule); }
 .news time { color: var(--ink-3); font-size: .9rem; padding-top: .1rem; }
+.news__links { display: block; margin-top: .3rem; font-size: .9rem; }
+.news__links > span { color: var(--ink-3); margin: 0 .4em; }
 
 /* この授業について・履修にあたって */
 .about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 4rem; }
