@@ -21,6 +21,15 @@ materials:
   - title: グループ活動記録シート（Markdown、記入用）
     url: /materials/group-log/group-log.md
     note: PDF 版と同じ内容。テキストエディタや Teams などで記入して提出する
+  - title: グループ活動記録シート　汎用版（PDF、1ページ）
+    url: /materials/group-log/group-log-simple.pdf
+    note: 授業や日程に依存しない1ページの版。ほかのグループプロジェクトでも、話し合いのたびに1枚ずつ記入して使える
+  - title: グループ活動記録シート　汎用版（Word）
+    url: /materials/group-log/group-log-simple.docx
+    note: PDF 版と同じ内容。回ごとにファイルをコピーして使う
+  - title: グループ活動記録シート　汎用版（Markdown、記入用）
+    url: /materials/group-log/group-log-simple.md
+    note: PDF 版と同じ内容。回ごとにファイルをコピーして使う
 ---
 ## この回でやること
 

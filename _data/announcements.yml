@@ -7,6 +7,15 @@
 #   links: 任意。本文の下に並べるリンク（title と url の組）。PDF・Word などの版を並べるときに使う。
 # ------------------------------------------------------------
 - date: 2026-11-17
+  text: グループ活動記録シートの汎用版（1ページ、PDF・Word・Markdown）を掲載しました。授業や日程に依存しないので、ほかのグループプロジェクトでも話し合いのたびに記入して使えます。
+  links:
+  - title: PDF
+    url: /materials/group-log/group-log-simple.pdf
+  - title: Word
+    url: /materials/group-log/group-log-simple.docx
+  - title: Markdown
+    url: /materials/group-log/group-log-simple.md
+- date: 2026-11-17
   text: 産学連携プロジェクトの「グループ活動記録シート」（PDF・Word・Markdown）を掲載しました。第6〜12回のグループの話し合いごとに、出欠、成果、自分の役割、気づきを個人で記録し、第13回で全体を振り返ります。
   links:
   - title: PDF
