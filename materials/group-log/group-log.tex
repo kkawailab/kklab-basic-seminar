@@ -1,0 +1,186 @@
+% ============================================================
+% 基礎演習Ⅱ　産学連携プロジェクト　グループ活動記録シート
+%   第6〜12回のグループディスカッションごとに1枚ずつ記入し、
+%   第13回（プロジェクトの総括）で全体を振り返る。
+%   デザインは各回ワークシート（../worksheets/preamble.tex）と共通。
+%   ビルド：make（Makefile を参照）
+% ============================================================
+\input{../worksheets/preamble}
+
+\colorlet{phase}{ptwo}
+\colorlet{phasetint}{ptwotint}
+\fancyfoot[L]{\sffamily\scriptsize\color{inkthree}基礎演習Ⅱ　2026年度後期　グループ活動記録シート}
+
+% ------------------------------------------------------------
+% ページの見出し　\loghead{上の行}{題目}
+% ------------------------------------------------------------
+\newcommand\loghead[2]{%
+  \clearpage
+  \renewcommand*\sessionmark{#2}%
+  \begin{tcolorbox}[enhanced,colback=phase,colframe=phase,arc=2mm,boxrule=0pt,
+      left=4mm,right=4mm,top=2.5mm,bottom=2.5mm,fontupper=\color{white}\sffamily]
+    {\small #1}\par
+    \vspace{0.6mm}{\LARGE\bfseries #2}
+  \end{tcolorbox}
+  \vspace{-1mm}
+  {\sffamily\small\color{inktwo}
+  学籍番号\fieldline{30mm}{}\quad 氏名\fieldline{42mm}{}\quad グループ\fieldline{28mm}{}}\par
+  \vspace{1mm}}
+
+% 小見出し（\work より詰める）
+\newcommand\logsec[2]{%
+  \par\vspace{1.2mm}%
+  {\sffamily\bfseries\color{phase}■ #1}\enspace{\sffamily\bfseries #2}\par\vspace{0.8mm}}
+
+% 選択肢の□を並べる
+\newcommand\opt[1]{□\,#1\quad}
+
+% 毎回の記録　\logpage{回}{日付}{題目}
+\newcommand\logpage[3]{%
+  \loghead{グループ活動記録　\textbar　第#1回　#2}{#3}
+
+  \logsec{1}{出席}
+  {\small 自分：\enspace\opt{出席}\opt{遅刻}\opt{早退}\opt{欠席}
+    {\color{inktwo}\footnotesize → 出席以外のときは、次の2行も書く}}\par
+  \vspace{1.2mm}
+  \fillin{事前の連絡\enspace □\,した\enspace □\,していない\quad 共有してもらった内容と相手}
+  \fillin{追いつくためにしたこと／グループのためにできること}
+  {\small メンバーの出欠}\enspace{\footnotesize\color{inktwo}番号は1ページの名簿の番号。○ 出席　△ 遅刻・早退　× 欠席}\par
+  \vspace{0.8mm}
+  \begin{wstab}{colspec={Q[l,wd=16mm,m] X[c,m] X[c,m] X[c,m] X[c,m] X[c,m] X[c,m]},
+      row{1}={bg=phasetint,font=\sffamily\footnotesize\bfseries},row{2}={ht=7mm}}
+    番号 & ① & ② & ③ & ④ & ⑤ & ⑥ \\
+    出欠 & & & & & & \\
+  \end{wstab}\par\vspace{1.5mm}
+  \fillin{欠席者への共有（誰が・何で・何を）}
+
+  \logsec{2}{ディスカッションの成果}
+  \fillin{今日の目的・議題}
+  \answerbox[グループで決まったこと・できあがったもの（成果物）]{19mm}
+  \twoboxes{まだ決まっていないこと・次回に持ち越すこと}{意見が分かれた点と、どう決めたか}{14mm}
+
+  \logsec{3}{自分の役割}
+  {\small 今日の役割：\enspace\opt{司会・進行}\opt{記録}\opt{調べ役}\opt{AI操作}\opt{資料作成}\opt{発表}\opt{時間管理}\opt{その他（\hspace{10mm}）}}\par
+  \vspace{0.5mm}
+  \answerbox[実際にやったこと・グループへの貢献（具体的に）]{14mm}
+  \par\noindent{\sffamily\small 役割を果たせた度合い\enspace 1\enspace・\enspace 2\enspace・\enspace 3\enspace・\enspace 4\enspace・\enspace 5\quad 理由}\enspace{\color{rulegray}\leaders\hrule\hfill}\par\vspace{1.5mm}
+
+  \logsec{4}{気づき}
+  \twoboxes{グループの進め方でうまくいったこと}{次に改善したいこと}{14mm}
+  \answerbox[自分自身について気づいたこと（得意・苦手、メンバーから学んだこと）]{12mm}
+
+  \logsec{5}{次回までの分担}
+  \begin{wstabh}{colspec={X[l,m] Q[l,wd=30mm,m] Q[l,wd=22mm,m] Q[c,wd=8mm,m]},row{2-Z}={ht=6mm}}
+    やること & 担当 & 期限 & 済 \\
+    & & & □ \\ & & & □ \\ & & & □ \\
+  \end{wstabh}\par
+}
+
+\begin{document}
+
+% ============================================================
+% 1ページ目：使い方・名簿・ルール
+% ============================================================
+\renewcommand*\sessionmark{使い方・名簿・ルール}
+\begin{tcolorbox}[enhanced,colback=phase,colframe=phase,arc=2mm,boxrule=0pt,
+    left=4mm,right=4mm,top=2.5mm,bottom=2.5mm,fontupper=\color{white}\sffamily]
+  {\small 基礎演習Ⅱ　2026年度後期　\textbar　実践プロジェクト（第6〜13回）}\par
+  \vspace{0.6mm}{\LARGE\bfseries 産学連携プロジェクト　グループ活動記録シート}
+\end{tcolorbox}
+\vspace{-1mm}
+{\sffamily\small\color{inktwo}
+学籍番号\fieldline{30mm}{}\quad 氏名\fieldline{42mm}{}\quad グループ\fieldline{28mm}{}}\par
+\vspace{2mm}
+
+\begin{tcolorbox}[enhanced,colback=phasetint,colframe=phasetint,arc=1.5mm,boxrule=0pt,
+    left=3mm,right=3mm,top=1.5mm,bottom=1.5mm,fontupper=\small]
+  {\sffamily\bfseries\color{phase}このシートの使い方}\par
+  \begin{itemize}[label=\textcolor{phase}{・},leftmargin=1.2em]
+    \item グループで話し合った回ごとに、授業の最後の5分で1枚（3〜9ページ）を\textbf{個人で}記入する。授業外に集まったときなどは予備のページ（10・11ページ）を使う。
+    \item 毎回、①その日の出欠、②ディスカッションで得られた成果、③自分の役割と実際にやったこと、④気づき、を書く。成果は「話した」ではなく「何が決まったか、何ができたか」で書く。
+    \item 欠席・遅刻・早退した回も記入する。メンバーから共有を受けた内容と、追いつくためにしたことを書く。
+    \item 記入したら、2ページの「出席と役割の記録」に1行で転記する。第13回（プロジェクトの総括）で最後のページを書き、全体を振り返る。
+    \item 他のメンバーの出欠は、責めるためではなく、欠席者への共有と分担の見直しに使う。
+  \end{itemize}
+\end{tcolorbox}
+
+\work[50mm]{名簿}{グループのメンバー（以後のページでは番号で書く）}
+\begin{wstabh}{colspec={Q[c,wd=10mm,m] X[2,l,m] X[2,l,m] X[3,l,m]},row{2-Z}={ht=8mm}}
+  番号 & 氏名 & 最初の役割 & 連絡方法・メモ \\
+  ① & & & \\ ② & & & \\ ③ & & & \\ ④ & & & \\ ⑤ & & & \\ ⑥ & & & \\
+\end{wstabh}
+
+\work[50mm]{ルール}{グループで決めた約束}
+\begin{wstab}{colspec={Q[l,wd=46mm,m] X[l,m]},row{1-Z}={ht=14mm}}
+  \hc{欠席・遅刻の連絡\newline 誰に・いつまでに・何で} & \\
+  \hc{欠席者への共有のしかた\newline 誰が・何で・いつまでに} & \\
+  \hc{授業外の作業の進め方\newline 締め切り・集まり方} & \\
+  \hc{意見が分かれたときの決め方} & \\
+\end{wstab}
+
+% ============================================================
+% 2ページ目：出席と役割の記録の一覧
+% ============================================================
+\loghead{グループ活動記録　\textbar　第6〜12回の一覧}{出席と役割の記録}
+
+\instr{毎回の記録を書いたら、ここに1行で転記する。出欠は ○ 出席　△ 遅刻・早退　× 欠席。欠席したメンバーは名簿の番号で書く。第13回の振り返りは、この一覧をもとに書く。}
+\begin{wstabh}{colspec={Q[c,wd=9mm,m] Q[c,wd=13mm,m] Q[c,wd=11mm,m] Q[c,wd=15mm,m] X[2,l,m] X[3,l,m] X[3,l,m]},row{2-Z}={ht=19mm}}
+  回 & 日付 & 自分の\newline 出欠 & 欠席した\newline メンバー & 自分の役割 & グループの成果（一言） & 気づき（一言） \\
+  6 & 11/4 & & & & & \\
+  7 & 11/11 & & & & & \\
+  8 & 11/18 & & & & & \\
+  9 & 11/25 & & & & & \\
+  10 & 12/2 & & & & & \\
+  11 & 12/9 & & & & & \\
+  12 & 1/13 & & & & & \\
+  予備 & & & & & & \\
+  予備 & & & & & & \\
+\end{wstabh}
+
+% ============================================================
+% 3〜9ページ：毎回の記録
+% ============================================================
+\logpage{6}{11月4日（水）}{産学連携キックオフ}
+\logpage{7}{11月11日（水）}{コンセプト立案}
+\logpage{8}{11月18日（水）}{店舗設計・空間構成}
+\logpage{9}{11月25日（水）}{動線とUXのデザイン}
+\logpage{10}{12月2日（水）}{提案のブラッシュアップ}
+\logpage{11}{12月9日（水）}{プレゼン資料作成}
+\logpage{12}{2027年1月13日（水）}{最終プレゼン発表会}
+
+% 10・11ページ：予備（授業外の集まりや、日程が変わった回の用）
+\logpage{\hspace{6mm}}{\hspace{8mm}月\hspace{8mm}日（\hspace{5mm}）\quad □ 授業内\enspace □ 授業外}{予備（追加の話し合い用）}
+\logpage{\hspace{6mm}}{\hspace{8mm}月\hspace{8mm}日（\hspace{5mm}）\quad □ 授業内\enspace □ 授業外}{予備（追加の話し合い用）}
+
+% ============================================================
+% 12ページ：プロジェクト全体の振り返り（第13回）
+% ============================================================
+\loghead{グループ活動記録　\textbar　第13回　2027年1月20日（水）}{プロジェクト全体の振り返り}
+
+\logsec{1}{出席の集計}
+{\small 第6〜12回（全7回）のうち\quad 出席\fieldline{12mm}{}回\quad 遅刻・早退\fieldline{12mm}{}回\quad 欠席\fieldline{12mm}{}回}\par
+\vspace{1mm}
+{\footnotesize\color{inktwo}2ページの「出席と役割の記録」から数える。授業外の集まりへの参加は\fieldline{12mm}{}回}\par
+
+\logsec{2}{自分の役割を振り返る}
+\begin{wstab}{colspec={Q[l,wd=50mm,m] X[l,m]},row{1-Z}={ht=14mm}}
+  \hc{自分が担った役割は、回を追ってどう変わったか} & \\
+  \hc{グループの成果のうち、自分が最も貢献した部分と、その具体的な行動} & \\
+  \hc{果たせなかった役割、もっとできたこと。その理由} & \\
+  \hc{欠席や作業の遅れが出たとき、グループはどう対応したか。自分は何をしたか} & \\
+\end{wstab}
+
+\logsec{3}{気づきをまとめる}
+\begin{wstab}{colspec={Q[l,wd=50mm,m] X[l,m]},row{1-Z}={ht=14mm}}
+  \hc{グループで成果を出すために大事だと気づいたこと} & \\
+  \hc{自分の強みと課題（チームの中での自分）} & \\
+  \hc{次にグループで活動するとき、自分が意識すること} & \\
+\end{wstab}
+
+\logsec{4}{メンバーの良かった行動}
+{\footnotesize\color{inktwo}名簿の番号ごとに、助けられたこと・見習いたいことを具体的に書く（自分の欄は空けてよい）}\par\vspace{0.8mm}
+\begin{wstab}{colspec={Q[c,wd=10mm,m] X[l,m]},row{1-Z}={ht=6.5mm}}
+  ① & \\ ② & \\ ③ & \\ ④ & \\ ⑤ & \\ ⑥ & \\
+\end{wstab}
+
+\end{document}

@@ -12,6 +12,12 @@ materials:
   - title: ワークシートの解説　音声付きスライド（PowerPoint）
     url: /materials/worksheets/slides/worksheet-08-slides.pptx
     note: スライドショーを開始すると音声が自動で流れ、次のスライドへ進む
+  - title: グループ活動記録シート（PDF、12ページ）
+    url: /materials/group-log/group-log.pdf
+    note: 第6〜12回のグループの話し合いごとに、出欠、成果、自分の役割、気づきを個人で記録する。第13回で全体を振り返る
+  - title: グループ活動記録シート（Markdown、記入用）
+    url: /materials/group-log/group-log.md
+    note: PDF 版と同じ内容。テキストエディタや Teams などで記入して提出する
 ---
 ## この回でやること
 
