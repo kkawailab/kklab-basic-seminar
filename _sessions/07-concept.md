@@ -5,6 +5,9 @@ phase: 2
 tag: AIと発想法
 summary: 既存の枠組みにとらわれない店舗コンセプトを、AIとの対話から創出する
 materials:
+  - title: 地域の困りごとからビジネスを創出する　河津桜のデジタル管理に学ぶ発想法と記入式テンプレート（PDF）
+    url: /materials/business/business_creation_template_ja.pdf
+    note: 新聞記事の事例から発想の構造を取り出し、45分のワークショップ手順、記入シートA〜C、記入例で事業案を組み立てる
   - title: ワークシートの解説　動画（MP4、約8分）
     url: /materials/worksheets/slides/video/#s07
     note: ワークシートの各欄の書き方を、記入例とともにスライドとナレーションで説明する
