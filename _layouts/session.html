@@ -30,7 +30,7 @@ layout: default
       <h2>資料</h2>
       {% if page.materials and page.materials.size > 0 %}
       <ul class="materials">
-        {% for m in page.materials %}<li><a href="{% if m.url contains '://' %}{{ m.url }}{% else %}{{ m.url | relative_url }}{% endif %}">{{ m.title }}</a>{% if m.note %} <span class="muted">{{ m.note }}</span>{% endif %}</li>
+        {% for m in page.materials %}<li>{% if m.url %}<a href="{% if m.url contains '://' %}{{ m.url }}{% else %}{{ m.url | relative_url }}{% endif %}">{{ m.title }}</a>{% else %}{{ m.title }}{% endif %}{% if m.note %} <span class="muted">{{ m.note }}</span>{% endif %}</li>
         {% endfor %}
       </ul>
       {% else %}
