@@ -36,13 +36,13 @@
    "text": "719cea62ab5b"
   },
   "space": {
-   "sec": 40.15,
-   "sha1": "690f262aaba0",
+   "sec": 40.3,
+   "sha1": "4126cf080985",
    "text": "ea25d608c3f0"
   },
   "conclusion:space": {
-   "sec": 35.16,
-   "sha1": "a7b8381bb347",
+   "sec": 35.26,
+   "sha1": "5d6804f8316e",
    "text": "0240785e1d2c"
   },
   "flow": {
@@ -229,7 +229,7 @@
   },
   "effect": {
    "sec": 33.62,
-   "sha1": "758a5274a196",
+   "sha1": "1ea2acd75023",
    "text": "92ae384ded7d"
   },
   "story:effect": {
@@ -294,7 +294,7 @@
   },
   "st_newday": {
    "sec": 36.5,
-   "sha1": "5d32acdac316",
+   "sha1": "36c6ce2b0330",
    "text": "43b7489f6585"
   },
   "st_end": {
@@ -318,8 +318,8 @@
    "text": "1aa14a2b8d50"
   },
   "sources": {
-   "sec": 31.42,
-   "sha1": "4178752f83ef",
+   "sec": 31.39,
+   "sha1": "8d01602c2ac5",
    "text": "637ebe767c06"
   },
   "appendix": {

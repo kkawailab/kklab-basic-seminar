@@ -311,6 +311,80 @@ def senior(out):
     c.save(out + '/story3.png')
 
 
+def student(out):
+    zones = [('荷物の\n試し置き', 5, 8, 33, 46), ('おためしキャビン', 36, 8, 70, 60), ('呼び出し式の\n相談窓', 73, 8, 95, 46),
+             ('計画テーブル', 5, 51, 33, 90), ('学生パスのりば', 36, 65, 70, 90), ('電源カウンター', 73, 51, 95, 90)]
+    marks = {'計画テーブル': 1, 'おためしキャビン': 2, '呼び出し式の\n相談窓': 3}
+    route = ['計画テーブル', 'おためしキャビン', '呼び出し式の\n相談窓']
+    plan(out + '/plan.png', 5.5, 2.95, zones, marks, route, 19)
+    plan(out + '/story1.png', 2.8333, 1.6, zones, marks, ['計画テーブル'], 19, focus=['計画テーブル'])
+    plan(out + '/story2.png', 2.8333, 1.6, zones, marks, ['計画テーブル', 'おためしキャビン'], 19, focus=['おためしキャビン'])
+
+    # 表紙：仲間が、入口の大きなテーブルで地図を囲む
+    c = Canvas(3.5, 4.4, TINT)
+    c.circle(80, 11, 8, fill=AMBER)
+    for px, col, hair in ((18, GREEN, INK), (34, AMBER, AMBERTEXT), (50, INK2, INK), (66, AMBERTEXT, INK), (82, GREEN, AMBERTEXT)):
+        person(c, px, 58, 30, body=col, hair=hair)
+    c.rr((6, 46, 94, 72), 3, fill=WHITE)                    # テーブル（地図）
+    c.rr((6, 70, 94, 74), 1.5, fill=INK2)
+    pts = [(16, 64), (34, 55), (52, 62), (70, 53), (84, 60)]
+    c.line(pts, AMBER, 0.9, dash=(2.4, 1.8))
+    for px, py in (pts[0], pts[2], pts[4]):
+        c.circle(px, py - 2.4, 3.0, fill=INK)
+        c.poly([(px - 2.1, py - 1.2), (px + 2.1, py - 1.2), (px, py + 1.4)], INK)
+        c.circle(px, py - 2.4, 1.2, fill=AMBER)
+    tree(c, 12, 94, 4)
+    pod(c, 58, 86, 46, heads=())
+    c.save(out + '/cover.png')
+
+    # 人物（丸く切り抜かれる）
+    c = Canvas(1.5, 1.5, TINT)
+    c.rr((16, 70, 84, 118), 16, fill=GREEN)
+    c.rr((40, 66, 60, 78), 4, fill=WHITE)                   # フードのひも付きの襟
+    c.circle(50, 43, 23.5, fill=INK)
+    c.circle(50, 48, 19.5, fill=SKIN)
+    c.d.pieslice(c.box(28, 20, 72, 60), 185, 355, fill=INK)
+    c.circle(42.5, 50, 2.0, fill=INK); c.circle(57.5, 50, 2.0, fill=INK)
+    c.d.arc(c.box(43, 51, 57, 62), 20, 160, fill=AMBERTEXT, width=int(1.4 * c.u))
+    c.save(out + '/avatar.png')
+
+    # ある日：夕方、販売店の前で立ち止まり、入らずに通りすぎる
+    c = Canvas(4.0, 2.95, TINT)
+    c.circle(12, 16, 7, fill=AMBER)                         # 夕日
+    c.rr((0, 78, 100, 100), 0, fill=PAPER)
+    c.rr((42, 12, 97, 78), 1.2, fill=WHITE)                 # 販売店
+    c.rr((42, 12, 97, 25), 1.2, fill=INK)
+    c.text(69.5, 18.5, 'モビリティ販売', 3.8, fill=AMBER)
+    c.rr((46, 31, 76, 72), 1, fill=SKY)                     # ショーウインドー
+    pod(c, 61, 57, 22, heads=())
+    c.rr((81, 38, 93, 78), 0.8, fill=INK2)                  # 入口
+    c.rr((79.5, 30, 94.5, 36), 0.8, fill=AMBER)
+    c.text(87, 33, '受付', 3.0, fill=INK)
+    person(c, 24, 84, 50, body=GREEN, hair=INK)
+    c.rr((27.5, 52, 32.5, 68), 1.4, fill=INK2)              # かばん
+    c.circle(35, 24, 6, fill=WHITE); c.text(35, 24, '？', 6.5, fill=AMBERTEXT)
+    c.line([(15, 92), (4, 92)], AMBERTEXT, 0.6, dash=(1.6, 1.2))
+    c.poly([(4, 89.4), (4, 94.6), (1, 92)], AMBERTEXT)
+    c.save(out + '/scene.png')
+
+    # 新しい一日の3つ目：合宿の朝、大学の前に車が来る
+    c = Canvas(2.8333, 1.6, SKY)
+    c.rr((0, 76, 100, 100), 0, fill=PAPER)
+    c.circle(88, 16, 7, fill=AMBER)
+    c.rr((4, 30, 36, 78), 0.8, fill=WHITE)                  # 大学
+    c.rr((16, 12, 24, 32), 0.8, fill=WHITE)
+    c.circle(20, 20, 2.4, fill=INK2)
+    for i in range(3):
+        for j in range(2):
+            c.rr((8 + i * 9.5, 38 + j * 14, 13 + i * 9.5, 47 + j * 14), 0.4, fill=SKY)
+    c.rr((16, 62, 24, 78), 0.6, fill=AMBERTEXT)
+    pod(c, 74, 70, 40, heads=())
+    for px, col, hair, h in ((41, GREEN, INK, 40), (48, AMBER, AMBERTEXT, 36), (55, INK2, INK, 40)):
+        person(c, px, 84, h, body=col, hair=hair)
+    c.rr((58.5, 68, 63.5, 84), 0.8, fill=AMBERTEXT)         # 荷物
+    c.save(out + '/story3.png')
+
+
 # ------------------------------------------------------------
 # 音声のボタン（発表の音声、教員の解説）。スライドの右下に置く音声の絵として使う。角は build.js が丸く切り抜く
 # ------------------------------------------------------------
@@ -322,7 +396,7 @@ def audio(out):
         c.save(out + '/%s.png' % name)
 
 
-TOPICS = {'family': family, 'senior': senior, 'audio': audio}
+TOPICS = {'family': family, 'senior': senior, 'student': student, 'audio': audio}
 for topic in (sys.argv[1:] or TOPICS):
     TOPICS[topic](os.path.join(HERE, 'images', topic))
     print('images/%s' % topic)

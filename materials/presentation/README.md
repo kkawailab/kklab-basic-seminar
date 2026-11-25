@@ -29,14 +29,15 @@
 
 ## 作例（`examples/`）
 
-テーマ「2050年のカーディーラーの新店舗」で、5つの型すべてに内容を入れた作例です。企業名、数値、調査はすべて架空で、表紙と出典のスライドにその旨を書いてあります。図（ゾーニング図、場面のイラスト）は `make_images.py` で描いたものです。
+テーマ「2050年のカーディーラーの新店舗」で、型に内容を入れた作例です。題材は3つあり、ファミリー層と高齢者層は5つの型すべて、大学生は場面起点型と物語型の2つを作ってあります（全部で12本）。企業名、数値、調査はすべて架空で、表紙と出典のスライドにその旨を書いてあります。図（ゾーニング図、場面のイラスト）は `make_images.py` で描いたものです。
 
 | ファイル | 顧客ターゲット | 提案 |
 |---|---|---|
 | `examples/presentation-example-family-<型>.pptx` | 若いファミリー層 | 「試乗するのは、家族の一週間。」車ではなく、家族の暮らしを先に試せる店。入口のまちかどパーク、車内を部屋として並べたキャビン・リビング、子どもの一人乗りを親が確かめる見守りラウンジ |
 | `examples/presentation-example-senior-<型>.pptx` | 免許を返納し、自動運転車を求める高齢者層 | 「免許は返した。行き先は、返さない。」車を選ぶ店ではなく、行き先を取り戻す店。まちの地図に行きたい所を置く行き先の広場、のりおり練習デッキ、家族と画面でつなぐ茶の間ラウンジ |
+| `examples/presentation-example-student-<型>.pptx`（`situation`・`story` のみ） | 大学生（販売店に入りにくいと感じている） | 「買う気がなくても、入っていい。」車を売る店ではなく、仲間と出かける計画を立てに来る店。受付のない入口の計画テーブル、仲間と車内に座って人数と荷物を確かめるおためしキャビン、呼ぶまで店員が来ない呼び出し式の相談窓、週末だけ借りられる学生パス |
 
-`<型>` は `basic`・`situation`・`story`・`conclusion`・`compare` です。同じ提案を5つの型で組み立ててあるので、型による見せ方の違いを比べられます。
+`<型>` は `basic`・`situation`・`story`・`conclusion`・`compare` です。同じ提案を複数の型で組み立ててあるので、型による見せ方の違いを比べられます。
 
 ### 作例の音声（発表の音声と、教員の解説）
 
@@ -58,7 +59,7 @@
 | ファイル | 内容 |
 |---|---|
 | `build.js` | テンプレートと作例を組み立てる（pptxgenjs）。レイアウトの部品（`patterns()`）と、型ごとの章・案内文・ノート（`VARIANTS`） |
-| `examples/family.js`・`examples/senior.js` | 作例の内容（入力枠の名前 → 入れる文字、図のファイル名） |
+| `examples/family.js`・`examples/senior.js`・`examples/student.js` | 作例の内容（入力枠の名前 → 入れる文字、図のファイル名）。`types` を書くと、その型だけを作る（`student.js` は場面起点型と物語型） |
 | `examples/make_images.py` | 作例の図を描く（Pillow）。`examples/images/<題材>/` に書き出す |
 | `examples/images/` | 作例の図（表紙、人物、ゾーニング図、場面）。`images/audio/` は音声のボタンの絵 |
 | `examples/narration/<題材>.json` | 作例の音声の原稿。`talk`（発表の原稿）と `comment`（教員の解説） |
@@ -79,13 +80,13 @@ python3 examples/make_images.py        # 作例の図と、音声のボタンの
 pip install edge-tts mutagen           # 初回のみ。音声の合成にはネットワークが必要
 python3 examples/make_audio.py         # 作例の音声（原稿を変えたものだけ作り直す。--force ですべて）
 
-node build.js --examples               # 作例（2題材 × 5つの型）
+node build.js --examples               # 作例（3題材、全部で12本）
 node build.js --examples senior story  # 題材と型を指定
 ```
 
 - **案内文や章の名前を変える**：`build.js` の `VARIANTS` の `layouts`（章の名前、案内文）と `slides`（時間配分、ノート）を直す。目安の秒数の合計が300秒を超えるとエラーになる
 - **型を増やす**：`VARIANTS` に項目を足す。レイアウトは `patterns()` の部品（`rowsStat`・`persona`・`sceneRows`・`copy3`・`imagePoints`・`flow4`・`effectPlan`・`cols4`・`statement`・`alternatives`・`storyboard3`・`compare3`）を組み合わせる
-- **作例の題材を増やす**：`examples/<題材>.js` を作り（`family.js` を写して書き換える）、図を `examples/images/<題材>/` に置く。`content` のキーは、`build.js` の各スライドの `use` に対応する
+- **作例の題材を増やす**：`examples/<題材>.js` を作り（`family.js` を写して書き換える）、図を `examples/images/<題材>/` に置く（`make_images.py` に題材の関数を足す）。`content` のキーは、`build.js` の各スライドの `use` に対応する。一部の型だけを作るときは `types: ['situation', 'story']` のように書き、その型で使うキーだけを用意する（`student.js` を参照）。音声を入れるときは、`examples/narration/<題材>.json` に原稿を書く
 - **作例の音声の原稿を直す**：`examples/narration/<題材>.json` を直し、`make_audio.py`、`build.js --examples` の順に実行する。キーは `content` と同じ。型によって話し出しを変えるときは `"型:キー"`（例 `"conclusion:persona"`）を足すと、その型ではそちらが使われる。発表の音声がスライドの目安の秒数を超えると `build.js` が知らせ、合計が5分を超えるとエラーになる。読み間違いは、`make_audio.py` の `READ`（読み替え）に足して直す
 - **音声なしの作例を作る**：`examples/audio/<題材>/audio.json` がない題材は、音声なしで組まれる
 

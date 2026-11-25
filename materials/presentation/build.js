@@ -998,6 +998,7 @@ async function finish(file, LAYOUTS, SLIDES, ex) {
   for (const topic of pick(topics, args.filter(a => topics.includes(a)))) {
     const ex = Object.assign({ id: topic }, require(path.join(dir, topic + '.js')), { audio: loadAudio(topic) });
     if (!ex.audio) console.log(`${topic}: 音声がないので、音声なしで組む（python3 examples/make_audio.py で作る）`);
-    for (const id of ids) await build(id, ex);
+    // 題材が types を持つときは、その型だけを作る（examples/student.js は場面起点型と物語型だけ）
+    for (const id of ids.filter(x => !ex.types || ex.types.includes(x))) await build(id, ex);
   }
 })();

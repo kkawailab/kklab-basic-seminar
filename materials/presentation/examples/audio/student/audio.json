@@ -1,0 +1,186 @@
+{
+ "talk": {
+  "cover": {
+   "sec": 13.13,
+   "sha1": "05357b94b4c6",
+   "text": "17583250e346"
+  },
+  "story:cover": {
+   "sec": 10.51,
+   "sha1": "86c578306003",
+   "text": "848d5e77f782"
+  },
+  "sit_scene": {
+   "sec": 29.02,
+   "sha1": "e60be747ee34",
+   "text": "3d9bb628e8dd"
+  },
+  "sit_want": {
+   "sec": 31.94,
+   "sha1": "523a5d34b2c5",
+   "text": "4f16f3d72b9f"
+  },
+  "sit_alts": {
+   "sec": 35.16,
+   "sha1": "130389838097",
+   "text": "6ff22073e7cf"
+  },
+  "sit_offer": {
+   "sec": 28.9,
+   "sha1": "f889bac5492a",
+   "text": "dc7e7adb760e"
+  },
+  "space": {
+   "sec": 45.41,
+   "sha1": "0a5b26fdf3d6",
+   "text": "25f028c45572"
+  },
+  "effect": {
+   "sec": 35.9,
+   "sha1": "11d843534d2c",
+   "text": "5f53ebed4de9"
+  },
+  "story:effect": {
+   "sec": 35.83,
+   "sha1": "0f0be82c8ed6",
+   "text": "6fb221a4a40d"
+  },
+  "ai": {
+   "sec": 25.97,
+   "sha1": "8bc9160aba9a",
+   "text": "f8659416d874"
+  },
+  "closing": {
+   "sec": 11.93,
+   "sha1": "536006f797c3",
+   "text": "280fc4659679"
+  },
+  "st_hero": {
+   "sec": 21.19,
+   "sha1": "dfa350cccf14",
+   "text": "9e4af1ef0a2a"
+  },
+  "st_day": {
+   "sec": 31.63,
+   "sha1": "b9e5569540b0",
+   "text": "8ba268aeabb2"
+  },
+  "st_cause": {
+   "sec": 29.14,
+   "sha1": "e87ce950a88b",
+   "text": "775f574c6413"
+  },
+  "st_whatif": {
+   "sec": 23.71,
+   "sha1": "61230cb1f382",
+   "text": "33db99061984"
+  },
+  "st_newday": {
+   "sec": 55.32,
+   "sha1": "1ec80a2f2c4f",
+   "text": "e6cbd9b55709"
+  },
+  "st_end": {
+   "sec": 14.88,
+   "sha1": "2269fa3b3e4f",
+   "text": "f1b57bb0bc1f"
+  }
+ },
+ "comment": {
+  "situation:cover": {
+   "sec": 34.06,
+   "sha1": "bda91bb26707",
+   "text": "e336a9a5a116"
+  },
+  "story:cover": {
+   "sec": 34.99,
+   "sha1": "cb76e060be66",
+   "text": "67ac1cee228e"
+  },
+  "sit_scene": {
+   "sec": 32.54,
+   "sha1": "0f5d660c6d92",
+   "text": "5e4fa4b92eef"
+  },
+  "sit_want": {
+   "sec": 29.38,
+   "sha1": "a954147e3503",
+   "text": "45aaa84148e9"
+  },
+  "sit_alts": {
+   "sec": 31.94,
+   "sha1": "adb55297d677",
+   "text": "b9ce1d16af42"
+  },
+  "sit_offer": {
+   "sec": 28.49,
+   "sha1": "0c1a9c4af258",
+   "text": "2461104aa18f"
+  },
+  "space": {
+   "sec": 33.98,
+   "sha1": "2c1764a7cd07",
+   "text": "ba5af090bf23"
+  },
+  "effect": {
+   "sec": 34.82,
+   "sha1": "a512718b6d99",
+   "text": "885e3eb3393d"
+  },
+  "story:effect": {
+   "sec": 32.23,
+   "sha1": "40d21e922282",
+   "text": "a491e234201b"
+  },
+  "ai": {
+   "sec": 35.74,
+   "sha1": "6c471530406f",
+   "text": "23b34fed13b3"
+  },
+  "closing": {
+   "sec": 28.51,
+   "sha1": "302ef388a02d",
+   "text": "0d9042e8f884"
+  },
+  "st_hero": {
+   "sec": 29.66,
+   "sha1": "5b29171ddcfa",
+   "text": "d41d6560a402"
+  },
+  "st_day": {
+   "sec": 29.83,
+   "sha1": "8c8709b40576",
+   "text": "687ed170a9a8"
+  },
+  "st_cause": {
+   "sec": 29.28,
+   "sha1": "53f9b6e3200c",
+   "text": "c92fbdc01796"
+  },
+  "st_whatif": {
+   "sec": 26.9,
+   "sha1": "a5b98addd125",
+   "text": "6d8a97c81a2d"
+  },
+  "st_newday": {
+   "sec": 36.46,
+   "sha1": "d7747c9f0bc7",
+   "text": "202b01fa98db"
+  },
+  "st_end": {
+   "sec": 26.28,
+   "sha1": "fb9e9f26a1b6",
+   "text": "ff7db47409c9"
+  },
+  "sources": {
+   "sec": 30.5,
+   "sha1": "1aa39bcd8843",
+   "text": "c2e5702a98eb"
+  },
+  "appendix": {
+   "sec": 28.18,
+   "sha1": "86a6aac5464e",
+   "text": "433bab0aec3c"
+  }
+ }
+}

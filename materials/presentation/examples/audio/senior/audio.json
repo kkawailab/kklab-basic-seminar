@@ -229,12 +229,12 @@
   },
   "effect": {
    "sec": 33.65,
-   "sha1": "4ea0294f83bc",
+   "sha1": "4d180b2316cb",
    "text": "e51cbbbd4e35"
   },
   "story:effect": {
-   "sec": 30.55,
-   "sha1": "a6c13bd9ae2e",
+   "sec": 30.82,
+   "sha1": "4c8f6b06847e",
    "text": "849aa08a3df8"
   },
   "ai": {
@@ -258,9 +258,9 @@
    "text": "ef7b0c6a8bad"
   },
   "sit_want": {
-   "sec": 33.1,
-   "sha1": "30521bc07290",
-   "text": "250be9aa8e28"
+   "sec": 33.38,
+   "sha1": "65e77ccca8f2",
+   "text": "131ca91ff90a"
   },
   "sit_alts": {
    "sec": 29.71,
@@ -318,8 +318,8 @@
    "text": "1bca111a5ed6"
   },
   "sources": {
-   "sec": 32.02,
-   "sha1": "570491247720",
+   "sec": 31.99,
+   "sha1": "7876ee47548e",
    "text": "c35cfbf55a4b"
   },
   "appendix": {
