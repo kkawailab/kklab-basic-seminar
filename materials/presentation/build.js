@@ -610,7 +610,6 @@ const VARIANTS = {
 //   原稿は examples/narration/<題材>.json、音声と長さは examples/audio/<題材>/（make_audio.py が作る）。
 //   キーは content と同じ（スライドの use）。型ごとの原稿「型:キー」があればそれを、なければ「キー」を使う
 // ------------------------------------------------------------
-const AUDIO_GAP = 1200;                    // 発表の音声が終わってから、解説が始まるまでの間（ミリ秒）
 const BUTTON = { talk: { x: 6.25, name: '発表の音声' }, comment: { x: 7.6, name: '教員の解説' }, y: 5.17, w: 1.25, h: 0.3 };
 const sha1 = t => crypto.createHash('sha1').update(t, 'utf8').digest('hex').slice(0, 12);
 
@@ -639,24 +638,12 @@ function audioPic(c, id, rid) {
     `<p:spPr><a:xfrm><a:off x="${emu(b.x)}" y="${emu(BUTTON.y)}"/><a:ext cx="${emu(BUTTON.w)}" cy="${emu(BUTTON.h)}"/></a:xfrm>` +
     `<a:prstGeom prst="roundRect"><a:avLst><a:gd name="adj" fmla="val 50000"/></a:avLst></a:prstGeom></p:spPr></p:pic>`;
 }
-// アニメーションの設定。clips は再生する順の [{ spid, ms }]。
-//   スライドが表示されると1つ目を再生し、終わると AUDIO_GAP の間をおいて次を再生する（スライドは自動では送らない）。
-//   どの音声も、絵のクリックで再生・一時停止できる
+// アニメーションの設定。clips は [{ spid }]。
+//   音声は自動では流さない。絵（ボタン）をクリックしたときだけ、その音声を再生・一時停止する。
+//   （スライドの表示と同時に発表の音声を流し、続けて解説を流す設定は、PowerPoint では2つが同時に流れたのでやめた）
 function audioTiming(clips) {
-  let n = 3, at = 0;   // id 1 は全体、2 は自動で再生する並び、3 はその中のひとまとまり
+  let n = 1;   // id 1 は全体
   const tgt = c => `<p:tgtEl><p:spTgt spid="${c.spid}"/></p:tgtEl>`;
-  const auto = clips.map((c, i) => {
-    const xml = `<p:par><p:cTn id="${++n}" fill="hold"><p:stCondLst><p:cond delay="${at}"/></p:stCondLst><p:childTnLst>` +
-      `<p:par><p:cTn id="${++n}" presetID="1" presetClass="mediacall" presetSubtype="0" fill="hold" nodeType="afterEffect"><p:stCondLst><p:cond delay="${i ? AUDIO_GAP : 0}"/></p:stCondLst><p:childTnLst>` +
-      `<p:cmd type="call" cmd="playFrom(0.0)"><p:cBhvr><p:cTn id="${++n}" dur="${c.ms}" fill="hold"/>${tgt(c)}</p:cBhvr></p:cmd>` +
-      `</p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par>`;
-    at += (i ? AUDIO_GAP : 0) + c.ms;
-    return xml;
-  }).join('');
-  const main = `<p:seq concurrent="1" nextAc="seek"><p:cTn id="2" dur="indefinite" nodeType="mainSeq"><p:childTnLst>` +
-    `<p:par><p:cTn id="3" fill="hold"><p:stCondLst><p:cond delay="indefinite"/><p:cond evt="onBegin" delay="0"><p:tn val="2"/></p:cond></p:stCondLst><p:childTnLst>${auto}</p:childTnLst></p:cTn></p:par>` +
-    `</p:childTnLst></p:cTn><p:prevCondLst><p:cond evt="onPrev" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:prevCondLst>` +
-    `<p:nextCondLst><p:cond evt="onNext" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:nextCondLst></p:seq>`;
   const click = clips.map(c =>
     `<p:seq concurrent="1" nextAc="seek"><p:cTn id="${++n}" restart="whenNotActive" fill="hold" evtFilter="cancelBubble" nodeType="interactiveSeq">` +
     `<p:stCondLst><p:cond evt="onClick" delay="0">${tgt(c)}</p:cond></p:stCondLst><p:endSync evt="end" delay="0"><p:rtn val="all"/></p:endSync><p:childTnLst>` +
@@ -669,7 +656,7 @@ function audioTiming(clips) {
   const media = clips.map(c =>
     `<p:audio><p:cMediaNode vol="80000"><p:cTn id="${++n}" fill="hold" display="0"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst>` +
     `<p:endCondLst><p:cond evt="onStopAudio" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:endCondLst></p:cTn>${tgt(c)}</p:cMediaNode></p:audio>`).join('');
-  return `<p:timing><p:tnLst><p:par><p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot"><p:childTnLst>${main}${click}${media}</p:childTnLst></p:cTn></p:par></p:tnLst></p:timing>`;
+  return `<p:timing><p:tnLst><p:par><p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot"><p:childTnLst>${click}${media}</p:childTnLst></p:cTn></p:par></p:tnLst></p:timing>`;
 }
 
 // ------------------------------------------------------------
@@ -944,7 +931,7 @@ async function finish(file, LAYOUTS, SLIDES, ex) {
       c.spid = ++id;
       return audioPic(c, id, rid);
     });
-    const timing = audioTiming(clips.map(c => ({ spid: c.spid, ms: Math.round(c.sec * 1000) })));
+    const timing = audioTiming(clips);
     if (!xml.includes('</p:spTree>') || !xml.includes('</p:clrMapOvr>')) throw new Error('音声を入れる場所が見つからない');
     return xml.replace('</p:spTree>', pics.join('') + '</p:spTree>').replace('</p:clrMapOvr>', '</p:clrMapOvr>' + timing);
   }
