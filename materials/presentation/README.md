@@ -38,6 +38,21 @@
 
 `<型>` は `basic`・`situation`・`story`・`conclusion`・`compare` です。同じ提案を5つの型で組み立ててあるので、型による見せ方の違いを比べられます。
 
+### 作例の音声（発表の音声と、教員の解説）
+
+作例には、スライドごとに2つの音声を入れてあります。スライドの右下に、それぞれのボタン（音声の絵）があります。
+
+| 音声 | 内容 | 声 |
+|---|---|---|
+| 発表の音声 | そのスライドで、発表者が実際に話す内容（目安の秒数に収まる原稿） | `ja-JP-KeitaNeural` |
+| 教員の解説 | そのスライドの組み立てと話し方の、どこを見てほしいか。型の特徴、評価の観点 | `ja-JP-NanamiNeural`（各回ワークシートの解説と同じ声） |
+
+- スライドショーでは、スライドが表示されると**発表の音声**が流れ、終わると少し間をおいて**教員の解説**が流れる。スライドは自動では送らないので、聞き終えたらクリックで次へ進む（解説を聞かずに進むこともできる）
+- ボタンをクリックすると、その音声を一時停止・再生できる。編集画面でも、ボタンを選ぶと再生できる
+- 補足のスライド（参考・出典、補足）は発表の5分に含めないので、教員の解説だけを入れてある
+- 原稿は、各スライドのノートの「■ この作例の発表の原稿」「■ 教員の解説」にも入っている
+- 発表の音声の合計は、どの作例も4分前後（読み上げは1秒に約5字）。目安の秒数より短めにして、スライドを送る間や言い直しの余裕を残してある
+
 ## 構成
 
 | ファイル | 内容 |
@@ -45,7 +60,10 @@
 | `build.js` | テンプレートと作例を組み立てる（pptxgenjs）。レイアウトの部品（`patterns()`）と、型ごとの章・案内文・ノート（`VARIANTS`） |
 | `examples/family.js`・`examples/senior.js` | 作例の内容（入力枠の名前 → 入れる文字、図のファイル名） |
 | `examples/make_images.py` | 作例の図を描く（Pillow）。`examples/images/<題材>/` に書き出す |
-| `examples/images/` | 作例の図（表紙、人物、ゾーニング図、場面） |
+| `examples/images/` | 作例の図（表紙、人物、ゾーニング図、場面）。`images/audio/` は音声のボタンの絵 |
+| `examples/narration/<題材>.json` | 作例の音声の原稿。`talk`（発表の原稿）と `comment`（教員の解説） |
+| `examples/make_audio.py` | 原稿から音声を作る（edge-tts）。読み上げのときだけ使う読み替え（人名、用語）もここにある |
+| `examples/audio/<題材>/` | 音声（`talk-<キー>.mp3`・`comment-<キー>.mp3`）と、その長さ・原稿の指紋（`audio.json`） |
 
 ## 作り方
 
@@ -56,7 +74,11 @@ node build.js                          # テンプレート5つ
 node build.js story                    # 型を指定（basic・situation・story・conclusion・compare）
 
 pip install Pillow                     # 初回のみ。フォントは Noto Sans CJK JP（fonts-noto-cjk）
-python3 examples/make_images.py        # 作例の図
+python3 examples/make_images.py        # 作例の図と、音声のボタンの絵
+
+pip install edge-tts mutagen           # 初回のみ。音声の合成にはネットワークが必要
+python3 examples/make_audio.py         # 作例の音声（原稿を変えたものだけ作り直す。--force ですべて）
+
 node build.js --examples               # 作例（2題材 × 5つの型）
 node build.js --examples senior story  # 題材と型を指定
 ```
@@ -64,10 +86,14 @@ node build.js --examples senior story  # 題材と型を指定
 - **案内文や章の名前を変える**：`build.js` の `VARIANTS` の `layouts`（章の名前、案内文）と `slides`（時間配分、ノート）を直す。目安の秒数の合計が300秒を超えるとエラーになる
 - **型を増やす**：`VARIANTS` に項目を足す。レイアウトは `patterns()` の部品（`rowsStat`・`persona`・`sceneRows`・`copy3`・`imagePoints`・`flow4`・`effectPlan`・`cols4`・`statement`・`alternatives`・`storyboard3`・`compare3`）を組み合わせる
 - **作例の題材を増やす**：`examples/<題材>.js` を作り（`family.js` を写して書き換える）、図を `examples/images/<題材>/` に置く。`content` のキーは、`build.js` の各スライドの `use` に対応する
+- **作例の音声の原稿を直す**：`examples/narration/<題材>.json` を直し、`make_audio.py`、`build.js --examples` の順に実行する。キーは `content` と同じ。型によって話し出しを変えるときは `"型:キー"`（例 `"conclusion:persona"`）を足すと、その型ではそちらが使われる。発表の音声がスライドの目安の秒数を超えると `build.js` が知らせ、合計が5分を超えるとエラーになる。読み間違いは、`make_audio.py` の `READ`（読み替え）に足して直す
+- **音声なしの作例を作る**：`examples/audio/<題材>/audio.json` がない題材は、音声なしで組まれる
 
 `build.js` は、pptxgenjs が書き出した pptx を開き直して、プレースホルダー（余白、縦位置、自動縮小、図の枠）、テーマの色とフォント（日本語は Yu Gothic）、ノートの段落を書き直しています。
 
 ## 確認したこと・していないこと
 
-- ファイルの構造の検証（OOXML のスキーマ、参照の整合）は、全ファイルで通っている
+- ファイルの構造の検証（OOXML のスキーマ、参照の整合）は、音声を入れた作例を含めて、全ファイルで通っている
+- 作例の音声は、発表の音声がどのスライドでも目安の秒数に収まること、途中で切れた音声がないことを確認した。読み間違いは、全部の音声を音声認識にかけて原稿と比べ、見つかったもの（「応える」を「いらえる」と読む、など）を `make_audio.py` の読み替えで直した。機械による確認なので、**耳で通して聞く確認はしていない**
+- **PowerPoint の実機での再生（自動再生の順番、ボタンのクリック）は未確認**。音声の入れ方は、各回ワークシートの解説スライド（`../worksheets/slides/`）と同じ形にしてある。配布の前に、PowerPoint でスライドショーを一度通して確かめること
 - 文字の収まりは、Noto Sans CJK JP で描画して確認した。**PowerPoint の実機での表示は未確認**。Yu Gothic は字幅がほぼ同じだが、英数字の幅と行の高さがわずかに違うので、配布の前に PowerPoint で一度開いて確かめること

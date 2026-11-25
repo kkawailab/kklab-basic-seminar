@@ -114,7 +114,8 @@ assets/js/main.js     「次回」の自動判定
 assets/js/attendance.js  クイズの採点と出席カードの表示
 assets/js/code.js     確認コードの計算（クイズと照合ページで共用）
 materials/            配布資料の置き場（group-log/ は産学連携のグループ活動記録シート、
-                      presentation/ は提案発表のスライドテンプレート（5分・5つの型）と作例）
+                      presentation/ は提案発表のスライドテンプレート（5分・5つの型）と、
+                      発表の音声・教員の解説の音声を入れた作例）
 ```
 
 ## GitHub Pages の設定（初回のみ）

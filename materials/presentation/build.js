@@ -4,6 +4,7 @@
 //   node build.js --examples         作例を作る（examples/presentation-example-<題材>-<型>.pptx）
 //   node build.js --examples family  指定した題材・型の作例だけ作る（題材は examples/<題材>.js）
 //   必要なもの: npm install pptxgenjs。作例の図は examples/make_images.py で先に作っておく
+//   作例の音声（発表の音声、教員の解説）は examples/make_audio.py で先に作っておく。音声がまだない題材は、音声なしで組む
 //
 // 入力枠は PowerPoint の「プレースホルダー」として、スライドのレイアウトに置いてある。
 // 灰色の案内文はレイアウト側の文字なので、何も入力しなかった枠はスライドショーにも印刷にも出ない。
@@ -16,6 +17,7 @@ const fs = require('fs');
 const path = require('path');
 const pptxgen = require('pptxgenjs');
 const JSZip = require('jszip');
+const crypto = require('crypto');
 
 const EXAMPLES = process.argv.includes('--examples');
 
@@ -604,6 +606,73 @@ const VARIANTS = {
 };
 
 // ------------------------------------------------------------
+// 作例の音声（発表の音声、教員の解説）
+//   原稿は examples/narration/<題材>.json、音声と長さは examples/audio/<題材>/（make_audio.py が作る）。
+//   キーは content と同じ（スライドの use）。型ごとの原稿「型:キー」があればそれを、なければ「キー」を使う
+// ------------------------------------------------------------
+const AUDIO_GAP = 1200;                    // 発表の音声が終わってから、解説が始まるまでの間（ミリ秒）
+const BUTTON = { talk: { x: 6.25, name: '発表の音声' }, comment: { x: 7.6, name: '教員の解説' }, y: 5.17, w: 1.25, h: 0.3 };
+const sha1 = t => crypto.createHash('sha1').update(t, 'utf8').digest('hex').slice(0, 12);
+
+function loadAudio(topic) {
+  const dir = path.join(__dirname, 'examples');
+  const nf = path.join(dir, 'narration', topic + '.json'), af = path.join(dir, 'audio', topic, 'audio.json');
+  if (!fs.existsSync(nf) || !fs.existsSync(af)) return null;
+  const text = JSON.parse(fs.readFileSync(nf, 'utf8')), info = JSON.parse(fs.readFileSync(af, 'utf8'));
+  return (kind, id, use) => {
+    const key = text[kind][`${id}:${use}`] !== undefined ? `${id}:${use}` : use;
+    const t = text[kind][key], a = (info[kind] || {})[key];
+    if (t === undefined) return null;
+    const file = path.join(dir, 'audio', topic, `${kind}-${key.replace(':', '-')}.mp3`);
+    if (!a || a.text !== sha1(t) || !fs.existsSync(file)) throw new Error(`${topic}: 音声「${kind} ${key}」がないか、原稿より古い（python3 examples/make_audio.py を実行する）`);
+    return { kind, key, text: t, sec: a.sec, file, media: `${topic}-${path.basename(file)}` };
+  };
+}
+
+// 音声の絵（ボタン）。絵をクリックすると、その音声を再生・一時停止する
+function audioPic(c, id, rid) {
+  const b = BUTTON[c.kind];
+  return `<p:pic><p:nvPicPr><p:cNvPr id="${id}" name="${b.name}" descr="${b.name}（クリックで再生・一時停止）"><a:hlinkClick r:id="" action="ppaction://media"/></p:cNvPr>` +
+    `<p:cNvPicPr><a:picLocks noChangeAspect="1"/></p:cNvPicPr><p:nvPr><a:audioFile r:link="${rid}Audio"/><p:extLst><p:ext uri="{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}">` +
+    `<p14:media xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="${rid}Media"/></p:ext></p:extLst></p:nvPr></p:nvPicPr>` +
+    `<p:blipFill><a:blip r:embed="${rid}Icon"/><a:stretch><a:fillRect/></a:stretch></p:blipFill>` +
+    `<p:spPr><a:xfrm><a:off x="${emu(b.x)}" y="${emu(BUTTON.y)}"/><a:ext cx="${emu(BUTTON.w)}" cy="${emu(BUTTON.h)}"/></a:xfrm>` +
+    `<a:prstGeom prst="roundRect"><a:avLst><a:gd name="adj" fmla="val 50000"/></a:avLst></a:prstGeom></p:spPr></p:pic>`;
+}
+// アニメーションの設定。clips は再生する順の [{ spid, ms }]。
+//   スライドが表示されると1つ目を再生し、終わると AUDIO_GAP の間をおいて次を再生する（スライドは自動では送らない）。
+//   どの音声も、絵のクリックで再生・一時停止できる
+function audioTiming(clips) {
+  let n = 3, at = 0;   // id 1 は全体、2 は自動で再生する並び、3 はその中のひとまとまり
+  const tgt = c => `<p:tgtEl><p:spTgt spid="${c.spid}"/></p:tgtEl>`;
+  const auto = clips.map((c, i) => {
+    const xml = `<p:par><p:cTn id="${++n}" fill="hold"><p:stCondLst><p:cond delay="${at}"/></p:stCondLst><p:childTnLst>` +
+      `<p:par><p:cTn id="${++n}" presetID="1" presetClass="mediacall" presetSubtype="0" fill="hold" nodeType="afterEffect"><p:stCondLst><p:cond delay="${i ? AUDIO_GAP : 0}"/></p:stCondLst><p:childTnLst>` +
+      `<p:cmd type="call" cmd="playFrom(0.0)"><p:cBhvr><p:cTn id="${++n}" dur="${c.ms}" fill="hold"/>${tgt(c)}</p:cBhvr></p:cmd>` +
+      `</p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par>`;
+    at += (i ? AUDIO_GAP : 0) + c.ms;
+    return xml;
+  }).join('');
+  const main = `<p:seq concurrent="1" nextAc="seek"><p:cTn id="2" dur="indefinite" nodeType="mainSeq"><p:childTnLst>` +
+    `<p:par><p:cTn id="3" fill="hold"><p:stCondLst><p:cond delay="indefinite"/><p:cond evt="onBegin" delay="0"><p:tn val="2"/></p:cond></p:stCondLst><p:childTnLst>${auto}</p:childTnLst></p:cTn></p:par>` +
+    `</p:childTnLst></p:cTn><p:prevCondLst><p:cond evt="onPrev" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:prevCondLst>` +
+    `<p:nextCondLst><p:cond evt="onNext" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:nextCondLst></p:seq>`;
+  const click = clips.map(c =>
+    `<p:seq concurrent="1" nextAc="seek"><p:cTn id="${++n}" restart="whenNotActive" fill="hold" evtFilter="cancelBubble" nodeType="interactiveSeq">` +
+    `<p:stCondLst><p:cond evt="onClick" delay="0">${tgt(c)}</p:cond></p:stCondLst><p:endSync evt="end" delay="0"><p:rtn val="all"/></p:endSync><p:childTnLst>` +
+    `<p:par><p:cTn id="${++n}" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>` +
+    `<p:par><p:cTn id="${++n}" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>` +
+    `<p:par><p:cTn id="${++n}" presetID="2" presetClass="mediacall" presetSubtype="0" fill="hold" nodeType="clickEffect"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>` +
+    `<p:cmd type="call" cmd="togglePause"><p:cBhvr><p:cTn id="${++n}" dur="1" fill="hold"/>${tgt(c)}</p:cBhvr></p:cmd>` +
+    `</p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn>` +
+    `<p:nextCondLst><p:cond evt="onClick" delay="0">${tgt(c)}</p:cond></p:nextCondLst></p:seq>`).join('');
+  const media = clips.map(c =>
+    `<p:audio><p:cMediaNode vol="80000"><p:cTn id="${++n}" fill="hold" display="0"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst>` +
+    `<p:endCondLst><p:cond evt="onStopAudio" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:endCondLst></p:cTn>${tgt(c)}</p:cMediaNode></p:audio>`).join('');
+  return `<p:timing><p:tnLst><p:par><p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot"><p:childTnLst>${main}${click}${media}</p:childTnLst></p:cTn></p:par></p:tnLst></p:timing>`;
+}
+
+// ------------------------------------------------------------
 // 1つの型を pptx に書き出す
 // ------------------------------------------------------------
 // ex は作例の題材（examples/<題材>.js）。渡すと、入力枠に作例の内容を入れ、使い方のスライドを省く
@@ -658,12 +727,27 @@ async function build(id, ex) {
   function add(layout, section, o = {}) {
     if (!LAYOUTS[layout]) throw new Error(`${id}: レイアウト「${layout}」がない`);
     const s = pres.addSlide({ masterName: layout, sectionTitle: section });
+    if (ex && o.use && !ex.content[o.use]) throw new Error(`${ex.id}: 内容「${o.use}」がない（${id}・${layout}）`);
+    // 作例の音声：発表のスライド（o.sec がある）には発表の音声と教員の解説、補足のスライドには解説だけを入れる
+    const clips = [];
+    if (ex && ex.audio && o.use) {
+      const talk = o.sec ? ex.audio('talk', id, o.use) : null, comment = ex.audio('comment', id, o.use);
+      if (o.sec && !talk) throw new Error(`${ex.id}: 発表の原稿「${o.use}」がない（${id}・${layout}）`);
+      if (!comment) throw new Error(`${ex.id}: 解説の原稿「${o.use}」がない（${id}・${layout}）`);
+      if (talk) {
+        clips.push(talk);
+        spoken.push({ label: layout, sec: o.sec, real: talk.sec });
+        o.notes = o.notes.concat('', `■ この作例の発表の原稿（音声 ${Math.round(talk.sec)}秒・${talk.text.length}字）`, talk.text);
+      }
+      clips.push(comment);
+      o.notes = o.notes.concat('', `■ 教員の解説（音声 ${Math.round(comment.sec)}秒）`, comment.text);
+    }
     if (o.notes) s.addNotes(o.notes.join('\n'));
     if (o.hidden) s.hidden = true;
-    if (ex && o.use && !ex.content[o.use]) throw new Error(`${ex.id}: 内容「${o.use}」がない（${id}・${layout}）`);
-    SLIDES.push({ layout, texts: Object.assign({}, o.texts, ex && o.use ? ex.content[o.use] : null) });
+    SLIDES.push({ layout, texts: Object.assign({}, o.texts, ex && o.use ? ex.content[o.use] : null), clips });
     return s;
   }
+  const spoken = [];   // 発表の音声の長さ（目安の秒数と比べる）
   (ex ? [SEC_TALK, SEC_APPENDIX] : [SEC_USAGE, SEC_TALK, SEC_APPENDIX]).forEach(t => pres.addSection({ title: t }));
   const total = v.slides.reduce((a, s) => a + s.sec, 0);
   if (total > TOTAL) throw new Error(`${id}: 目安の合計が ${total} 秒で、${TOTAL} 秒を超えている`);
@@ -733,7 +817,7 @@ async function build(id, ex) {
 
   // 発表のスライド。ノートの先頭に、目安の秒数と原稿の字数（1秒5字）を入れる
   v.slides.forEach(x => add(x.layout, SEC_TALK, {
-    notes: [`【目安 ${x.sec}秒｜原稿 約${Math.round(x.sec * 5 / 10) * 10}字】`].concat(x.notes), use: x.use, texts: x.texts,
+    notes: [`【目安 ${x.sec}秒｜原稿 約${Math.round(x.sec * 5 / 10) * 10}字】`].concat(x.notes), use: x.use, texts: x.texts, sec: x.sec,
   }));
   // 補足
   add('参考・出典', SEC_APPENDIX, {
@@ -753,6 +837,14 @@ async function build(id, ex) {
   await pres.writeFile({ fileName: file });
   await finish(file, LAYOUTS, SLIDES, ex);
   console.log(`${path.basename(file)}  ${v.name}${ex ? '・' + ex.name : ''}  発表 ${v.slides.length} 枚（${Math.floor(total / 60)}分${total % 60}秒＋予備 ${TOTAL - total}秒）、全 ${SLIDES.length} 枚`);
+  if (spoken.length) {
+    // 発表の音声が、スライドごとの目安と、発表時間の5分に収まっているか
+    const real = spoken.reduce((a, x) => a + x.real, 0);
+    spoken.filter(x => x.real > x.sec).forEach(x => console.log(`  目安を超えている: ${x.label}  音声 ${x.real.toFixed(1)}秒 / 目安 ${x.sec}秒`));
+    if (real > TOTAL) throw new Error(`${id}・${ex.id}: 発表の音声の合計が ${real.toFixed(1)} 秒で、${TOTAL} 秒を超えている`);
+    const all = SLIDES.reduce((a, x) => a + x.clips.reduce((b, c) => b + c.sec, 0), 0);
+    console.log(`  発表の音声 ${Math.floor(Math.round(real) / 60)}分${Math.round(real) % 60}秒、解説を含めた音声の合計 ${(all / 60).toFixed(1)}分`);
+  }
 }
 
 // ------------------------------------------------------------
@@ -837,6 +929,25 @@ async function finish(file, LAYOUTS, SLIDES, ex) {
   const read = name => zip.file(name).async('string');
   const names = Object.keys(zip.files).filter(n => !zip.files[n].dir);
   const layoutName = {};   // slideLayoutN.xml → レイアウト名
+  // 作例の音声：音声と絵を ppt/media に入れ、スライドに音声の絵（ボタン）とアニメーションの設定を足す
+  const REL = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships', REL_MEDIA = 'http://schemas.microsoft.com/office/2007/relationships/media';
+  function addAudio(xml, clips, added) {
+    if (!clips.length) return xml;
+    let id = Math.max(...[...xml.matchAll(/<p:cNvPr id="(\d+)"/g)].map(x => Number(x[1])));
+    const pics = clips.map(c => {
+      const icon = `audio-${c.kind}.png`, rid = 'rId' + c.kind[0].toUpperCase() + c.kind.slice(1);
+      if (!zip.file('ppt/media/' + c.media)) zip.file('ppt/media/' + c.media, fs.readFileSync(c.file));
+      if (!zip.file('ppt/media/' + icon)) zip.file('ppt/media/' + icon, fs.readFileSync(path.join(__dirname, 'examples', 'images', 'audio', c.kind + '.png')));
+      added.push(`<Relationship Id="${rid}Media" Type="${REL_MEDIA}" Target="../media/${c.media}"/>`,
+        `<Relationship Id="${rid}Audio" Type="${REL}/audio" Target="../media/${c.media}"/>`,
+        `<Relationship Id="${rid}Icon" Type="${REL}/image" Target="../media/${icon}"/>`);
+      c.spid = ++id;
+      return audioPic(c, id, rid);
+    });
+    const timing = audioTiming(clips.map(c => ({ spid: c.spid, ms: Math.round(c.sec * 1000) })));
+    if (!xml.includes('</p:spTree>') || !xml.includes('</p:clrMapOvr>')) throw new Error('音声を入れる場所が見つからない');
+    return xml.replace('</p:spTree>', pics.join('') + '</p:spTree>').replace('</p:clrMapOvr>', '</p:clrMapOvr>' + timing);
+  }
   for (const name of names) {
     if (/^ppt\/slideLayouts\/slideLayout\d+\.xml$/.test(name)) {
       let xml = await read(name);
@@ -869,7 +980,7 @@ async function finish(file, LAYOUTS, SLIDES, ex) {
         }
         return slidePh(s, idx, id, value);
       });
-      zip.file(name, onePPr(xml).replace(/lang="en-US"/g, LANG));
+      zip.file(name, addAudio(onePPr(xml).replace(/lang="en-US"/g, LANG), slide.clips, added));
       if (added.length) zip.file(`ppt/slides/_rels/slide${m[1]}.xml.rels`, rels.replace('</Relationships>', added.join('') + '</Relationships>'));
     } else if (/^ppt\/notesSlides\/notesSlide\d+\.xml$/.test(name)) {
       zip.file(name, fixNotes(await read(name)));
@@ -880,7 +991,8 @@ async function finish(file, LAYOUTS, SLIDES, ex) {
     }
   }
   const types = await read('[Content_Types].xml');
-  if (!/Extension="png"/.test(types)) zip.file('[Content_Types].xml', types.replace('<Default ', '<Default Extension="png" ContentType="image/png"/><Default '));
+  const need = [['png', 'image/png']].concat(SLIDES.some(x => x.clips.length) ? [['mp3', 'audio/mpeg']] : []).filter(([e]) => !types.includes(`Extension="${e}"`));
+  if (need.length) zip.file('[Content_Types].xml', types.replace('<Default ', need.map(([e, t]) => `<Default Extension="${e}" ContentType="${t}"/>`).join('') + '<Default '));
   // フォルダーの項目を除いて詰め直す（フォルダーの項目があると、クラウド上で開けないことがある）
   const out = new JSZip();
   for (const name of Object.keys(zip.files).filter(n => !zip.files[n].dir)) out.file(name, await zip.files[name].async('nodebuffer'), { createFolders: false });
@@ -897,7 +1009,8 @@ async function finish(file, LAYOUTS, SLIDES, ex) {
   const ids = pick(Object.keys(VARIANTS), args.filter(a => VARIANTS[a]));
   if (!EXAMPLES) { for (const id of ids) await build(id); return; }
   for (const topic of pick(topics, args.filter(a => topics.includes(a)))) {
-    const ex = Object.assign({ id: topic }, require(path.join(dir, topic + '.js')));
+    const ex = Object.assign({ id: topic }, require(path.join(dir, topic + '.js')), { audio: loadAudio(topic) });
+    if (!ex.audio) console.log(`${topic}: 音声がないので、音声なしで組む（python3 examples/make_audio.py で作る）`);
     for (const id of ids) await build(id, ex);
   }
 })();

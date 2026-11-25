@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """作例のスライドに入れる図（ゾーニング図、場面のイラスト）を描く。
    images/<題材>/ に cover・avatar・plan・scene・story1〜3 の PNG を書き出す。大きさは、スライドの図の枠の縦横比に合わせてある。
+   images/audio/ には、音声のボタン（発表の音声、教員の解説）の絵を書き出す。
    usage: python3 make_images.py            （全題材）
           python3 make_images.py family     （題材を指定）
    必要なもの: pip install Pillow、Noto Sans CJK JP のフォント（Debian/Ubuntu なら fonts-noto-cjk）"""
@@ -310,7 +311,18 @@ def senior(out):
     c.save(out + '/story3.png')
 
 
-TOPICS = {'family': family, 'senior': senior}
+# ------------------------------------------------------------
+# 音声のボタン（発表の音声、教員の解説）。スライドの右下に置く音声の絵として使う。角は build.js が丸く切り抜く
+# ------------------------------------------------------------
+def audio(out):
+    for name, label, bg, fg in [('talk', '発表の音声', AMBER, INK), ('comment', '教員の解説', TINT, AMBERTEXT)]:
+        c = Canvas(1.25, 0.3, bg)
+        c.poly([(13, 28), (13, 72), (21.5, 50)], fg)        # 再生の三角
+        c.text(58, 47, label, 10.6, fill=fg)
+        c.save(out + '/%s.png' % name)
+
+
+TOPICS = {'family': family, 'senior': senior, 'audio': audio}
 for topic in (sys.argv[1:] or TOPICS):
     TOPICS[topic](os.path.join(HERE, 'images', topic))
     print('images/%s' % topic)

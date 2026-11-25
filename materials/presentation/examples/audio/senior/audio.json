@@ -1,0 +1,331 @@
+{
+ "talk": {
+  "cover": {
+   "sec": 14.38,
+   "sha1": "1dd80385bb72",
+   "text": "4a33ff8a86e6"
+  },
+  "story:cover": {
+   "sec": 11.9,
+   "sha1": "3dfde2ec4ec3",
+   "text": "e529a248cfa1"
+  },
+  "issue": {
+   "sec": 27.17,
+   "sha1": "8294b6520560",
+   "text": "884b2e64a4e7"
+  },
+  "persona": {
+   "sec": 24.84,
+   "sha1": "4447c980c18b",
+   "text": "3f9313eda6d9"
+  },
+  "conclusion:persona": {
+   "sec": 32.78,
+   "sha1": "fd06a9d5eb49",
+   "text": "4fc6678d5a49"
+  },
+  "concept": {
+   "sec": 26.62,
+   "sha1": "4617906635ca",
+   "text": "54d8bd7b836e"
+  },
+  "compare:concept": {
+   "sec": 22.3,
+   "sha1": "0964603baaee",
+   "text": "0fcf21336f55"
+  },
+  "space": {
+   "sec": 39.91,
+   "sha1": "fbc143adae53",
+   "text": "d56f1a0c1d77"
+  },
+  "conclusion:space": {
+   "sec": 34.3,
+   "sha1": "0ddf1f30a41f",
+   "text": "668dbcff13fd"
+  },
+  "flow": {
+   "sec": 37.01,
+   "sha1": "d6da5989f63b",
+   "text": "785a10f8662b"
+  },
+  "conclusion:flow": {
+   "sec": 32.69,
+   "sha1": "b5ac726337dd",
+   "text": "2a7acbdd1acb"
+  },
+  "effect": {
+   "sec": 37.37,
+   "sha1": "3a78d3e16c4b",
+   "text": "77fce36fc281"
+  },
+  "story:effect": {
+   "sec": 36.84,
+   "sha1": "65f38605702d",
+   "text": "633505665e55"
+  },
+  "ai": {
+   "sec": 26.42,
+   "sha1": "4cc559daba45",
+   "text": "c5a35aa1de20"
+  },
+  "closing": {
+   "sec": 12.91,
+   "sha1": "838857cb30d1",
+   "text": "ac56ccf2953b"
+  },
+  "conclusion:closing": {
+   "sec": 18.07,
+   "sha1": "69cca89ab334",
+   "text": "078a7fb6b4c9"
+  },
+  "sit_scene": {
+   "sec": 28.85,
+   "sha1": "a5411515a550",
+   "text": "802417bcc45b"
+  },
+  "sit_want": {
+   "sec": 30.19,
+   "sha1": "f2f1aac4864a",
+   "text": "6813a8ec0e10"
+  },
+  "sit_alts": {
+   "sec": 33.55,
+   "sha1": "53bdcf25f00d",
+   "text": "180fc18197b4"
+  },
+  "sit_offer": {
+   "sec": 29.86,
+   "sha1": "7b4a6603d98d",
+   "text": "3481d990e589"
+  },
+  "st_hero": {
+   "sec": 23.21,
+   "sha1": "cc5439f4d866",
+   "text": "aa37a1d69618"
+  },
+  "st_day": {
+   "sec": 31.32,
+   "sha1": "385729ea4c48",
+   "text": "27fd8a44b2f0"
+  },
+  "st_cause": {
+   "sec": 30.74,
+   "sha1": "0fd08e544aec",
+   "text": "7199f66373f0"
+  },
+  "st_whatif": {
+   "sec": 24.19,
+   "sha1": "9efb0b0d4f7d",
+   "text": "030dc75c3ed3"
+  },
+  "st_newday": {
+   "sec": 50.47,
+   "sha1": "638fd772f3d4",
+   "text": "d891982e85d4"
+  },
+  "st_end": {
+   "sec": 14.76,
+   "sha1": "3a61b5c42097",
+   "text": "d1daa5b34989"
+  },
+  "cc_conclusion": {
+   "sec": 40.7,
+   "sha1": "1448af661277",
+   "text": "88649625aeb9"
+  },
+  "cp_criteria": {
+   "sec": 26.26,
+   "sha1": "1e453eb8d6f0",
+   "text": "8a3c2c6e06f3"
+  },
+  "cp_options": {
+   "sec": 44.64,
+   "sha1": "025d41a8ceb3",
+   "text": "32babe51c00c"
+  }
+ },
+ "comment": {
+  "basic:cover": {
+   "sec": 33.48,
+   "sha1": "ced95de3d59e",
+   "text": "9c8a6f6383bc"
+  },
+  "situation:cover": {
+   "sec": 31.63,
+   "sha1": "7cf72b21ad38",
+   "text": "7aed6d12c82c"
+  },
+  "story:cover": {
+   "sec": 32.78,
+   "sha1": "c8ddb1609e31",
+   "text": "6785d5843e3d"
+  },
+  "conclusion:cover": {
+   "sec": 29.54,
+   "sha1": "defbd2e71a67",
+   "text": "364aae227f80"
+  },
+  "compare:cover": {
+   "sec": 28.9,
+   "sha1": "28cf21d4362c",
+   "text": "2485e444056a"
+  },
+  "issue": {
+   "sec": 34.78,
+   "sha1": "4cc7f22e9dad",
+   "text": "fa0c2a2f5df3"
+  },
+  "persona": {
+   "sec": 30.5,
+   "sha1": "9f4c12c6e4e2",
+   "text": "777459c340db"
+  },
+  "conclusion:persona": {
+   "sec": 29.71,
+   "sha1": "9505ae0a1cb1",
+   "text": "d86208dd8374"
+  },
+  "concept": {
+   "sec": 29.54,
+   "sha1": "ed81da74878c",
+   "text": "f0cfe3393025"
+  },
+  "compare:concept": {
+   "sec": 25.85,
+   "sha1": "3492ecca4f85",
+   "text": "bda9e35369a7"
+  },
+  "space": {
+   "sec": 33.82,
+   "sha1": "490a85d07ccf",
+   "text": "ac585b8d565d"
+  },
+  "situation:space": {
+   "sec": 34.7,
+   "sha1": "e7ea08da6a11",
+   "text": "fdbb487b5fe1"
+  },
+  "compare:space": {
+   "sec": 35.45,
+   "sha1": "581066475ab6",
+   "text": "9cb7ec9d0380"
+  },
+  "conclusion:space": {
+   "sec": 29.28,
+   "sha1": "0c48f0aff9ac",
+   "text": "0beb0c005495"
+  },
+  "flow": {
+   "sec": 29.33,
+   "sha1": "c9e1c930688b",
+   "text": "2bd7cf6f8684"
+  },
+  "conclusion:flow": {
+   "sec": 28.06,
+   "sha1": "2377116fbd8e",
+   "text": "f82a47239866"
+  },
+  "effect": {
+   "sec": 33.65,
+   "sha1": "4ea0294f83bc",
+   "text": "e51cbbbd4e35"
+  },
+  "story:effect": {
+   "sec": 30.55,
+   "sha1": "a6c13bd9ae2e",
+   "text": "849aa08a3df8"
+  },
+  "ai": {
+   "sec": 33.89,
+   "sha1": "418ca986e586",
+   "text": "e2cb1b04f7af"
+  },
+  "closing": {
+   "sec": 30.58,
+   "sha1": "744a9c0e0623",
+   "text": "37c0a92d4b20"
+  },
+  "conclusion:closing": {
+   "sec": 23.23,
+   "sha1": "3a1192287f98",
+   "text": "70c33cc34f41"
+  },
+  "sit_scene": {
+   "sec": 32.45,
+   "sha1": "78b44658d446",
+   "text": "ef7b0c6a8bad"
+  },
+  "sit_want": {
+   "sec": 33.1,
+   "sha1": "30521bc07290",
+   "text": "250be9aa8e28"
+  },
+  "sit_alts": {
+   "sec": 29.71,
+   "sha1": "23b5c8e1b17e",
+   "text": "21146f165e00"
+  },
+  "sit_offer": {
+   "sec": 30.5,
+   "sha1": "25aa7c83766b",
+   "text": "ec2c928414ee"
+  },
+  "st_hero": {
+   "sec": 30.41,
+   "sha1": "72e52939077d",
+   "text": "680cb059abfd"
+  },
+  "st_day": {
+   "sec": 28.85,
+   "sha1": "b771762250c8",
+   "text": "d1f3e7c8ed45"
+  },
+  "st_cause": {
+   "sec": 29.33,
+   "sha1": "c44c90026d3c",
+   "text": "d3ff9a3307c6"
+  },
+  "st_whatif": {
+   "sec": 25.7,
+   "sha1": "ac10928dbf8e",
+   "text": "66bb64503905"
+  },
+  "st_newday": {
+   "sec": 34.66,
+   "sha1": "bf1ac9eeea91",
+   "text": "bdc8bf95f302"
+  },
+  "st_end": {
+   "sec": 23.74,
+   "sha1": "b8220431f354",
+   "text": "fe8b6c1d8e0d"
+  },
+  "cc_conclusion": {
+   "sec": 30.0,
+   "sha1": "5ba0ab46ce6d",
+   "text": "0732320ee543"
+  },
+  "cp_criteria": {
+   "sec": 30.53,
+   "sha1": "5a1fc44cef9a",
+   "text": "f7f9f9ea9f9c"
+  },
+  "cp_options": {
+   "sec": 29.26,
+   "sha1": "c372b13072f0",
+   "text": "1bca111a5ed6"
+  },
+  "sources": {
+   "sec": 32.02,
+   "sha1": "570491247720",
+   "text": "c35cfbf55a4b"
+  },
+  "appendix": {
+   "sec": 27.77,
+   "sha1": "68cd0c3ab7d4",
+   "text": "8edd4d0b2ca9"
+  }
+ }
+}
