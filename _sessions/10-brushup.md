@@ -11,6 +11,9 @@ materials:
   - title: ワークシートの解説　音声付きスライド（PowerPoint）
     url: /materials/worksheets/slides/worksheet-10-slides.pptx
     note: スライドショーを開始すると音声が自動で流れ、次のスライドへ進む
+  - title: 企業への質問リスト（PDF、5ページ）
+    url: /materials/company-qa/company-qa.pdf
+    note: 企業担当者との質疑応答（テーマ：2050年に向けた新店舗設計）で使う質問の例32問と、質問と回答のメモ欄。聞きたい質問に印をつけ、グループで誰が聞くかを決めておく
   - title: グループ活動記録シート（PDF、12ページ）
     url: /materials/group-log/group-log.pdf
     note: 第6〜12回のグループの話し合いごとに、出欠、成果、自分の役割、気づきを個人で記録する。第13回で全体を振り返る
